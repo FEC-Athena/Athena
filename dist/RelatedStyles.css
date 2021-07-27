@@ -1,11 +1,6 @@
-/* body {
-  background-color: blueviolet;
-  font: 400px;
-
-} */
-
-#app {
-  font: 400px;
+.related-container {
+  height: 400px;
+  margin-bottom: 30px;
 }
 
 .list-title {
@@ -14,40 +9,34 @@
 
 .carousel {
   position: relative;
-  height: 320px;
+  height: 400px;
   width: 80%;
-  /* margin: 0 auto; */
   margin-left: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 63rem;
 }
 
 .carousel-button-left {
   position: absolute;
   padding-left: 0px;
-  /* margin-top: 150px; */
   height: 20px;
   width: 20px;
-  background-color: rgba(255, 255, 255, 0%);
+  background-color: rgba(100, 100, 100, 0);
   border: none;
   align-items: center;
 }
 
 .carousel-button-right {
   position: absolute;
-  padding-left: 1285px;
-  /* margin-top: 150px; */
+  padding-left: 1050px;
   height: 20px;
   width: 20px;
-  background-color: rgba(255, 255, 255, 0%);
+  background-color: rgba(100, 100, 100, 0);
   border: none;
   align-items: center;
   float: right;
-}
-
-.carousel-image {
-  object-fit: cover;
 }
 
 .carousel-track-container {
@@ -55,30 +44,93 @@
   height: 100%;
   position: relative;
   margin-left: 50px;
+  align-items: center;
 }
 
 .carousel-track {
-  padding: 0;
-  margin: 0;
   list-style: none;
 }
 
 .carousel-slide {
-  top: 0;
-  bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 380px;
   width: 100%;
   position: absolute;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  overflow-y: hidden;
 }
 
-.carousel-button {
-  position: absolute;
-  top: 50%;
-  height: 200px;
+.carousel-slide::-webkit-scrollbar {
+  display: none;
+}
+
+.fa-angle-left {
+  color: rgb(65, 65, 65);
+}
+
+.fa-angle-left:hover {
+  color: grey;
+}
+
+.fa-angle-right {
+  color: rgb(65, 65, 65);
+}
+
+.fa-angle-right:hover {
+  color: grey;
 }
 
 .products {
   position: relative;
   margin: 10px;
+  cursor: pointer;
+}
+
+.fa-lg {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 185px;
+  color: aliceblue;
+}
+
+.fa-lg:hover {
+  color: rgb(241, 247, 246);
+  font-weight: 600;
+}
+
+.carousel-image {
+  width: 220px;
+  height: 305px;
+}
+
+.category {
+  color: gray;
+}
+
+.category:hover {
+  color: black;
+}
+
+.product-name:hover {
+  color: rgb(124, 124, 124);
+  text-decoration-line: underline;
+}
+
+.outfit-container {
+  height: 400px;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.fa-plus-square {
+  color:rgba(124, 124, 124, 50%);
+  margin-left: 30px;
+}
+
+.fa-plus-square:hover {
+  color:rgb(100, 100, 100);
+  text-shadow: 1px 1px 1px rgb(105, 105, 105);
 }

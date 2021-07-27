@@ -1,31 +1,55 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useRef } from 'react';
+// import axios from 'axios';
 
 import RelatedCard from './RelatedCard.jsx';
 import sample from './sampledata.js';
 
-const RelatedList = (props) => (
-  <div>
-    <div className="list-title">Related Products<br></br></div>
-    <div className="carousel">
-      <button className="carousel-button-left">
-        <i className="fas fa-angle-left fa-2x" ></i>
-      </button>
-      <div className="carousel-track-container">
-        <div className="carousel-track">
-          <div className="carousel-slide">
-            {sample.sampledata.map((product) => (
-            <RelatedCard product={product} />
-            ))}
+const RelatedList = (props) => {
+  const listRef = useRef(null);
+
+  const scrollToLeft = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({
+        top: 0,
+        left: 200,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToRight = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({
+        top: 0,
+        left: -200,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="related-container">
+      <div className="list-title">Related Products<br></br></div>
+      <div className="carousel">
+        <button className="carousel-button-left" onClick={scrollToRight}>
+          <i className="fas fa-angle-left fa-3x" ></i>
+        </button>
+        <div className="carousel-track-container">
+          <div className="carousel-track">
+            <div className="carousel-slide" ref={listRef}>
+              {sample.sampledata.map((product) => (
+              <RelatedCard product={product} />
+              ))}
+            </div>
           </div>
         </div>
+        <button className="carousel-button-right" onClick={scrollToLeft}>
+          <i className="fas fa-angle-right fa-3x" ></i>
+        </button>
       </div>
-      <button className="carousel-button-right">
-        <i className="fas fa-angle-right fa-2x"></i>
-      </button>
     </div>
-  </div>
-);
+  );
+};
 
 export default RelatedList;
 

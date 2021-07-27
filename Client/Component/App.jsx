@@ -1,4 +1,6 @@
 import React from 'react';
+import RelatedList from './RelatedItems/RelatedList.jsx';
+import OutfitList from './RelatedItems/OutfitList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,18 +9,20 @@ class App extends React.Component {
 
     };
   }
-  
+
   componentDidMount() {
 
   }
 
   render() {
     return (
-      <div> Sheri, Cameron and Ran HIA HIA HIA </div>
-      // <Overview />
+      <div>
+      {/* // <Overview />
       // <Rating />
-      // <QA />
-      // <Comparison />
+      // <QA /> */}
+        <RelatedList />
+        <OutfitList />
+      </div>
     )
   }
 }

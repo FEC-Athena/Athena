@@ -8,11 +8,12 @@ const RelatedCard = (props) => (
   // }
 
   <div className="products">
-    <img className="carousel-image" src={sample.samplestyles.photos.[0].url} width="220" height="305"></img>
+    <i className="far fa-star fa-lg"></i>
+    <img className="carousel-image" src={sample.samplestyles.photos.[0].url}></img>
     <div className="category">{props.product.category}</div>
     <b className="product-name">{props.product.name}</b>
     <div className="price">
-      {props.product.default_price}
+      ${props.product.default_price}
       {/* {discounted ? sample.samplestyles.sale_price : props.product.default_price} */}
     </div>
     {/* <div>{star ratings here}</div> */}

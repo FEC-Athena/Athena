@@ -37,3 +37,6 @@ node_modules
 .floobit
 .floo
 .flooignore
+
+package-lock.json
+
