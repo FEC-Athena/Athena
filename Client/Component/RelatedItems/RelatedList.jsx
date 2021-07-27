@@ -6,17 +6,25 @@ import sample from './sampledata.js';
 
 const RelatedList = (props) => (
   <div>
-
-    <div>
-      {sample.samplephotos.map((image) => (
-        <img src={image.url} width="400" height="560"></img>
-      ))}
-      {sample.sampledata.map((product) => (
-        <RelatedCard product={product} />
-      ))}
+    <div className="list-title">Related Products<br></br></div>
+    <div className="carousel">
+      <button className="carousel-button-left">
+        <i className="fas fa-angle-left fa-2x" ></i>
+      </button>
+      <div className="carousel-track-container">
+        <div className="carousel-track">
+          <div className="carousel-slide">
+            {sample.sampledata.map((product) => (
+            <RelatedCard product={product} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <button className="carousel-button-right">
+        <i className="fas fa-angle-right fa-2x"></i>
+      </button>
     </div>
   </div>
-
 );
 
 export default RelatedList;
