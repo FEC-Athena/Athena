@@ -1,0 +1,136 @@
+.related-container {
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+.list-title {
+  margin-left: 100px;
+}
+
+.carousel {
+  position: relative;
+  height: 400px;
+  width: 80%;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 63rem;
+}
+
+.carousel-button-left {
+  position: absolute;
+  padding-left: 0px;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(100, 100, 100, 0);
+  border: none;
+  align-items: center;
+}
+
+.carousel-button-right {
+  position: absolute;
+  padding-left: 1050px;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(100, 100, 100, 0);
+  border: none;
+  align-items: center;
+  float: right;
+}
+
+.carousel-track-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-left: 50px;
+  align-items: center;
+}
+
+.carousel-track {
+  list-style: none;
+}
+
+.carousel-slide {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 380px;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.carousel-slide::-webkit-scrollbar {
+  display: none;
+}
+
+.fa-angle-left {
+  color: rgb(65, 65, 65);
+}
+
+.fa-angle-left:hover {
+  color: grey;
+}
+
+.fa-angle-right {
+  color: rgb(65, 65, 65);
+}
+
+.fa-angle-right:hover {
+  color: grey;
+}
+
+.products {
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.fa-lg {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 185px;
+  color: aliceblue;
+}
+
+.fa-lg:hover {
+  color: rgb(241, 247, 246);
+  font-weight: 600;
+}
+
+.carousel-image {
+  width: 220px;
+  height: 305px;
+}
+
+.category {
+  color: gray;
+}
+
+.category:hover {
+  color: black;
+}
+
+.product-name:hover {
+  color: rgb(124, 124, 124);
+  text-decoration-line: underline;
+}
+
+.outfit-container {
+  height: 400px;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.fa-plus-square {
+  color:rgba(124, 124, 124, 50%);
+  margin-left: 30px;
+}
+
+.fa-plus-square:hover {
+  color:rgb(100, 100, 100);
+  text-shadow: 1px 1px 1px rgb(105, 105, 105);
+}

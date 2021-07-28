@@ -4,7 +4,7 @@
   "description": "My webpack project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon Server/index.js",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/FEC-Athena/Front-End-Capstone#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "eslint-config-airbnb": "^18.2.1",
     "install": "^0.13.0",
     "jquery": "^3.6.0",
     "mongodb": "^4.0.1",

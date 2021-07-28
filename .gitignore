@@ -5,7 +5,6 @@
 .LSOverride
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -37,3 +36,9 @@ node_modules
 .floobit
 .floo
 .flooignore
+
+package-lock.json
+
+jest.config.js
+
+main.js
