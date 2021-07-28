@@ -1,4 +1,5 @@
 import React from 'react';
+import Overview from './Overview/Overview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,15 +8,17 @@ class App extends React.Component {
 
     };
   }
-  
-  componentDidMount() {
 
+  componentDidMount() {
+    // axios.get('/products')
+    //   .then((data) => {
+    //     this.setState({ product: data })
+    //   })
   }
 
   render() {
     return (
-      <div> Sheri, Cameron and Ran HIA HIA HIA </div>
-      // <Overview />
+      <Overview />
       // <Rating />
       // <QA />
       // <Comparison />
