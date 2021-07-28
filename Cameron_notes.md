@@ -41,4 +41,4 @@
 
 - action: I wrote up how I think the componenets should interact with one another and followed it based on the code I had already written.
 
-- resolution: My code makes more sense now and has a cle
+- resolution: My code makes more sense now and has a cleaner look and there is a clear and defined componet chain.
