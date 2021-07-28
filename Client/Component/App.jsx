@@ -1,4 +1,5 @@
 import React from 'react';
+import QnA from './QnA/QnA.jsx';
 import RelatedList from './RelatedItems/RelatedList.jsx';
 import OutfitList from './RelatedItems/OutfitList.jsx';
 
@@ -18,8 +19,8 @@ class App extends React.Component {
     return (
       <div>
       {/* // <Overview />
-      // <Rating />
-      // <QA /> */}
+      // <Rating /> */}
+        <QnA />
         <RelatedList />
         <OutfitList />
       </div>
