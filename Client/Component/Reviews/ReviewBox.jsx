@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReviewList from './ReviewList.jsx';
 import ReviewSummary from './ReviewSummary.jsx';
-
+import RatingBreakdown from './RatingBreakdown.jsx';
 
 function ReviewBox() {
 
@@ -66,9 +66,9 @@ function ReviewBox() {
           rating: 3.5,
           helpfulness: 66,
           unhelpfulness: 0,
-          name: 'Chopper ',
+          name: 'Perona ',
           date: '2021-03-09T00:00:00.000Z',
-          email: 'chopper@gmail.com',
+          email: 'Perona@gmail.com',
           body: 'She is able to produce ghosts from her body through the powers of the Horo Horo no Mi.'
         },
         {
@@ -90,6 +90,7 @@ function ReviewBox() {
       <p className="reviews-header">RATINGS & REVIEWS</p>
         <div className="reviews-container">
           <div className="reviews-summary"><ReviewSummary data={data} /></div>
+          <div className="rating-breakdown"><RatingBreakdown /></div>
           <div className="reviews-list"><ReviewList data={data} /></div>
         </div>
     </div>

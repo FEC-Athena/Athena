@@ -12,10 +12,11 @@ function ReviewList(props) {
   var showReviews = props.data.slice(0, reviewShownCount);
 
   const handleMoreReviews = () => {
-    if (reviewShownCount >= props.data.length) {
+    var showCount = reviewShownCount + 2;
+    setReviewCount(showCount);
+    if (showCount >= props.data.length) {
       setButton('none');
     }
-    setReviewCount(reviewShownCount + 2);
     showReviews = props.data.slice(0, reviewShownCount);
   }
 
