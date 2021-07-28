@@ -1,5 +1,5 @@
 import React from 'react';
-
+import QnA from './QnA/QnA.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -7,18 +7,21 @@ class App extends React.Component {
 
     };
   }
-  
+
   componentDidMount() {
 
   }
 
   render() {
     return (
+      <>
       <div> Sheri, Cameron and Ran HIA HIA HIA </div>
-      // <Overview />
-      // <Rating />
-      // <QA />
-      // <Comparison />
+      {/* // <Overview />
+      // <Rating /> */}
+      < QnA />
+
+      {/* // <Comparison /> */}
+      </>
     )
   }
 }
