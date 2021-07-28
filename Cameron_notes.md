@@ -10,7 +10,6 @@
 - [] if the user clicks a button 'load more questions' it should set ShortList to false
 - [] when ShortList is false Should display more than just the top 4 questions
 ///////////////////////////////////
-## for today
 - [x] refactor QnA list to work better
 - [x] question component should be a child of qna list
 - [x] create a QuestionElement componenet pass all question information including answers
