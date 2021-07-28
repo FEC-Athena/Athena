@@ -1,0 +1,8 @@
+.info {
+  padding-left: 20px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+}

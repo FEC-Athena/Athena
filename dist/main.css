@@ -1,0 +1,69 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/Info/info.css ***!
+  \*************************************************************************************************************************************/
+.current-style {
+  /* padding-top: 10px; */
+  font-style: italic;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.product-category {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-decoration: underline;
+}
+
+.product-price {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: x-large;
+}
+
+.product-name {
+  border-style: groove;
+  border-width: 5px;
+  padding: 10px 500px 10px 10px;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*!*******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/Gallery/gallery.css ***!
+  \*******************************************************************************************************************************************/
+
+.root{
+  position: relative;
+}
+
+.left{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.thumbNail {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border-style: groove;
+  border-radius: 5px;
+}
+
+.right {
+  padding-left: 10px;
+}
+
+.right img{
+  border-radius: 10px;
+}
+
+/*!************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/overview.css ***!
+  \************************************************************************************************************************************/
+.info {
+  padding-left: 20px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+}
