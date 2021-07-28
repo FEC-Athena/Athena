@@ -1,9 +1,12 @@
-import React from 'react';
-// import '../../../dist'
+import React, { useRef } from 'react';
+// import '../../../dist';
 
 const ComparingPopup = (props) => {
+  const closeRef = useRef(null);
+  props.ClosePopup(closeRef);
+
   return (props.trigger) ? (
-    <div className="popup">
+    <div className="popup" ref={closeRef}>
       <div>COMPARING</div>
       <table className="table">
         <thead>

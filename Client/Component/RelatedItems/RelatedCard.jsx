@@ -3,9 +3,10 @@ import sample from './sampledata.js';
 import ComparingPopup from './ComparingPopup.jsx';
 
 const RelatedCard = (props) => {
+  // ------- Change price style if it's on sale --------
   const discountedStyle = {
     textDecoration: 'line-through',
-    textColor: 'grey'
+    color: 'grey'
   };
 
   const renderPrice = () => {
@@ -28,17 +29,16 @@ const RelatedCard = (props) => {
     }
   };
 
-  const [starPopup, setStarPopup] = useState(false);
-
+  // -------------------------------------------
   return (
     <div className="products">
-      <i className="far fa-star fa-lg" onClick={() => setStarPopup(true)}></i>
+      <i className="far fa-star fa-lg" onClick={() => props.setStarPopup(true)}></i>
       <img className="carousel-image" src={props.product.photos[0].url}></img>
       <div className="category">{props.product.category}</div>
       <b className="product-name">{props.product.name}</b>
       {renderPrice()}
       {/* <div>{star ratings here}</div> */}
-      <ComparingPopup trigger={starPopup} setTrigger={setStarPopup}/>
+      <ComparingPopup trigger={props.starPopup} setTrigger={props.setStarPopup} ClosePopup={props.ClosePopup}/>
     </div>
   );
 };

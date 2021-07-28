@@ -8,10 +8,8 @@ const OutfitList = (props) => (
         <i className="fas fa-angle-left fa-3x"></i>
       </button>
       <div className="carousel-track-container">
-        <div className="carousel-track">
-          <div className="carousel-slide">
-            <i className="far fa-plus-square fa-4x"></i>
-          </div>
+        <div className="carousel-slide">
+          <i className="far fa-plus-square fa-4x"></i>
         </div>
       </div>
       <button className="carousel-button-right">
