@@ -20,7 +20,7 @@ class App extends React.Component {
       <div>
       {/* // <Overview />
       // <Rating /> */}
-        <QA />
+        <QnA />
         <RelatedList />
         <OutfitList />
       </div>
