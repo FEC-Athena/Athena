@@ -37,12 +37,8 @@ node_modules
 .floo
 .flooignore
 
-<<<<<<< HEAD
-package-lock.json
-=======
 package-lock.json
 
 jest.config.js
 
 main.js
->>>>>>> main
