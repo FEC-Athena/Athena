@@ -1,5 +1,8 @@
 import React from 'react';
 import Overview from './Overview/Overview.jsx';
+import QnA from './QnA/QnA.jsx';
+import RelatedList from './RelatedItems/RelatedList.jsx';
+import OutfitList from './RelatedItems/OutfitList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,10 +21,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <Overview />
-      // <Rating />
-      // <QA />
-      // <Comparison />
+      <div>
+        <Overview />
+        {/* // <Rating /> */}
+        <QnA />
+        <RelatedList />
+        <OutfitList />
+      </div>
     )
   }
 }
