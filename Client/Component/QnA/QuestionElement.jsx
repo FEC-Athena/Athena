@@ -10,7 +10,7 @@ function QuestionElement(props) {
         Q:
         {question_body}
       </h3>
-      <p>User: {asker_name} Date: {date}</p>
+      <p>User: <span>{asker_name}</span> Date: {date}</p>
       <>
         <AnswersList answers={Object.values(answers)} />
       </>

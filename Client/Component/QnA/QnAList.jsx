@@ -6,7 +6,9 @@ function QnAList(props) {
   const { questions } = props;
   // should map over the questions and pass questiondata to questions.jsx
   questions.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
-  const questionList = questions.map((question) => <QuestionElement question={question} />);
+  const questionList = questions.map((question) => (
+    <QuestionElement question={question} key={question.question_id} />
+  ));
   return (
     <>
       {questionList}
