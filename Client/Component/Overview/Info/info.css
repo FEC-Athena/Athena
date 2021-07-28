@@ -1,0 +1,24 @@
+.current-style {
+  /* padding-top: 10px; */
+  font-style: italic;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.product-category {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-decoration: underline;
+}
+
+.product-price {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: x-large;
+}
+
+.product-name {
+  border-style: groove;
+  border-width: 5px;
+  padding: 10px 500px 10px 10px;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}

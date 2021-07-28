@@ -1,0 +1,27 @@
+
+.root{
+  position: relative;
+}
+
+.left{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.thumbNail {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border-style: groove;
+  border-radius: 5px;
+}
+
+.right {
+  padding-left: 10px;
+}
+
+.right img{
+  border-radius: 10px;
+}
