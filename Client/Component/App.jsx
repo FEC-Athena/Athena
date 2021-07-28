@@ -24,10 +24,10 @@ class App extends React.Component {
     return (
       <div>
         <Overview />
-        <ReviewBox />
-        <QnA />
         <RelatedList />
         <OutfitList />
+        <ReviewBox />
+        <QnA />
       </div>
     )
   }
