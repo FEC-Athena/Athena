@@ -6,21 +6,39 @@ import Sort from './Sort.jsx';
 
 function ReviewList(props) {
 
+  const [reviewShownCount, setReviewCount] = useState(2);
+  const [showButton, setButton] = useState();
+
+  var showReviews = props.data.slice(0, reviewShownCount);
+
+  const handleMoreReviews = () => {
+    if (reviewShownCount >= props.data.length) {
+      setButton('none');
+    }
+    setReviewCount(reviewShownCount + 2);
+    showReviews = props.data.slice(0, reviewShownCount);
+  }
+
+
   return(
     <>
       <Sort data={props.data}/>
       <div>
-        {props.data.map((review) => (
+        {showReviews.map((review) => (
           <div key={review.id}>
-            <Star rating={review.rating}/>
-            <div>{review.name}{moment(review.date).format(", MMM Do, YYYY")}</div>
-            <div style={{fontWeight: "bold"}}>{review.title}</div><br></br>
-            <div>{review.body}</div><br></br>
-            <VoteHelpfulness review={review} />
+            <div style={{marginTop: 40, marginBottom: -40}}><Star rating={review.rating}/></div>
+            <div className="individual-review">
+              <div style={{fontSize: 30, color: "grey", textAlign: 'right'}}>{review.name}{moment(review.date).format(", MMM Do, YYYY")}</div>
+              <div style={{marginTop: 20, fontSize: 33, fontWeight: "bold", color: "#616463"}}>{review.title}</div><br></br>
+              <div style={{fontSize: 30, color: "grey"}}>{review.body}</div><br></br>
+              <div style={{fontSize: 28, color: "grey"}}><VoteHelpfulness review={review} /></div>
+            </div>
 
           </div>
         ))}
       </div>
+      <button className="button" style={{display: showButton}} onClick={handleMoreReviews}>MORE REVIEWS</button>
+      <button className="button" >ADD A REVIEW  +</button>
     </>
   )
 }

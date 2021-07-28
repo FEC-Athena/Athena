@@ -37,3 +37,10 @@ node_modules
 .floobit
 .floo
 .flooignore
+
+jest.config.js
+package-lock.json
+coverage
+main.js
+test.js
+

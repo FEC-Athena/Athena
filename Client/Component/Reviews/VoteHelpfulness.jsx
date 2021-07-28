@@ -11,9 +11,9 @@ function VoteHelpfulness(props) {
   return (
     <div>
       <label>Was this review helpful? </label>
-      <u onClick={() => setYesCount(yesCount+1)}>Yes</u>({yesCount})
-      <u onClick={() => setNoCount(noCount+1)}>No</u>({noCount})
-      <label>  |  </label>
+      <u onClick={() => setYesCount(yesCount+1)}>Yes </u>({yesCount})
+      <u onClick={() => setNoCount(noCount+1)}> No </u>({noCount})
+      <label> | </label>
       <u onClick={handleReportClick}>{report ? 'Reported' : 'Report'}</u>
     </div>
   )
