@@ -1,23 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import sample from './sampledata.js';
+import ComparingPopup from './ComparingPopup.jsx';
 
-const RelatedCard = (props) => (
-  // var discounted = false;
-  // if (sample.samplestyles.sale_price) {
-  //   discounted = true;
-  // }
+const RelatedCard = (props) => {
+  const discountedStyle = {
+    textDecoration: 'line-through',
+    textColor: 'grey'
+  };
 
-  <div className="products">
-    <i className="far fa-star fa-lg"></i>
-    <img className="carousel-image" src={sample.samplestyles.photos.[0].url}></img>
-    <div className="category">{props.product.category}</div>
-    <b className="product-name">{props.product.name}</b>
-    <div className="price">
-      ${props.product.default_price}
-      {/* {discounted ? sample.samplestyles.sale_price : props.product.default_price} */}
+  const renderPrice = () => {
+    if (props.product.sale_price) {
+      return (
+        <div className="price" >
+          <span className="price" style={discountedStyle}>
+            ${props.product.default_price}
+          </span> <span className="sale" style={{color: "red"}}>
+            ${props.product.sale_price}
+          </span>
+        </div>
+      )
+    } else {
+      return (
+        <div className="price" >
+          ${props.product.default_price}
+        </div>
+      );
+    }
+  };
+
+  const [starPopup, setStarPopup] = useState(false);
+
+  return (
+    <div className="products">
+      <i className="far fa-star fa-lg" onClick={() => setStarPopup(true)}></i>
+      <img className="carousel-image" src={props.product.photos[0].url}></img>
+      <div className="category">{props.product.category}</div>
+      <b className="product-name">{props.product.name}</b>
+      {renderPrice()}
+      {/* <div>{star ratings here}</div> */}
+      <ComparingPopup trigger={starPopup} setTrigger={setStarPopup}/>
     </div>
-    {/* <div>{star ratings here}</div> */}
-  </div>
-);
+  );
+};
 
 export default RelatedCard;

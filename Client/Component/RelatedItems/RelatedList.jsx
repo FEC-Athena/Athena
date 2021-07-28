@@ -35,12 +35,10 @@ const RelatedList = (props) => {
           <i className="fas fa-angle-left fa-3x" ></i>
         </button>
         <div className="carousel-track-container">
-          <div className="carousel-track">
-            <div className="carousel-slide" ref={listRef}>
-              {sample.sampledata.map((product) => (
+          <div className="carousel-slide" ref={listRef}>
+            {sample.sampledata.map((product) => (
               <RelatedCard product={product} />
-              ))}
-            </div>
+            ))}
           </div>
         </div>
         <button className="carousel-button-right" onClick={scrollToLeft}>
