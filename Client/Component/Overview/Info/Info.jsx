@@ -20,7 +20,7 @@ class Info extends React.Component {
         <h1>
           <span className="product-name"> {this.props.info.name} </span>
         </h1>
-        <div className="category"> {category} </div>
+        <div className="product-category"> {category} </div>
         <i class="fas fa-tshirt"></i> <span className="current-style">Style: {name}</span>
         <h1>
         <div className="product-price"> ${original_price} </div>

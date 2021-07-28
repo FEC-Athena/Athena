@@ -114,7 +114,7 @@
   color: black;
 }
 
-.product-name:hover {
+.related-name:hover {
   color: rgb(124, 124, 124);
   text-decoration-line: underline;
 }
