@@ -2,7 +2,12 @@ import React, {useState} from 'react';
 
 function Sort(props) {
   return (
-    <div>{props.data.length} reviews, sorted by<br></br><br></br></div>
+    <div className="sort">{props.data.length} reviews, sorted by
+      <select className="sort-options" onChange={(e)=>props.changeSort(e)}>
+        <option>relevant</option>
+        <option>newest</option>
+        <option>helpful</option>
+      </select><br></br><br></br></div>
   )
 
 }

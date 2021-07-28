@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReviewList from './ReviewList.jsx';
 import ReviewSummary from './ReviewSummary.jsx';
-import RatingBreakdown from './RatingBreakdown.jsx';
+
 
 function ReviewBox() {
 
@@ -89,8 +89,7 @@ function ReviewBox() {
     <div>
       <p className="reviews-header">RATINGS & REVIEWS</p>
         <div className="reviews-container">
-          <div className="reviews-summary"><ReviewSummary data={data} /></div>
-          <div className="rating-breakdown"><RatingBreakdown /></div>
+          <div><ReviewSummary data={data} /></div>
           <div className="reviews-list"><ReviewList data={data} /></div>
         </div>
     </div>
