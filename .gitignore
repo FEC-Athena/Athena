@@ -37,8 +37,9 @@ node_modules
 .floo
 .flooignore
 
-package-lock.json
-
 jest.config.js
-
+package-lock.json
+coverage
 main.js
+test.js
+
