@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-// import '../../../dist';
 
 const ComparingPopup = (props) => {
   const closeRef = useRef(null);
@@ -7,12 +6,12 @@ const ComparingPopup = (props) => {
 
   return (props.trigger) ? (
     <div className="popup" ref={closeRef}>
-      <div>COMPARING</div>
+      <div style={{ fontSize: 12 }}>COMPARING</div>
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">current product short name</th>
-            <th scope="col">selected product short name</th>
+            <th scope="col">current product</th>
+            <th scope="col">selected product</th>
           </tr>
         </thead>
       </table>

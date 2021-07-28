@@ -51,8 +51,8 @@ const RelatedList = (props) => {
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
       <div className="carousel">
-        <button className="carousel-button-left" onClick={scrollToRight}>
-          <i className="fas fa-angle-left fa-3x" ></i>
+        <button className="carousel-button-left" >
+          <i className="fas fa-angle-left fa-3x" onClick={scrollToRight}></i>
         </button>
         <div className="carousel-track-container">
           <div className="carousel-slide" ref={listRef}>
@@ -61,8 +61,8 @@ const RelatedList = (props) => {
             ))}
           </div>
         </div>
-        <button className="carousel-button-right" onClick={scrollToLeft}>
-          <i className="fas fa-angle-right fa-3x" ></i>
+        <button className="carousel-button-right" >
+          <i className="fas fa-angle-right fa-3x" onClick={scrollToLeft}></i>
         </button>
       </div>
     </div>

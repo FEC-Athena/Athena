@@ -111,7 +111,7 @@
   color: black;
 }
 
-.product-name:hover {
+.related-name:hover {
   color: rgb(124, 124, 124);
   text-decoration-line: underline;
 }
@@ -134,20 +134,20 @@
 
 .popup {
   position: fixed;
-  padding: 20px;
-  top: 100px;
-  left: 300px;
-  width: 400px;
-  height: 400px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-color: black;
+  padding: 10px;
+  top: 70px;
+  left: 400px;
+  width: 430px;
+  height: 330px;
+  background-color: rgba(236, 236, 236, 0.6);
 }
 
 .table {
   position: relative;
-  padding: 32px;
-  width: 400px;
-  max-width: 400px;
+  padding: 10px;
+  width: 450px;
+  max-width: 450px;
   background-color: transparent;
+  right: 11px;
 }
 

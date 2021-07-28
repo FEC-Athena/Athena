@@ -35,7 +35,7 @@ const RelatedCard = (props) => {
       <i className="far fa-star fa-lg" onClick={() => props.setStarPopup(true)}></i>
       <img className="carousel-image" src={props.product.photos[0].url}></img>
       <div className="category">{props.product.category}</div>
-      <b className="product-name">{props.product.name}</b>
+      <b className="related-name">{props.product.name}</b>
       {renderPrice()}
       {/* <div>{star ratings here}</div> */}
       <ComparingPopup trigger={props.starPopup} setTrigger={props.setStarPopup} ClosePopup={props.ClosePopup}/>
