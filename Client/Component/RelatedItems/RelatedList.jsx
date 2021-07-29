@@ -6,25 +6,28 @@ import sample from './sampledata.js';
 const RelatedList = (props) => {
   // -------- Scroll Arrows ----------
   const listRef = useRef(null);
+  const [slideRight, setSlideRight] = useState(0);
 
-  const scrollToLeft = () => {
+  const scrollRight = () => {
     if (listRef.current) {
       listRef.current.scrollBy({
         top: 0,
-        left: 200,
+        left: 300,
         behavior: 'smooth'
       });
     }
+    setSlideRight(1);
   };
 
-  const scrollToRight = () => {
+  const scrollLeft = () => {
     if (listRef.current) {
       listRef.current.scrollBy({
         top: 0,
-        left: -200,
+        left: -300,
         behavior: 'smooth'
       });
     }
+    setSlideRight(0);
   };
 
   // ------- Popup window Click ----------
@@ -53,9 +56,9 @@ const RelatedList = (props) => {
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
       <div className="carousel">
-        <button className="carousel-button-left" >
-          <i className="fas fa-angle-left fa-3x" onClick={scrollToRight}></i>
-        </button>
+        {slideRight === 0 ? <div/> : <button className="carousel-button-left" >
+          <i className="fas fa-angle-left fa-3x" onClick={scrollLeft}></i>
+        </button>}
         <div className="carousel-track-container">
           <div className="carousel-slide" ref={listRef}>
             {sample.sampledata.map((product, index) => (
@@ -63,9 +66,9 @@ const RelatedList = (props) => {
             ))}
           </div>
         </div>
-        <button className="carousel-button-right" >
-          <i className="fas fa-angle-right fa-3x" onClick={scrollToLeft}></i>
-        </button>
+        {slideRight === 1 ? <div/> : <button className="carousel-button-right" >
+          <i className="fas fa-angle-right fa-3x" onClick={scrollRight}></i>
+        </button>}
       </div>
     </div>
   );
