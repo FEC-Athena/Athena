@@ -50,6 +50,8 @@ const RelatedList = (props) => {
   };
 
   // --------------------------------------------
+  // (for map function provide a key to each element) prioritize getting provided
+  // product_id, if it doesn't exist, get index
   return (
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
