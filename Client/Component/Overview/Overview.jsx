@@ -1,7 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Info from './Info/Info.jsx';
 import Desc from './Desc.jsx';
 import Gallery from './Gallery/Gallery.jsx';
+import Context from './context.js';
 import axios from 'axios';
 import './overview.css';
 // import App from '../App.jsx';
@@ -389,40 +390,36 @@ const dummyStyle =
   ]
 }
 
-class Overview extends React.Component {
-  // const [counter, setCounter] = useState(0);
-  // const [display, setDisplay] = useState('welcome');
-  // const [username, setUsername] = useState('');
-  constructor(props) {
-    super(props);
-    this.state = {
-      productStyles: dummyStyle.results,
-      selectedStyle: dummyStyle.results[0],
-      selectedDetail: dummyDetail
-    }
-  }
+const Overview = props => {
+
+  const [productStyles, setProductStyles] = useState(dummyStyle.results);
+  const [selectedStyle, setSelectedStyle] = useState(dummyStyle.results[0]);
+  const [selectedDetail, setSelectedDetail] = useState(dummyDetail);
+
+  // componentDidMount() {
+  //   // grab all needed data
+  //   // axios.get('http://localhost:3000/products')
+  //   //   .then((data) => {
+  //   //     this.setState({ products: data })
+  //   //     console.log(this.state.products);
+  //   //   })
+  //   //   .catch((err) => {
+  //   //     console.log(err)
+  //   //   })
+  // }
+
+  useEffect(() => {
+
+  }, [])
 
 
-  componentDidMount() {
-    // grab all needed data
-    // axios.get('http://localhost:3000/products')
-    //   .then((data) => {
-    //     this.setState({ products: data })
-    //     console.log(this.state.products);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-  }
+  const handleStyle = target => setSelectedStyle(target);
 
-  handleGallery() {
-    this.setState({})
-  }
-  render() {
-    // console.log(this.state.products)
-    const { selectedStyle, productStyles, selectedDetail } = this.state;
-    // console.log(productStyles);
-    return (
+  // const { selectedStyle, productStyles, selectedDetail } = this.state;
+  return (
+    <Context.Provider value={{
+      handleStyle, selectedStyle
+    }}>
       <div>
         <div className="top">
           <Gallery photos={selectedStyle.photos} className="gallery" />
@@ -435,8 +432,8 @@ class Overview extends React.Component {
         {/* <List /> */}
         {/* <Button /> */}
       </div>
-    )
-  }
+    </Context.Provider >
+  )
 }
 
 export default Overview;
