@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 // import axios from 'axios';
-
 import RelatedCard from './RelatedCard.jsx';
 import sample from './sampledata.js';
 
 const RelatedList = (props) => {
+  // -------- Scroll Arrows ----------
   const listRef = useRef(null);
 
   const scrollToLeft = () => {
@@ -27,24 +27,42 @@ const RelatedList = (props) => {
     }
   };
 
+  // ------- Popup window Click ----------
+  const [starPopup, setStarPopup] = useState(false);
+
+  // -------- Remove popup window --------
+  const ClosePopup = (popRef) => {
+    useEffect(() => {
+      let handleClickOutside = (event) => {
+        if (popRef.current && ! popRef.current.contains(event.target)) {
+          // close up the popup
+          setStarPopup(false);
+        }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [popRef]);
+  };
+
+  // --------------------------------------------
   return (
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
       <div className="carousel">
-        <button className="carousel-button-left" onClick={scrollToRight}>
-          <i className="fas fa-angle-left fa-3x" ></i>
+        <button className="carousel-button-left" >
+          <i className="fas fa-angle-left fa-3x" onClick={scrollToRight}></i>
         </button>
         <div className="carousel-track-container">
-          <div className="carousel-track">
-            <div className="carousel-slide" ref={listRef}>
-              {sample.sampledata.map((product) => (
-              <RelatedCard product={product} />
-              ))}
-            </div>
+          <div className="carousel-slide" ref={listRef}>
+            {sample.sampledata.map((product) => (
+              <RelatedCard product={product} setStarPopup={setStarPopup} starPopup={starPopup} ClosePopup={ClosePopup}/>
+            ))}
           </div>
         </div>
-        <button className="carousel-button-right" onClick={scrollToLeft}>
-          <i className="fas fa-angle-right fa-3x" ></i>
+        <button className="carousel-button-right" >
+          <i className="fas fa-angle-right fa-3x" onClick={scrollToLeft}></i>
         </button>
       </div>
     </div>

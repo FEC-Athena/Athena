@@ -47,14 +47,10 @@
   align-items: center;
 }
 
-.carousel-track {
-  list-style: none;
-}
-
 .carousel-slide {
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 380px;
+  height: 400px;
   width: 100%;
   position: absolute;
   display: flex;
@@ -104,6 +100,7 @@
 .carousel-image {
   width: 220px;
   height: 305px;
+  object-fit: cover;
 }
 
 .category {
@@ -134,3 +131,23 @@
   color:rgb(100, 100, 100);
   text-shadow: 1px 1px 1px rgb(105, 105, 105);
 }
+
+.popup {
+  position: fixed;
+  padding: 10px;
+  top: 70px;
+  left: 400px;
+  width: 430px;
+  height: 330px;
+  background-color: rgba(236, 236, 236, 0.6);
+}
+
+.table {
+  position: relative;
+  padding: 10px;
+  width: 450px;
+  max-width: 450px;
+  background-color: transparent;
+  right: 11px;
+}
+
