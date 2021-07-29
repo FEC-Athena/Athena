@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ProgressBar (props) {
-  console.log(props.percentage);
+  // console.log(props.percentage);
   return (
     <div className="rating-breakdown">
       <u className="progress-text">{props.starNum}</u>
