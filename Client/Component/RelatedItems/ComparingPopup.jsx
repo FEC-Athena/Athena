@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import Context from './related-context.js';
 
 const ComparingPopup = (props) => {

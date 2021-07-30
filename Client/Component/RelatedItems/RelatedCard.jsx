@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import sample from './sampledata.js';
 import ComparingPopup from './ComparingPopup.jsx';
 import Context from './related-context.js';
 
 const RelatedCard = (props) => {
-  const { handleStarPopup, starPopup } = useContext(Context);
+  const { starPopup, handleStarPopup } = useContext(Context);
 
   // ------- Change price style if it's on sale --------
   const discountedStyle = {

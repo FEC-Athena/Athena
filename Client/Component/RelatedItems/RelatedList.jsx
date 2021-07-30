@@ -1,86 +1,35 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 // import axios from 'axios';
+
 import RelatedCard from './RelatedCard.jsx';
 import sample from './sampledata.js';
 import Context from './related-context.js';
 
 const RelatedList = (props) => {
-  // -------- Scroll Arrows ----------
-  const listRef = useRef(null);
-  const [slideRight, setSlideRight] = useState(0);
+  const { listRef, handleScrollRight, handleScrollLeft, slideRight } = useContext(Context);
 
-  const scrollRight = () => {
-    if (listRef.current) {
-      listRef.current.scrollBy({
-        top: 0,
-        left: 300,
-        behavior: 'smooth'
-      });
-    }
-    setSlideRight(1);
-  };
-
-  const scrollLeft = () => {
-    if (listRef.current) {
-      listRef.current.scrollBy({
-        top: 0,
-        left: -300,
-        behavior: 'smooth'
-      });
-    }
-    setSlideRight(0);
-  };
-
-  // ------- Popup window Click ----------
-
-  const [starPopup, setStarPopup] = useState(false);
-  const handleStarPopup = target => setStarPopup(target);
-
-  // -------- Remove popup window --------
-  const closeRef = useRef(null);
-
-  const ClosePopup = (popRef) => {
-    useEffect(() => {
-      let handleClickOutside = (event) => {
-        if (popRef.current && ! popRef.current.contains(event.target)) {
-          // close up the popup
-          setStarPopup(false);
-        }
-      };
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-          document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [popRef]);
-  };
-
-  const handleClosePopup = target => ClosePopup(target);
-  // --------------------------------------------
   // (for map function provide a key to each element) prioritize getting provided
   // product_id, if it doesn't exist, get index
   return (
-    <Context.Provider value={{
-      starPopup, handleStarPopup, closeRef, handleClosePopup
-    }}>
-      <div className="related-container">
-        <div className="list-title">Related Products<br></br></div>
-        <div className="carousel">
-          {slideRight === 0 ? <div/> : <button className="carousel-button-left" >
-            <i className="fas fa-angle-left fa-3x" onClick={scrollLeft}></i>
-          </button>}
-          <div className="carousel-track-container">
-            <div className="carousel-slide" ref={listRef}>
-              {sample.sampledata.map((product, index) => (
-                <RelatedCard key={index} product={product} />
-              ))}
-            </div>
+    <div className="related-container">
+      <div className="list-title">Related Products<br></br></div>
+      <div className="carousel">
+        {slideRight === 0 ? <div/> : <button className="carousel-button-left" >
+          <i className="fas fa-angle-left fa-3x" onClick={handleScrollLeft}></i>
+        </button>}
+        <div className="carousel-track-container">
+          <div className="carousel-slide" ref={listRef}>
+            {sample.sampledata.map((product, index) => (
+              <RelatedCard key={index} product={product} />
+            ))}
           </div>
-          {slideRight === 1 ? <div/> : <button className="carousel-button-right" >
-            <i className="fas fa-angle-right fa-3x" onClick={scrollRight}></i>
-          </button>}
         </div>
+        {slideRight === 1 ? <div/> : <button className="carousel-button-right" >
+          <i className="fas fa-angle-right fa-3x" onClick={handleScrollRight}></i>
+        </button>}
       </div>
-    </Context.Provider>
+    </div>
+
   );
 };
 

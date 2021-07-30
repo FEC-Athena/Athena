@@ -1,17 +1,18 @@
 .related-container {
   height: 400px;
   margin-bottom: 30px;
+  display: grid;
+  grid-template-rows: 4px 400px;
 }
 
 .list-title {
-  margin-left: 100px;
+  /* margin-left: 100px; */
 }
 
 .carousel {
   position: relative;
   height: 400px;
   width: 80%;
-  margin-left: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
