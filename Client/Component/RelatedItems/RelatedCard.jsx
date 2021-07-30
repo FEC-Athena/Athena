@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import sample from './sampledata.js';
 import ComparingPopup from './ComparingPopup.jsx';
+import Context from './related-context.js';
 
 const RelatedCard = (props) => {
+  const { handleStarPopup, starPopup } = useContext(Context);
+
   // ------- Change price style if it's on sale --------
   const discountedStyle = {
     textDecoration: 'line-through',
@@ -32,13 +35,13 @@ const RelatedCard = (props) => {
   // -------------------------------------------
   return (
     <div className="products">
-      <i className="far fa-star fa-lg" onClick={() => props.setStarPopup(true)}></i>
+      <i className="far fa-star fa-lg" onClick={() => handleStarPopup(true)}></i>
       <img className="carousel-image" src={props.product.photos[0].url}></img>
       <div className="category">{props.product.category}</div>
       <b className="related-name">{props.product.name}</b>
       {renderPrice()}
       {/* <div>{star ratings here}</div> */}
-      <ComparingPopup trigger={props.starPopup} setTrigger={props.setStarPopup} ClosePopup={props.ClosePopup}/>
+      <ComparingPopup trigger={starPopup} />
     </div>
   );
 };

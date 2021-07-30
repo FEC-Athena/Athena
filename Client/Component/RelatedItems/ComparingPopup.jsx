@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
+import Context from './related-context.js';
 
 const ComparingPopup = (props) => {
-  const closeRef = useRef(null);
-  props.ClosePopup(closeRef);
+  const { handleClosePopup, closeRef } = useContext(Context);
+  handleClosePopup(closeRef);
 
   return (props.trigger) ? (
     <div className="popup" ref={closeRef}>
