@@ -13,6 +13,19 @@
   text-decoration: underline;
 }
 
+.sale-price {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: x-large;
+  color: red;
+}
+
+.original-price {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: x-large;
+  text-decoration: line-through;
+  padding-right: 10px;
+}
+
 .product-price {
   font-family: Helvetica, Arial, sans-serif;
   font-size: x-large;
@@ -121,6 +134,8 @@
   top: 10px;
   display: flex;
   flex-direction: column;
+  padding: 5px 0 5px;
+  margin-bottom: 5px;
 }
 
 .left img {
@@ -131,7 +146,7 @@
 .thumbNail {
   width: 40px;
   height: 40px;
-  /* padding: 5px; */
+  padding: 1px;
   border-style: groove;
   border-radius: 5px;
 }

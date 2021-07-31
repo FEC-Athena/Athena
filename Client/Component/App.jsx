@@ -13,29 +13,18 @@ const App = props => {
   const [isLoading, setLoading] = useState(true);
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
+  const handleStyle = target => setSelectedStyle(target);
+
 
   useEffect(() => {
     const config = {
       headers: { Authorization: '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' }
     };
 
-    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/17067', config)
-    //   .then((res) => {
-    //     setDetail(res.data)
-    //     setLoading(false);
-    //   })
-    //   .catch(err => console.log('1st err'))
+    const currentItem = 17067
 
-    // axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/17067/styles', config)
-    //   .then((res) => {
-    //     setProductStyles(res.data.results)
-    //     setSelectedStyle(res.data.results[0])
-    //     setLoading(false);
-    //   })
-    //   .catch(err => console.log('err'))
-
-    let one = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/17067';
-    let two = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/17067/styles';
+    let one = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
+    let two = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
 
     const req1 = axios.get(one, config);
     const req2 = axios.get(two, config);
@@ -62,14 +51,14 @@ const App = props => {
   // console.log(selectedStyle)
   return (
     <Context.Provider value={{
-      selectedStyle, setSelectedStyle, detail, productStyles, setProductStyles, isLoading, setLoading
+      selectedStyle, setSelectedStyle, detail, productStyles, setProductStyles, isLoading, setLoading, handleStyle
     }}>
       <div className="app">
         <Overview />
-        {/* <RelatedList />
+        <RelatedList />
         <OutfitList />
         <ReviewBox />
-        <QnA /> */}
+        <QnA />
       </div>
     </Context.Provider>
   )

@@ -10,6 +10,19 @@
   text-decoration: underline;
 }
 
+.sale-price {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: x-large;
+  color: red;
+}
+
+.original-price {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: x-large;
+  text-decoration: line-through;
+  padding-right: 10px;
+}
+
 .product-price {
   font-family: Helvetica, Arial, sans-serif;
   font-size: x-large;
