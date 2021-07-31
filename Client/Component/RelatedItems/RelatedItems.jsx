@@ -7,12 +7,12 @@ import sample from './sampledata.js';
 import Context from './related-context.js';
 
 
-const RelatedItems = (props) => {
-  const [relatedProducts, setRelatedProducts] = useState([]);
+const RelatedItems = () => {
+  // const [relatedProducts, setRelatedProducts] = useState([]);
 
-  const config = {
-    headers: { 'Authorization': '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' }
-  };
+  // const config = {
+  //   headers: { 'Authorization': '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' }
+  // };
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/17067/related', config)
@@ -21,7 +21,6 @@ const RelatedItems = (props) => {
         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${prodId}`, config)
           .then(response => { temp.push(response.data); })
           .then(setRelatedProducts(temp))
-          .then()
           .catch(err => console.log('ERROR'))
         ))
       })
@@ -86,7 +85,7 @@ const RelatedItems = (props) => {
 
   return (
     <Context.Provider value={{
-      listRef, handleScrollRight, handleScrollLeft, slideRight, starPopup, handleStarPopup, closeRef, handleClosePopup, relatedProducts
+      listRef, handleScrollRight, handleScrollLeft, slideRight, starPopup, handleStarPopup, closeRef, handleClosePopup
     }}>
         <RelatedList />
         <OutfitList />

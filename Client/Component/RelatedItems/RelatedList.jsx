@@ -5,11 +5,9 @@ import RelatedCard from './RelatedCard.jsx';
 import sample from './sampledata.js';
 import Context from './related-context.js';
 
-const RelatedList = (props) => {
-  const { listRef, handleScrollRight, handleScrollLeft, slideRight, relatedProducts } = useContext(Context);
+const RelatedList = () => {
+  const { listRef, handleScrollRight, handleScrollLeft, slideRight } = useContext(Context);
 
-  // (for map function provide a key to each element) prioritize getting provided
-  // product_id, if it doesn't exist, get index
   return (
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
@@ -19,8 +17,8 @@ const RelatedList = (props) => {
         </button>}
         <div className="carousel-track-container">
           <div className="carousel-slide" ref={listRef}>
-            {relatedProducts.map((product) => (
-              <RelatedCard key={product.id} product={product} />
+            {sample.sampledata.map((product, index) => (
+              <RelatedCard key={index} product={product} />
             ))}
           </div>
         </div>
