@@ -1,4 +1,5 @@
 .reviews-header {
+  margin-top: 100px;
   margin-left: 100px;
   color: rgba(43, 43, 43, 0.9);
   font-family: Arial;
@@ -10,7 +11,7 @@
 }
 
 .reviews-fixedH-container {
-  Height : 800px;
+  Height : 300px;
 }
 .all-reviews {
   height : 600px;
@@ -18,6 +19,7 @@
 }
 
 .reviews-summary {
+  margin-bottom: 500px;
   margin-left: 100px;
   margin-right: 100px;
   display: grid;
@@ -59,7 +61,6 @@
   margin-bottom: 5px;
 }
 
-
 .rating-summary {
   grid-area: avg-rating;
   display: flex;
@@ -83,8 +84,22 @@
   width: 150px;
   height: 60px;
   background-color: rgb(255, 255, 255);
-  margin-top: 50px;
+  margin-top: 0px;
   margin-right: 5px;
+}
+
+.close-button {
+  float: right;
+}
+
+.modal {
+  position: fixed;
+  padding: 10px;
+  top: 60px;
+  left: 300px;
+  width: 800px;
+  height: 600px;
+  background-color: rgba(240, 240, 240, 0.9);
 }
 
 .reviews-list {

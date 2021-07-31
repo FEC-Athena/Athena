@@ -3,18 +3,14 @@ import moment from 'moment';
 import Star from './Star.jsx';
 import VoteHelpfulness from './VoteHelpfulness.jsx';
 import Sort from './Sort.jsx';
-import ReviewsContext from './reviews-context.js';
+import ReviewsContext from './reviews-context';
+import NewReview from './NewReview.jsx';
 
 function ReviewList() {
   const {
-    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, handleSortOption, renderList,
+    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, handleSortOption, renderList,
   } = useContext(ReviewsContext);
 
-  // sort the review list then slice
-
-  // componentDidMount() {
-  //   axios.get()
-  // }
   function changeSort(e) {
     handleSortOption(e.target.value);
     renderList(e.target.value);
@@ -28,6 +24,15 @@ function ReviewList() {
     }
     handleShowReviews(reviewList.slice(0, showCount));
   };
+
+  const [newReviewBtn, setNewReviewBtn] = useState(false);
+  const handleNewReview = () => (
+    setNewReviewBtn(true)
+  );
+
+  const handleCloseModal = () => (
+    setNewReviewBtn(false)
+  );
 
   return (
     <div className="reviews-fixedH-container">
@@ -51,10 +56,11 @@ function ReviewList() {
           </div>
         ))}
       </div>
-      <div>
+
         {showButton ? <button className="button" onClick={handleMoreReviews}>MORE REVIEWS</button> : null}
-        <button className="button">ADD A REVIEW  +</button>
-      </div>
+
+        <button className="button" onClick={() => handleNewReview()}>ADD A REVIEW  +</button>
+        <NewReview add={newReviewBtn} handleCloseModal={handleCloseModal}/>
     </div>
   );
 }
