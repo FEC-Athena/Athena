@@ -21,7 +21,7 @@ function FilterTag() {
           <div className="each-tag" key={idx}>{starCount + ' stars'}</div>
         ))}
       </div>
-      <u onClick={handleRemoveFilters}>{showTags.length > 0 ? 'Remove all filters' : null}</u>
+      <u className="remove-filters" onClick={handleRemoveFilters}>{showTags.length > 0 ? 'Remove all filters' : null}</u>
     </>
   )
 }

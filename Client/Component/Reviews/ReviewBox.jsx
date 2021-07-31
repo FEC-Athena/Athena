@@ -3,7 +3,6 @@ import ReviewList from './ReviewList.jsx';
 import ReviewSummary from './ReviewSummary.jsx';
 import sortData from './sampleData';
 import ReviewsContext from './reviews-context';
-import FilterTag from './FilterTag.jsx';
 
 function ReviewBox() {
   let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
@@ -49,12 +48,19 @@ function ReviewBox() {
     5: false,
   });
 
-  const handleFilterToggle = (toggle) => (setToggle(Object.keys(toggle).forEach(v => toggle[v] = false)));
+  const handleFilterToggle = (toggle) => {
+    setToggle({
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false,
+    });
+  };
 
   const [filterList, setFilterList] = useState({});
 
   function renderOption(sorted) {
-
     if (sorted.length <= 2) {
       handleButton(false);
     } else {
@@ -77,7 +83,6 @@ function ReviewBox() {
 
   const handleToggle = (toggle, starCountList, starCount) => {
     const toggleTemp = toggle;
-
     toggleTemp[starCount] = !toggleTemp[starCount];
     setToggle(toggleTemp);
     if (toggleTemp[starCount]) {

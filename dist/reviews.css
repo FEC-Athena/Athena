@@ -38,16 +38,25 @@
   grid-area: filter-tag;
   font-size: 12px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .each-tag {
   border: 1px solid grey;
-  padding: 1px;
+  padding: 5px;
+  margin-right: 2px;
+  font-size: 12px;
+}
+
+.remove-filters {
+  margin-left: 2px;
+  margin-top: 5px;
 }
 
 .rating-br {
   grid-area: rating-br;
   margin-top: 40px;
+  margin-bottom: 5px;
 }
 
 
