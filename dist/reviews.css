@@ -167,3 +167,19 @@ progress::-webkit-progress-bar {
   margin-left: 5px;
 }
 
+.new-review-header {
+  border-bottom: 3px solid grey;
+  padding-bottom: 10px;
+}
+
+.recommend-choice:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
+.overall-rating:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}

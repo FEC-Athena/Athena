@@ -27,9 +27,9 @@ function Star(props) { // 4.5
     <div>
       {stars.map((star, i) => (
         <div className="single-star-container" key={i}>
-          <div className="single-star-fill" style={{ width: `${parseInt(star * 18)}px` }}>
+          <div className="single-star-fill" style={{ width: `${parseInt(star * 18)}px`}}>
             <img className="single-star-outline" src={starOutline} />
-            {/* <i style={{color: 'orange'}} className="single-star-outline" class="far fa-star" ></i> */}
+
           </div>
         </div>
       ))}
