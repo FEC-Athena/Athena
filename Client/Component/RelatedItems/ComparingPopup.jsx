@@ -1,20 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useContext } from 'react';
+import Context from './related-context.js';
 
 const ComparingPopup = (props) => {
-  const closeRef = useRef(null);
-  props.ClosePopup(closeRef);
+  const { handleClosePopup, closeRef } = useContext(Context);
+  handleClosePopup(closeRef);
 
   return (props.trigger) ? (
     <div className="popup" ref={closeRef}>
       <div style={{ fontSize: 12 }}>COMPARING</div>
+      <p className="product-short-name">
+        <span style={{ float: "left", marginLeft: 10 }}>current product</span>
+        <span style={{ float: "right", marginRight: 10 }}>selected product</span>
+      </p>
+
       <table className="table">
-        <thead>
+        <tbody>
           <tr>
-            <th scope="col">current product</th>
-            <th scope="col">selected product</th>
+            <td>checkmark</td>
+            <td>value/features</td>
+            <td>checkmark</td>
           </tr>
-        </thead>
+        </tbody>
       </table>
+
     </div>
   ) : '';
 };
