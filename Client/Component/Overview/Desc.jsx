@@ -4,13 +4,23 @@ import React from 'react';
 
 const Desc = props => {
   const { slogan, description } = props.desc;
-    return (
-      // <div>{props.description}</div>
-      <div className="desc">
-        <h3> { slogan } </h3>
-        <div> { description } </div>
+  return (
+    // <div>{props.description}</div>
+    <div className="desc">
+      <div className="desc-left">
+        <h1 className="product-slogan"> {slogan} </h1>
+        <div className="product-desc"> {description} </div>
       </div>
-    )
+      <div className="desc-divider"></div>
+      <div className="product-features">
+        <dl>
+          <dt><i className="fas fa-check"></i>  sheri </dt>
+          <dt><i className="fas fa-check"></i>  ran </dt>
+          <dt><i className="fas fa-check"></i>  logan </dt>
+        </dl>
+      </div>
+    </div>
+  )
 }
 
 export default Desc;

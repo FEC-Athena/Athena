@@ -18,18 +18,21 @@
 .thumbNail {
   width: 40px;
   height: 40px;
-  padding: 5px;
+  /* padding: 5px; */
   border-style: groove;
   border-radius: 5px;
 }
 
 .right {
-  padding-left: 10px;
+  /* padding-left: 10px; */
+  padding-right: 50px;
+  padding-top: 10px;
 }
 
 .right img{
   border-radius: 10px;
   width: 600px;
-  height: 800px;
+  height: 700px;
   object-fit: cover;
+  /* background-size: contain; */
 }
