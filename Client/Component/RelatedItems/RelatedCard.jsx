@@ -4,7 +4,7 @@ import ComparingPopup from './ComparingPopup.jsx';
 import Context from './related-context.js';
 
 const RelatedCard = (props) => {
-  const { starPopup, handleStarPopup } = useContext(Context);
+  const { starPopup, handleStarPopup, relatedProducts } = useContext(Context);
 
   // ------- Change price style if it's on sale --------
   const discountedStyle = {

@@ -35,10 +35,12 @@ const OutfitList = (props) => {
           <i className="fas fa-angle-left fa-3x" onClick={scrollToLeft}></i>
         </button>}
         <div className="carousel-track-container" ref={ourfitRef}>
-          <div className="products">
-            <div className="blankCard">
-              <i className="far fa-plus-square fa-4x"></i>
-              <div>Add to Outfit</div>
+          <div className="carousel-slide">
+            <div className="products">
+              <div className="blankCard">
+                <i className="far fa-plus-square fa-4x"></i>
+                <div>Add to Outfit</div>
+              </div>
             </div>
           </div>
         </div>
