@@ -1,6 +1,5 @@
 .reviews-header {
-  margin-left: 300px;
-  font-size: 35px;
+  margin-left: 100px;
   color: rgba(43, 43, 43, 0.9);
   font-family: Arial;
 }
@@ -10,44 +9,70 @@
   font-family: Arial;
 }
 
+.reviews-fixedH-container {
+  Height : 800px;
+}
+.all-reviews {
+  height : 600px;
+  overflow: auto;
+}
+
 .reviews-summary {
-  margin-left: 300px;
+  margin-left: 100px;
   margin-right: 100px;
   display: grid;
-  grid-template-columns: 600px;
+  grid-template-columns: 300px;
   grid-template-rows: auto;
   grid-template-areas:
     "avg-rating"
     "recommendations"
+    "rating-br"
+    "filter-tag"
     "progress-bar"
     "size-breakdown"
     "comfort-breakdown";
-  font-size: 40px;
   color: rgba(12, 12, 12, 0.8);
 }
+
+.filter-tag {
+  grid-area: filter-tag;
+  font-size: 12px;
+  display: flex;
+}
+
+.each-tag {
+  border: 1px solid grey;
+  padding: 1px;
+}
+
+.rating-br {
+  grid-area: rating-br;
+  margin-top: 40px;
+}
+
 
 .rating-summary {
   grid-area: avg-rating;
   display: flex;
+  font-size: 20px;
 }
 
 .star-summary {
-
-  margin-top: 70px;
-  margin-left: -20px;
+  margin-left: 15px;
+  margin-top: 33px;
 }
 
 .rating-breakdown {
-  margin-top: 40px;
-  font-size: 30px;
+  margin-top: 8px;
+  margin-bottom: 10px;
   grid-area: progress-bar;
-  display:flex;
+  display: flex;
+  font-size: 12px;
 }
 
 .button {
-  width: 300px;
-  height: 80px;
-  font-size: 30px;
+  width: 150px;
+  height: 60px;
   background-color: rgb(255, 255, 255);
   margin-top: 50px;
   margin-right: 5px;
@@ -55,12 +80,11 @@
 
 .reviews-list {
   font-family: Arial;
-  margin-top: 60px;
+  margin-top: 33px;
   justify-content: center;
   width: 100%;
   float: left;
-  font-size: 40px;
-  margin-right: 400px;
+  margin-right: 200px;
 }
 
 .individual-review {
@@ -70,18 +94,18 @@
 }
 
 .single-star-outline {
-  height: 36px;
-  width: 31px;
+  height: 26px;
+  width: 21px;
 }
 
 .single-star-fill {
-  height: 36px;
+  height: 26px;
   background-color: hsl(55, 100%, 53%);
 }
 
 .single-star-container {
-  height: 36px;
-  width: 31px;
+  height: 26px;
+  width: 21px;
   display: inline-block;
 }
 
@@ -89,29 +113,33 @@
   color: rgba(9, 9, 9, 0.8);
   font-family: Arial;
   font-weight: bold;
+
 }
 
 progress {
   -webkit-appearance: none;
   appearance: none;
-  margin-left: 50px;
-  width: 410px;
-
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 4px;
+  width: 180px
 }
+
 
 progress::-webkit-progress-value {
   background-color: rgba(134, 193, 134, 0.9);
 }
 
 progress::-webkit-progress-bar {
-  margin-top: 8px;
   background-color: rgb(230, 230, 230);
-  height: 22px;
+  height: 8px;
 }
 
 .sort-options {
-  font-size: 40px;
   font-weight: bold;
   border: none;
   border-bottom: 1px solid black;
+  font-size: 17px;
+  margin-left: 5px;
 }
+
