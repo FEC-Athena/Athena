@@ -1,71 +1,35 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 // import axios from 'axios';
+
 import RelatedCard from './RelatedCard.jsx';
 import sample from './sampledata.js';
+import Context from './related-context.js';
 
 const RelatedList = (props) => {
-  // -------- Scroll Arrows ----------
-  const listRef = useRef(null);
+  const { listRef, handleScrollRight, handleScrollLeft, slideRight, relatedProducts } = useContext(Context);
 
-  const scrollToLeft = () => {
-    if (listRef.current) {
-      listRef.current.scrollBy({
-        top: 0,
-        left: 200,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollToRight = () => {
-    if (listRef.current) {
-      listRef.current.scrollBy({
-        top: 0,
-        left: -200,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  // ------- Popup window Click ----------
-  const [starPopup, setStarPopup] = useState(false);
-
-  // -------- Remove popup window --------
-  const ClosePopup = (popRef) => {
-    useEffect(() => {
-      let handleClickOutside = (event) => {
-        if (popRef.current && ! popRef.current.contains(event.target)) {
-          // close up the popup
-          setStarPopup(false);
-        }
-      };
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-          document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [popRef]);
-  };
-
-  // --------------------------------------------
+  // (for map function provide a key to each element) prioritize getting provided
+  // product_id, if it doesn't exist, get index
   return (
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
       <div className="carousel">
-        <button className="carousel-button-left" >
-          <i className="fas fa-angle-left fa-3x" onClick={scrollToRight}></i>
-        </button>
+        {slideRight === 0 ? <div/> : <button className="carousel-button-left" >
+          <i className="fas fa-angle-left fa-3x" onClick={handleScrollLeft}></i>
+        </button>}
         <div className="carousel-track-container">
           <div className="carousel-slide" ref={listRef}>
-            {sample.sampledata.map((product) => (
-              <RelatedCard product={product} setStarPopup={setStarPopup} starPopup={starPopup} ClosePopup={ClosePopup}/>
+            {relatedProducts.map((product) => (
+              <RelatedCard key={product.id} product={product} />
             ))}
           </div>
         </div>
-        <button className="carousel-button-right" >
-          <i className="fas fa-angle-right fa-3x" onClick={scrollToLeft}></i>
-        </button>
+        {slideRight === 1 ? <div/> : <button className="carousel-button-right" >
+          <i className="fas fa-angle-right fa-3x" onClick={handleScrollRight}></i>
+        </button>}
       </div>
     </div>
+
   );
 };
 

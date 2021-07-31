@@ -2,8 +2,7 @@ import React from 'react';
 import ReviewBox from './Reviews/ReviewBox.jsx';
 import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
-import RelatedList from './RelatedItems/RelatedList.jsx';
-import OutfitList from './RelatedItems/OutfitList.jsx';
+import RelatedItems from './RelatedItems/RelatedItems.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,10 +21,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Overview />
-        <RelatedList />
-        <OutfitList />
+        <RelatedItems />
         <ReviewBox />
         <QnA />
       </div>
