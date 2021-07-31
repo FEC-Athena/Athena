@@ -3,10 +3,9 @@ import Context from './context.js'
 import ReviewBox from './Reviews/ReviewBox.jsx';
 import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
-import RelatedList from './RelatedItems/RelatedList.jsx';
-import OutfitList from './RelatedItems/OutfitList.jsx';
 import axios from 'axios';
 import access from './config.js';
+import RelatedItems from './RelatedItems/RelatedItems.jsx';
 
 const App = props => {
   // 当前产品普通信息
@@ -90,8 +89,7 @@ const App = props => {
     }}>
       <div className="app">
         <Overview />
-        <RelatedList />
-        <OutfitList />
+        <RelatedItems />
         <ReviewBox />
         <QnA />
       </div>
