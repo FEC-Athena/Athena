@@ -19,7 +19,13 @@ const App = props => {
   const [productStyles, setProductStyles] = useState(null);
   // 当前产品的产品 ID
   const [currentItem, setCurrent] = useState(17067);
+  // 当前产品默认格式评论
+  const [currentRating, setRating] = useState(null);
 
+  // const { currentRev, serRev } = useContext(Context);
+  // useEffect(() => {
+  // axios
+  //},[currentRev])
 
   // Logan 专用的 Func
   const handleStyle = target => setSelectedStyle(target);
@@ -37,16 +43,16 @@ const App = props => {
     const config = {
       headers: { Authorization: `${access.TOKEN}` }
     };
-    // console.log(process.env.TOKEN)
+    // console.log(access.TOKEN)
     let pro_gen = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
-    // 17068,
-    // 17069,
-    // 17074,
-    // 17073
+
     let pro_sty = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
+
+    let pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
 
     const reqGen = axios.get(pro_gen, config);
     const reqSty = axios.get(pro_sty, config);
+    const reqRel = axios.get(pro_related, config)
 
     axios.all([reqGen, reqSty])
       .then(axios.spread((...responses) => {
@@ -60,17 +66,27 @@ const App = props => {
       .catch(errors => {
         console.log(errors)
       })
-  }, [currentItem])
+  }, [])
 
+  /*
+    axios.get(/related)
+      .then((list) => {
+        list.map((item) => {
+          axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${item}/)
+          axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${item}/styles)
+          axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${item})
+        })
+      })
+  */
   if (isLoading) {
     return (
       <div id="Home-error"> Homepage is loading.. </div>
     )
   }
-  // console.log(selectedStyle)
+
   return (
     <Context.Provider value={{
-      selectedStyle, setSelectedStyle, detail, productStyles, setProductStyles, isLoading, setLoading, handleStyle
+      selectedStyle, detail, productStyles, setProductStyles, isLoading, setLoading, handleStyle, currentRating, setRating, currentItem, setCurrent
     }}>
       <div className="app">
         <Overview />

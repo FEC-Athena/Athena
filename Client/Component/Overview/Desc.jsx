@@ -24,9 +24,6 @@ const Desc = props => {
               <dt key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </dt>
               )
             })}
-            {/* <dt><i className="fas fa-check"></i>  sheri </dt>
-            <dt><i className="fas fa-check"></i>  ran </dt>
-            <dt><i className="fas fa-check"></i>  logan </dt> */}
           </dl>
         </div>
       </div>
