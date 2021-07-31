@@ -21,7 +21,7 @@ const Info = props => {
       )
     } else {
       return (
-        <div className="product-price"> ${selectedStyle.original_price} </div>
+        <span className="product-price"> ${selectedStyle.original_price} </span>
       )
     }
   }

@@ -13,6 +13,7 @@ const App = props => {
   const [isLoading, setLoading] = useState(true);
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
+  const [currentItem, setCurrent] = useState(17067)
   const handleStyle = target => setSelectedStyle(target);
 
 
@@ -20,8 +21,6 @@ const App = props => {
     const config = {
       headers: { Authorization: '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' }
     };
-
-    const currentItem = 17067
 
     let one = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
     let two = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
@@ -41,7 +40,7 @@ const App = props => {
       .catch(errors => {
         console.log(errors)
       })
-  }, [])
+  }, [currentItem])
 
   if (isLoading) {
     return (
