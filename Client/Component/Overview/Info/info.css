@@ -107,6 +107,11 @@
   color: white
 }
 
+.errorMsg {
+  color: red;
+  padding-bottom: 10px;
+}
+
 .icon {
   padding-right: 10px;
   font-size: 30px;

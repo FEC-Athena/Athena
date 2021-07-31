@@ -33,7 +33,6 @@ const Overview = props => {
       <div> I am still loading... </div>
     )
   } else {
-    // console.log(selectedStyle);
     return (
       // <Context.Provider value={{
       //   handleStyle
@@ -44,7 +43,7 @@ const Overview = props => {
             <Info className="info" />
           </div>
           {/* <Desc desc={detail} /> */}
-          {/* <Desc /> */}
+          <Desc />
         </div>
       // </Context.Provider >
     )

@@ -111,6 +111,11 @@
   color: white
 }
 
+.errorMsg {
+  color: red;
+  padding-bottom: 10px;
+}
+
 .icon {
   padding-right: 10px;
   font-size: 30px;
@@ -207,7 +212,7 @@
 
 .product-features {
   padding-left: 100px;
-  font-size: 50px;
+  font-size: 30px;
 }
 
 .fa-check {
