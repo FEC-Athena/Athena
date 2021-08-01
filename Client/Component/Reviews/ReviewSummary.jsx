@@ -3,6 +3,7 @@ import Star from './Star.jsx';
 import ReviewsContext from './reviews-context';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import FilterTag from './FilterTag.jsx';
+import CharBreakdown from './CharBreakdown.jsx';
 
 function ReviewSummary() {
   const list = useContext(ReviewsContext);
@@ -23,6 +24,7 @@ function ReviewSummary() {
       <h5 className="rating-br">Rating Breakdown</h5>
       <div className="filter-tag"><FilterTag /></div>
       <div className="rating-breakdown"><RatingBreakdown /></div>
+      <div className="char-breakdown"><CharBreakdown /></div>
     </div>
   )
 }

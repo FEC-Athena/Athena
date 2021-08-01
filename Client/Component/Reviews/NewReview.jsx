@@ -104,7 +104,7 @@ const NewReview = (props) => {
               </div>
               <div className="radio-box">
                 <input type="radio" name="size" score={5} id="size5"/>
-                <label>A size too wide</label>
+                <label>A size too big</label>
               </div><br></br>
 
               <div className="radio-box">
