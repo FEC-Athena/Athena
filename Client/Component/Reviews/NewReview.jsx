@@ -4,7 +4,7 @@ import ReviewsContext from './reviews-context';
 
 const NewReview = (props) => {
 
-  const {rating} = useContext(ReviewsContext);
+  const {rating, handleCloseModal} = useContext(ReviewsContext);
   const handleSubmitRev = (event) => {
     event.preventDefault();
     var alertStr = '';
@@ -36,6 +36,10 @@ const NewReview = (props) => {
       alertStr += `Characters left for review: ${50-reviewLen}` + '\n';
     }
 
+    if (!document.getElementById("nickname").value.length === 0) {
+      alertStr += 'nickname field is required!\n';
+    }
+
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(document.getElementById('email').value).toLowerCase())) {
       alertStr += 'Invalid email format!';
@@ -44,7 +48,7 @@ const NewReview = (props) => {
     if (alertStr.length > 0) {
       alert(alertStr);
     } else {
-      props.handleCloseModal;
+      handleCloseModal();
     }
 
 
@@ -52,7 +56,7 @@ const NewReview = (props) => {
 
   return (props.add) ? (
       <div className="modal">
-        <button className="close-button" onClick={props.handleCloseModal}>Close</button>
+        <button className="close-button" onClick={handleCloseModal}>Close</button>
         <h3 className="new-review-header">Write Your Review</h3>
         <div>About the 'product'</div>
         <div className="overall-rating" style={{color: 'red', marginTop: 20}}>Your overall rating of this product</div>
@@ -241,7 +245,7 @@ const NewReview = (props) => {
 
         <div>
           <label  className="nickname" style={{fontWeight: 'bold'}}>Nickname</label><br></br>
-          <textarea maxLength="60" placeholder="Example: jackson11" style={{height: 30, width: 715}}></textarea>
+          <textarea id="nickname" maxLength="60" placeholder="Example: jackson11" style={{height: 30, width: 715}}></textarea>
         </div>
 
         <div>

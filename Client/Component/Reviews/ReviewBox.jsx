@@ -116,12 +116,20 @@ function ReviewBox() {
     setRating(rating)
   )
 
+  const [newReviewBtn, setNewReviewBtn] = useState(false);
+  const handleNewReview = () => (
+    setNewReviewBtn(true)
+  );
+
+  const handleCloseModal = () => (
+    setNewReviewBtn(false)
+  );
 
 
   return (
     <>
       <ReviewsContext.Provider value={{
-        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, handleSortOption, renderList,filterToggle, handleFilterToggle, rating, handleRating
+        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, handleSortOption, renderList,filterToggle, handleFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
       }}
       >
         <div className="reviews">

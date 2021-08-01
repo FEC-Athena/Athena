@@ -10,7 +10,7 @@ function Star(props) { // 4.5
     } else if (score > 0 && score < 1) {
       // for visual effects
       if (score === 0.25) {
-        score = 0.35;
+        score = 0.45;
       }
       if (score === 0.75) {
         score = 0.7;

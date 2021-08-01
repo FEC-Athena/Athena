@@ -8,7 +8,7 @@ import NewReview from './NewReview.jsx';
 
 function ReviewList() {
   const {
-    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, handleSortOption, renderList,
+    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, handleSortOption, renderList, newReviewBtn, handleNewReview, handleCloseModal
   } = useContext(ReviewsContext);
 
   function changeSort(e) {
@@ -24,16 +24,6 @@ function ReviewList() {
     }
     handleShowReviews(reviewList.slice(0, showCount));
   };
-
-  const [newReviewBtn, setNewReviewBtn] = useState(false);
-  const handleNewReview = () => (
-    setNewReviewBtn(true)
-  );
-
-  const handleCloseModal = () => (
-    setNewReviewBtn(false)
-  );
-  
 
   return (
     <div className="reviews-fixedH-container">

@@ -3,22 +3,20 @@ import StarFill from './StarFill.jsx';
 import ReviewsContext from './reviews-context';
 
 function StarRating() {
-
-  const {rating, handleRating} = useContext(ReviewsContext);
+  const { rating, handleRating } = useContext(ReviewsContext);
 
   const [selection, setSelection] = useState(0);
-  const hoverOver = event => {
+  const hoverOver = (event) => {
     let val = 0;
-    if (event.target.getAttribute("star-id"))
+    if (event && event.target && event.target.getAttribute("star-id")) {
       val = event.target.getAttribute("star-id");
-    setSelection(val);
+      setSelection(val);
+    }
   };
   return (
     <div
-
       onMouseOut={() => hoverOver(null)}
-
-      onClick={event =>
+      onClick={(event) =>
         handleRating(event.target.getAttribute("star-id") || rating)
       }
       onMouseOver={hoverOver}
