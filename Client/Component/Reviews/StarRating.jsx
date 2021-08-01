@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import StarFill from './StarFill.jsx';
+import ReviewsContext from './reviews-context';
 
-function StarRating(props) {
+function StarRating() {
 
-  const [rating, setRating] = useState(
-    typeof props.rating == "number" ? props.rating : 0
-  );
+  const {rating, handleRating} = useContext(ReviewsContext);
 
   const [selection, setSelection] = useState(0);
   const hoverOver = event => {
     let val = 0;
-    if (event && event.target && event.target.getAttribute("star-id"))
+    if (event.target.getAttribute("star-id"))
       val = event.target.getAttribute("star-id");
     setSelection(val);
   };
@@ -20,7 +19,7 @@ function StarRating(props) {
       onMouseOut={() => hoverOver(null)}
 
       onClick={event =>
-        setRating(event.target.getAttribute("star-id") || rating)
+        handleRating(event.target.getAttribute("star-id") || rating)
       }
       onMouseOver={hoverOver}
     >

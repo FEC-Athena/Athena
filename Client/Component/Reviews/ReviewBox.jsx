@@ -111,10 +111,17 @@ function ReviewBox() {
     handleToggle(filterToggle, starCountList, starCount);
   };
 
+  const [rating, setRating] = useState(0);
+  const handleRating = (rating) => (
+    setRating(rating)
+  )
+
+
+
   return (
     <>
       <ReviewsContext.Provider value={{
-        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, handleSortOption, renderList,filterToggle, handleFilterToggle
+        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, handleSortOption, renderList,filterToggle, handleFilterToggle, rating, handleRating
       }}
       >
         <div className="reviews">

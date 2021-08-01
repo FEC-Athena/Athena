@@ -13,6 +13,7 @@
 .reviews-fixedH-container {
   Height : 300px;
 }
+
 .all-reviews {
   height : 600px;
   overflow: auto;
@@ -92,16 +93,6 @@
   float: right;
 }
 
-.modal {
-  position: fixed;
-  padding: 10px;
-  top: 60px;
-  left: 300px;
-  width: 800px;
-  height: 600px;
-  background-color: rgba(240, 240, 240, 0.9);
-}
-
 .reviews-list {
   font-family: Arial;
   margin-top: 33px;
@@ -178,8 +169,63 @@ progress::-webkit-progress-bar {
   font-size: 20px;
 }
 
+.char-container:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
+.review-body:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
+.nickname:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
+.email:after {
+  content: "*";
+  color: red;
+  font-size: 20px;
+}
+
+.modal {
+  position: fixed;
+  padding: 50px;
+  top: 30px;
+  left: 300px;
+  width: 800px;
+  height: 600px;
+  background-color: rgba(240, 240, 240);
+  overflow: scroll;
+}
+
 .overall-rating:after {
   content: "*";
   color: red;
   font-size: 20px;
+}
+
+div.radio-box {
+  width: 120px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: rgba(186, 184, 184, 0.9);
+  font-size: 13px;
+}
+.radio-box label {
+  display:block;
+  width: 120px;
+  text-align: center;
+  margin-top: 3px;
+}
+.radio-box input {
+  width: 20px;
+  display: block;
+  margin: 0px auto;
 }

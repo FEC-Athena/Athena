@@ -33,6 +33,7 @@ function ReviewList() {
   const handleCloseModal = () => (
     setNewReviewBtn(false)
   );
+  
 
   return (
     <div className="reviews-fixedH-container">
