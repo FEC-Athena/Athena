@@ -58,7 +58,7 @@ const NewReview = (props) => {
       <div className="modal">
         <button className="close-button" onClick={handleCloseModal}>Close</button>
         <h3 className="new-review-header">Write Your Review</h3>
-        <div>About the 'product'</div>
+        <div>Camo Onesie</div>
         <div className="overall-rating" style={{color: 'red', marginTop: 20}}>Your overall rating of this product</div>
 
         <div><StarRating /></div>

@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import ReviewsContext from './reviews-context';
 
 function FilterTag() {
-  const {filterToggle, handleFilterToggle} = useContext(ReviewsContext);
+  const {filterToggle, handleFilterToggle, renderList, reviewList, showReviews} = useContext(ReviewsContext);
   var showTags = [];
   for (var key in filterToggle) {
     if(filterToggle[key]) {
@@ -11,7 +11,10 @@ function FilterTag() {
   }
 
   function handleRemoveFilters() {
-    handleFilterToggle(filterToggle);
+    handleFilterToggle();
+    renderList('relevant');
+    // console.log("removefilter : reviewList ", reviewList)
+    // console.log("removefilter : showReviews ", showReviews)
   }
 
   return (

@@ -1,56 +1,99 @@
-import React, { useState, useContext} from 'react';
-import ReviewsContext from './reviews-context';
+import React, { useContext } from 'react';
+import Context from '../context';
 
 const CharBreakdown = () => {
-  // const { size, width, comfort, quality, length, fit } = useContext(ReviewsContext);
+  const {
+    sizeAvg, widthAvg, comfortAvg, qualityAvg, lengthAvg, fitAvg,
+  } = useContext(Context);
 
-  const size = 100;
-  //const style = {"size": } as React.CSSProperties;
-  const style2 = () => ({});
-  const marginLeft = (size1) => ({
-    marginLeft: size1,
-  });
-
+  const size = (sizeAvg / 5) * 290;
+  const width = (widthAvg / 5) * 290;
+  const comfort = (comfortAvg / 5) * 290;
+  const quality = (qualityAvg / 5) * 290;
+  const length = (lengthAvg / 5) * 290;
+  const fit = (fitAvg / 5) * 290;
 
   return (
     <div className="char-br">
-      <div style={{ fontSize: 13, marginBottom: 10 }}>Size</div>
-      <div className="char-bar"></div>
-      <div style={{ fontSize: 17, marginTop: -17 }} style2={marginLeft(size)}>{"\u25BC"}</div>
-      <span>Too small</span>
-      <span style={{float: 'right', marginRight: 8}}>Too large</span>
+      <div>
+        { sizeAvg
+          ? (
+            <>
+              <div style={{ fontSize: 13, marginBottom: 10, marginTop: 15 }}>Size</div>
+              <div className="char-bar"></div>
+              <div style={{ fontSize: 17, marginTop: -17, marginLeft: size }}>{'\u25BC'}</div>
+              <span style={{float: 'left'}}>Too small</span>
+              <span style={{ float: 'right', marginRight: 8 }}>Too large</span>
+            </>
+          ) : null}
+      </div>
 
-      <div style={{fontSize: 13, marginBottom: 10, marginTop: 10}}>Width</div>
-      <div className="char-bar"></div>
-      <div style={{fontSize: 17, marginTop: -17, marginLeft: 10}}>{"\u25BC"}</div>
-      <span>Too narrow</span>
-      <span style={{float: 'right', marginRight: 8}}>Too wide</span>
+      <div>
+        { widthAvg
+          ? (
+            <>
+              <div style={{ fontSize: 13, marginBottom: 10, marginTop: 15 }}>Width</div>
+              <div className="char-bar"></div>
+              <div style={{ fontSize: 17, marginTop: -17, marginLeft: width }}>{'\u25BC'}</div>
+              <span style={{float: 'left'}}>Too narrow</span>
+              <span style={{ float: 'right', marginRight: 8 }}>Too wide</span>
+            </>
+          ) : null}
+      </div>
 
-      <div style={{fontSize: 13, marginBottom: 10, marginTop: 10}}>Comfort</div>
-      <div className="char-bar"></div>
-      <div style={{fontSize: 17, marginTop: -17, marginLeft: 10}}>{"\u25BC"}</div>
-      <span>Uncomfortable</span>
-      <span style={{float: 'right', marginRight: 8}}>Perfect</span>
+      <div>
+        { comfortAvg
+          ? (
+            <>
+              <div style={{ fontSize: 13, marginBottom: 10, marginTop: 25}}>Comfort</div>
+              <div className="char-bar"></div>
+              <div style={{ fontSize: 17, marginTop: -17, marginLeft: comfort }}>{'\u25BC'}</div>
+              <span style={{float: 'left'}}>Uncomfortable</span>
+              <span style={{ float: 'right', marginRight: 8}}>Perfect</span>
+            </>
+          ) : null}
+      </div>
 
-      <div style={{fontSize: 13, marginBottom: 10, marginTop: 10}}>Quality</div>
-      <div className="char-bar"></div>
-      <div style={{fontSize: 17, marginTop: -17, marginLeft: 10}}>{"\u25BC"}</div>
-      <span>Poor</span>
-      <span style={{float: 'right', marginRight: 8}}>Perfect</span>
+      <div>
+        { qualityAvg
+          ? (
+            <>
+              <div style={{ fontSize: 13, marginBottom: 10, marginTop: 25 }}>Quality</div>
+              <div className="char-bar"></div>
+              <div style={{ fontSize: 17, marginTop: -17, marginLeft: quality}}>{'\u25BC'}</div>
+              <span style={{ float: 'left' }}>Poor</span>
+              <span style={{ float: 'right', marginRight: 8 }}>Perfect</span>
+            </>
+          ) : null}
+      </div>
 
-      <div style={{fontSize: 13, marginBottom: 10, marginTop: 10}}>Length</div>
-      <div className="char-bar"></div>
-      <div style={{fontSize: 17, marginTop: -17, marginLeft: 10}}>{"\u25BC"}</div>
-      <span>Runs short</span>
-      <span style={{float: 'right', marginRight: 8}}>Runs long</span>
+      <div>
+        { lengthAvg
+          ? (
+            <>
+              <div style={{ fontSize: 13, marginBottom: 10, marginTop: 25 }}>Length</div>
+              <div className="char-bar"></div>
+              <div style={{ fontSize: 17, marginTop: -17, marginLeft: length }}>{'\u25BC'}</div>
+              <span style={{float: 'left'}}>Runs short</span>
+              <span style={{ float: 'right', marginRight: 8 }}>Runs long</span>
+            </>
+          ) : null}
+      </div>
 
-      <div style={{fontSize: 13, marginBottom: 10, marginTop: 10}}>Fit</div>
-      <div className="char-bar"></div>
-      <div style={{fontSize: 17, marginTop: -17, marginLeft: 10}}>{"\u25BC"}</div>
-      <span>Runs tight</span>
-      <span style={{float: 'right', marginRight: 8}}>Runs long</span>
+      <div>
+        { fitAvg
+          ? (
+            <>
+              <div style={{ fontSize: 13, marginBottom: 10, marginTop: 25 }}>Fit</div>
+              <div className="char-bar"></div>
+              <div style={{ fontSize: 17, marginTop: -17, marginLeft: fit }}>{'\u25BC'}</div>
+              <span style={{float: 'left'}}>Runs tight</span>
+              <span style={{ float: 'right', marginRight: 8 }}>Runs long</span>
+            </>
+          ) : null}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default CharBreakdown;
