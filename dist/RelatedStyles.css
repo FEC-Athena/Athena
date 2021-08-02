@@ -89,14 +89,16 @@
   margin: 10px;
   cursor: pointer;
   text-align: -webkit-left;
-  height: 400px;
+  height: 420px;
+  width: 300px;
 }
 
 .fa-lg {
   position: absolute;
-  margin-top: 15px;
-  margin-left: 185px;
+  margin-top: 24px;
+  margin-left: 246px;
   color: aliceblue;
+  text-shadow: 1px 1px 1px grey;
 }
 
 .fa-lg:hover {
@@ -105,8 +107,8 @@
 }
 
 .carousel-image {
-  width: 220px;
-  height: 305px;
+  width: 280px;
+  height: 350px;
   object-fit: cover;
 }
 
@@ -126,7 +128,7 @@
 .outfit-container {
   height: 400px;
   margin-top: 30px;
-  padding-top: 20px;
+  padding-top: 55px;
   justify-content: center;
   display: grid;
   grid-template-rows: 20px 400px;
@@ -148,7 +150,7 @@
   left: 400px;
   width: 430px;
   height: 330px;
-  background-color: rgba(236, 236, 236, 0.6);
+  background-color: rgb(236, 236, 236);
 }
 
 .table {
@@ -156,17 +158,17 @@
   padding: 10px;
   width: 450px;
   background-color: transparent;
-
+  text-align: center;
 }
 
 .blankCard {
   position: relative;
   cursor: pointer;
   text-align: center;
-  width: 220px;
-  height: 220px;
+  height: 260px;
+  width: 280px;
   border: 2px solid black;
-  padding-top: 110px;
+  padding-top: 100px;
 }
 
 .fa-plus-square {

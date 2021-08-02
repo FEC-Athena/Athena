@@ -1,21 +1,22 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect, useContext } from 'react';
-import Context from './context.js'
+import axios from 'axios';
+import Context from './context.js';
 import ReviewBox from './Reviews/ReviewBox.jsx';
 import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
-import axios from 'axios';
 import access from './config.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
-import api from './config.js';
-// const App = () => {
+"use strict";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
-// };
-
-const config = {
-  headers: { 'Authorization': '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' }
-};
-
-const App = props => {
+const App = (props) => {
+  const config = {
+    headers: { Authorization: `${access.TOKEN}` },
+  };
   // 当前产品普通信息
   const [detail, setDetail] = useState(null);
   // 判断数据是否成功被读取
@@ -29,72 +30,117 @@ const App = props => {
   // 当前产品默认格式评论
   const [currentRating, setRating] = useState(null);
 
-  // const { currentRev, serRev } = useContext(Context);
-  // useEffect(() => {
-  // axios
-  //},[currentRev])
+  // ------------sheri---------------
+  const [relatedItems, setRelatedItems] = useState([]);
+  // const [relatedStyles, setRelatedStyles] = useState([]);
 
   // Logan 专用的 Func
-  const handleStyle = target => setSelectedStyle(target);
+  const handleStyle = (target) => setSelectedStyle(target);
   //
 
-  // Sheri 专用的 Func
+  // ---------- Sheri 专用的 Func -----------
+  const handleProductById = async (id) => {
+    try {
+      const { data } = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, config);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  //
+  const handleStyleById = async (id) => {
+    try {
+      const { data } = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`, config);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleRatingById = async (id) => {
+    try {
+      const { data } = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${id}`, config);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  //----------------------------------
 
   // Ran 专用的 Func
 
   //
 
-  useEffect(() => {
-    const config = {
-      headers: { Authorization: `${access.TOKEN}` }
-    };
-    // console.log(access.TOKEN)
-    let pro_gen = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
-
-    let pro_sty = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
-
-    let pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
+  useEffect(async () => {
+    const pro_gen = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
+    const pro_sty = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
+    const pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
 
     const reqGen = axios.get(pro_gen, config);
     const reqSty = axios.get(pro_sty, config);
-    const reqRel = axios.get(pro_related, config)
 
     axios.all([reqGen, reqSty])
       .then(axios.spread((...responses) => {
         const resGen = responses[0];
         const resSty = responses[1];
-        setDetail(resGen.data)
-        setLoading(false)
-        setProductStyles(resSty.data.results)
-        setSelectedStyle(resSty.data.results[0])
+        setDetail(resGen.data);
+        setLoading(false);
+        setProductStyles(resSty.data.results);
+        setSelectedStyle(resSty.data.results[0]);
       }))
-      .catch(errors => {
-        console.log(errors)
-      })
-  }, [])
+      .catch((errors) => {
+        console.log(errors);
+      });
 
-  /*
-    axios.get(/related)
-      .then((list) => {
-        list.map((item) => {
-          axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${item}/)
-          axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${item}/styles)
-          axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${item})
-        })
-      })
-  */
+    // --------------- sheri ---------------
+    const { data } = await axios.get(pro_related, config);
+    const dataArr = [];
+
+    for (let id of data) {
+      const product = await handleProductById(id);
+      const style = await handleStyleById(id);
+      const rating = await handleRatingById(id);
+      dataArr.push({ product, style, rating });
+    }
+    setRelatedItems(dataArr);
+
+    // const flattenData = dataArr.reduce((acc, newItem) => {
+    //   return [...acc, ...newItem.style.results.map(item => (
+    //     {...item, id: newItem.product_id}
+    //   ))]
+    // }, []);
+    // setRelatedStyles(flattenData);
+
+
+  }, [currentItem]);
+
+
+
+  // console.log('this is from app', relatedItems);
+
+
   if (isLoading) {
     return (
       <div id="Home-error"> Homepage is loading.. </div>
-    )
+    );
   }
 
   return (
     <Context.Provider value={{
-      selectedStyle, detail, productStyles, setProductStyles, isLoading, setLoading, handleStyle, currentRating, setRating, currentItem, setCurrent
-    }}>
+      selectedStyle,
+      detail,
+      productStyles,
+      setProductStyles,
+      isLoading,
+      setLoading,
+      handleStyle,
+      currentRating,
+      setRating,
+      currentItem,
+      setCurrent,
+      relatedItems
+    }}
+    >
       <div className="app">
         <Overview />
         <RelatedItems />
@@ -102,8 +148,7 @@ const App = props => {
         <QnA />
       </div>
     </Context.Provider>
-  )
-}
+  );
+};
 
 export default App;
-
