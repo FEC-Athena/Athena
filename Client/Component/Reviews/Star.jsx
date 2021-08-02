@@ -1,7 +1,7 @@
 import React from 'react';
 import starOutline from './Images/star.png';
 
-function Star(props) { // 4.5
+function Star(props) {
   const stars = [];
   let score = props.rating;
   for (let i = 0; i < 5; i++) {
@@ -10,8 +10,13 @@ function Star(props) { // 4.5
     } else if (score > 0 && score < 1) {
       // for visual effects
       if (score === 0.25) {
-        score = 0.35;
+        score = 0.45;
       }
+
+      if (score === 0.5) {
+        score = 0.62;
+      }
+
       if (score === 0.75) {
         score = 0.7;
       }
@@ -27,8 +32,8 @@ function Star(props) { // 4.5
     <div>
       {stars.map((star, i) => (
         <div className="single-star-container" key={i}>
-          <div className="single-star-fill" style={{ width: `${parseInt(star * 21)}px` }}>
-            <img className="single-star-outline" src={starOutline} />
+          <div className="single-star-fill" style={{ width: `${parseInt(star * 18)}px`}}>
+            <img className="single-star-outline" src={starOutline} alt="" />
           </div>
         </div>
       ))}

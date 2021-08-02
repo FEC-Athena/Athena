@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ReviewList from './ReviewList.jsx';
 import ReviewSummary from './ReviewSummary.jsx';
 import sortData from './sampleData';
 import ReviewsContext from './reviews-context';
-import FilterTag from './FilterTag.jsx';
+import Context from '../context';
 
 function ReviewBox() {
-  let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
 
+  const {sortByRel2, sortOption} = useContext(Context);
+
+
+  //console.log("reviewBox:sortByRel2 ", sortByRel2);
+  let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
+  //console.log("reviewBox:sortByRel ", sortByRel);
   sortByRel = sortByRel.results;
   sortByHelpful = sortByHelpful.results;
   sortByNewest = sortByNewest.results;
-
-  const [sortOption, setSortOption] = useState('relevant');
-  const handleSortOption = (sortOpt) => (
-    setSortOption(sortOpt)
-  );
 
   const [reviewShownCount, setReviewShownCount] = useState(2);
   const handleReviewShownCount = (count) => (setReviewShownCount(count));
@@ -49,12 +49,19 @@ function ReviewBox() {
     5: false,
   });
 
-  const handleFilterToggle = (toggle) => (setToggle(Object.keys(toggle).forEach(v => toggle[v] = false)));
+  const handleFilterToggle = () => {
+    setToggle({
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false,
+    });
+  };
 
   const [filterList, setFilterList] = useState({});
 
   function renderOption(sorted) {
-
     if (sorted.length <= 2) {
       handleButton(false);
     } else {
@@ -76,8 +83,8 @@ function ReviewBox() {
   }
 
   const handleToggle = (toggle, starCountList, starCount) => {
+    //console.log("toggle:", toggle, "starCountList:", starCountList, "COUNT: ", starCount);
     const toggleTemp = toggle;
-
     toggleTemp[starCount] = !toggleTemp[starCount];
     setToggle(toggleTemp);
     if (toggleTemp[starCount]) {
@@ -106,10 +113,24 @@ function ReviewBox() {
     handleToggle(filterToggle, starCountList, starCount);
   };
 
+  const [rating, setRating] = useState(0);
+  const handleRating = (rating) => (
+    setRating(rating)
+  )
+
+  const [newReviewBtn, setNewReviewBtn] = useState(false);
+  const handleNewReview = () => (
+    setNewReviewBtn(true)
+  );
+
+  const handleCloseModal = () => (
+    setNewReviewBtn(false)
+  );
+
   return (
     <>
       <ReviewsContext.Provider value={{
-        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, handleSortOption, renderList,filterToggle, handleFilterToggle
+        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,filterToggle, handleFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
       }}
       >
         <div className="reviews">
