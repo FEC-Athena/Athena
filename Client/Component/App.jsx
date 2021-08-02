@@ -103,6 +103,7 @@ const App = () => {
     }
     setRelatedItems(dataArr);
 
+
     // const flattenData = dataArr.reduce((acc, newItem) => {
     //   return [...acc, ...newItem.style.results.map(item => (
     //     {...item, id: newItem.product_id}
@@ -112,10 +113,6 @@ const App = () => {
 
 
   }, [currentItem]);
-
-
-
-  // console.log('this is from app', relatedItems);
 
 
   if (isLoading) {
@@ -140,7 +137,7 @@ const App = () => {
       handleCurrent
     }}
     >
-      <div className="app">
+      <div>
         <Overview />
         <RelatedItems />
         <ReviewBox />

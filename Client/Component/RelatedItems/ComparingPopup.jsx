@@ -33,7 +33,7 @@ const ComparingPopup = (props) => {
       <table className="table">
         <tbody>
           {featureArr.map((current, index) => (
-            <tr>
+            <tr key={index}>
              <td className="leftCheckmark">{<i className="fas fa-check"></i>}</td>
               <td>{current}</td>
               <td className="rightCheckmark">{<i className="fas fa-check"></i>}</td>

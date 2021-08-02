@@ -13,14 +13,8 @@ const RelatedCard = (props) => {
 
 
   // ------- Change price style if it's on sale --------
-  const itemResults = props.item.style.results;
-  let salePrice;
-  for (let price of itemResults) {
-    if (price.sale_price) {
-      salePrice = price.sale_price;
-    }
-  }
- 
+  let salePrice = props.item.style.results[0].sale_price;
+
   const discountedStyle = {
     textDecoration: 'line-through',
     color: 'grey'

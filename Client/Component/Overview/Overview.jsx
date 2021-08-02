@@ -18,7 +18,7 @@ const Overview = props => {
     )
   } else {
     return (
-      <div>
+      <div className="overview">
         <div className="top">
           <Gallery className="gallery" />
           <Info className="info" />
