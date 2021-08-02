@@ -1,11 +1,10 @@
 import React, {
   useRef, useState, useEffect,
 } from 'react';
-// import axios from 'axios';
 
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
-// import sample from './sampledata.js';
+
 import Context from './related-context.js';
 // import AppContext from '../context.js';
 
@@ -18,7 +17,7 @@ const RelatedItems = () => {
     if (listRef.current) {
       listRef.current.scrollBy({
         top: 0,
-        left: 300,
+        left: 400,
         behavior: 'smooth',
       });
     }
@@ -29,7 +28,7 @@ const RelatedItems = () => {
     if (listRef.current) {
       listRef.current.scrollBy({
         top: 0,
-        left: -300,
+        left: -400,
         behavior: 'smooth',
       });
     }

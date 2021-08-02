@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Context from './context.js';
 import ReviewBox from './Reviews/ReviewBox.jsx';
@@ -9,11 +9,10 @@ import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
 import access from './config.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
-"use strict";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-const App = (props) => {
+const App = () => {
   const config = {
     headers: { Authorization: `${access.TOKEN}` },
   };
@@ -37,7 +36,7 @@ const App = (props) => {
   // Logan 专用的 Func
   const handleStyle = (target) => setSelectedStyle(target);
   //
-
+  const handleCurrent = (target) => setCurrent(target);
   // ---------- Sheri 专用的 Func -----------
   const handleProductById = async (id) => {
     try {
@@ -137,8 +136,8 @@ const App = (props) => {
       currentRating,
       setRating,
       currentItem,
-      setCurrent,
-      relatedItems
+      relatedItems,
+      handleCurrent
     }}
     >
       <div className="app">
