@@ -77,8 +77,6 @@ const App = () => {
   const [sortByHelpful, setSortHelpful] = useState({});
   const [sortByNewest, setSortNewest] = useState({});
 
-  const handleStyle = (target) => setSelectedStyle(target);
-
   useEffect(async () => {
     const pro_gen = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
     const pro_sty = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
