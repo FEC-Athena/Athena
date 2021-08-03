@@ -27,8 +27,14 @@ function ReviewBox(props) {
   }, [sortByRel2]);
 
   useEffect(() => {
-    setShowReviews(reviewList);
+    setReviewShownCount(2);
+    setButton(reviewList.length > 2);
+    setShowReviews(reviewList.slice(0, 2));
   }, [reviewList]);
+
+  // useEffect(() => {
+
+  // }, [reviewShownCount]);
 
   const [showButton, setButton] = useState(sortByRel2.length > 2);
   const [showReviews, setShowReviews] = useState(reviewList);
@@ -70,6 +76,7 @@ function ReviewBox(props) {
   const [filterList, setFilterList] = useState({});
 
   function renderOption(sorted) {
+    console.log("here?")
     if (sorted.length <= 2) {
       handleButton(false);
     } else {

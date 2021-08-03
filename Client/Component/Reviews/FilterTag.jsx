@@ -12,9 +12,8 @@ function FilterTag() {
 
   function handleRemoveFilters() {
     handleFilterToggle();
+
     renderList('relevant');
-    // console.log("removefilter : reviewList ", reviewList)
-    // console.log("removefilter : showReviews ", showReviews)
   }
 
   return (
