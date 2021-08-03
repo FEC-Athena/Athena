@@ -13,9 +13,6 @@ function ReviewList() {
     sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, renderList, newReviewBtn, handleNewReview, handleCloseModal
   } = useContext(ReviewsContext);
 
-  //console.log("reviewlist-sortByRel2: ", sortByRel2);
-  //console.log("reviewlist-showreviews: ", showReviews);
-
   function changeSort(e) {
     handleSortOption(e.target.value);
     renderList(e.target.value);

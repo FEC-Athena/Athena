@@ -73,7 +73,9 @@ const App = () => {
     setSortOption(sortOpt)
   );
 
-  const [sortByRel2, setSortRel] = useState([]);
+  const [sortByRel2, setSortRel2] = useState([]);
+  //this.state.rel2 = 2
+
 
   const [sortByHelpful, setSortHelpful] = useState([]);
   const [sortByNewest, setSortNewest] = useState([]);
@@ -121,11 +123,11 @@ const App = () => {
           sum += key * ratings[key];
           count += parseInt(ratings[key]);
         });
-        console.log("hello")
+        //console.log("hello")
         avgRating = Math.floor(sum / count / 0.25) * 0.25;
         setRating(avgRating);
-        console.log(avgRating);
-        console.log("star score:",currentRating);
+        //console.log(avgRating);
+        //console.log("star score:",currentRating);
 
         // Ran's personal setState method
         const char = resMeta.data.characteristics;
@@ -135,8 +137,10 @@ const App = () => {
         setLengthAvg(char.Length ? char.Length.value : 0);
         setQualityAvg(char.Quality ? char.Quality.value : 0);
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
-        setSortRel(resSortByRel.data.results);
-        console.log("app.js:", resSortByRel.data.results);
+
+        setSortRel2(resSortByRel.data.results);
+        //console.log("app.js:", resSortByRel.data.results);
+
       }))
       .catch((errors) => {
         console.log(errors);
@@ -193,6 +197,7 @@ const App = () => {
       sortOption,
       handleSortOption,
       sortByRel2,
+
     }}
     >
 

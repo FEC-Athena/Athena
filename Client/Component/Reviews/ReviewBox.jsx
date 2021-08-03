@@ -5,7 +5,7 @@ import sortData from './sampleData';
 import ReviewsContext from './reviews-context';
 import Context from '../context';
 
-function ReviewBox() {
+function ReviewBox(props) {
   const { sortByRel2, sortOption } = useContext(Context);
 
   //console.log("reviewBox:sortByRel2 ", sortByRel2);
@@ -19,34 +19,20 @@ function ReviewBox() {
   const handleReviewShownCount = (count) => (setReviewShownCount(count));
 
   const [reviewList, setReviewList] = useState(sortByRel2);
+
   const handleReviewList = (currList) => (setReviewList(currList));
-  //console.log("reviewBOX-reviewLIST: ", reviewList);
 
   useEffect(() => {
-
      setReviewList(sortByRel2);
-
-    //console.log("useEFFECT! ", reviewList);
-    //console.log('useEffect! ', showReviews);
-  }, []);
+  }, [sortByRel2]);
 
   useEffect(() => {
-    //console.log("useEffect: reviewList: ", reviewList);
     setShowReviews(reviewList);
   }, [reviewList]);
 
-  useEffect(()=>{
-    //console.log("useEffect: showReviews: ", showReviews);
-  }, [showReviews])
-
   const [showButton, setButton] = useState(sortByRel2.length > 2);
-  let temp = sortByRel2.slice(0, 2);
-  //console.log("temp: ", temp);
   const [showReviews, setShowReviews] = useState(reviewList);
 
-
-  //console.log("reviewbox, sortByRel2.slice: ", sortByRel2.slice(0, 2))
-  //console.log("reviewbosx: showreviews: ", showReviews)
   const handleButton = (boolean) => (
     setButton(boolean)
   );
