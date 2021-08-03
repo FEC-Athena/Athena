@@ -1,3 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Context from './context.js';
@@ -6,20 +9,57 @@ import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
 import access from './config.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const App = () => {
+  const config = {
+    headers: { Authorization: `${access.TOKEN}` },
+  };
+
   const [detail, setDetail] = useState(null);
-
   const [isLoading, setLoading] = useState(true);
-
   const [selectedStyle, setSelectedStyle] = useState(null);
-
   const [productStyles, setProductStyles] = useState(null);
-
   const [currentItem, setCurrent] = useState(17067);
-
   const [currentRating, setRating] = useState(null);
 
+  // ------------sheri---------------
+  const [relatedItems, setRelatedItems] = useState([]);
+  // const [relatedStyles, setRelatedStyles] = useState([]);
+
+  // Logan Func
+  const handleStyle = (target) => setSelectedStyle(target);
+  //
+  const handleCurrent = (target) => setCurrent(target);
+  // ---------- Sheri Func -----------
+  const handleProductById = async (id) => {
+    try {
+      const { data } = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, config);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleStyleById = async (id) => {
+    try {
+      const { data } = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`, config);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleRatingById = async (id) => {
+    try {
+      const { data } = await axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${id}`, config);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  //----------------------------------
   // Ran's provider data
   const [sizeAvg, setSizeAvg] = useState(0);
   const [widthAvg, setWidthAvg] = useState(0);
@@ -37,31 +77,13 @@ const App = () => {
   const [sortByHelpful, setSortHelpful] = useState([]);
   const [sortByNewest, setSortNewest] = useState([]);
 
-
-  // const { currentRev, serRev } = useContext(Context);
-  // useEffect(() => {
-  // axios
-  // },[currentRev])
-
-  const handleStyle = (target) => setSelectedStyle(target);
-
-  useEffect(() => {
-    const config = {
-      headers: { Authorization: `${access.TOKEN}` },
-    };
-    // console.log(access.TOKEN)
+  useEffect(async () => {
     const pro_gen = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
-
     const pro_sty = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
-
     const pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
-
     const pro_meta = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${currentItem}`;
-
     const sortRel = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-
     const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-
     const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
 
     const reqGen = axios.get(pro_gen, config);
@@ -110,28 +132,37 @@ const App = () => {
         setQualityAvg(char.Quality ? char.Quality.value : 0);
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
         setSortRel(resSortByRel.data.results);
-        //console.log("setState:", resSortByRel.data.results);
+        // console.log("setState:", resSortByRel.data.results);
       }))
       .catch((errors) => {
         console.log(errors);
       });
-  }, []);
 
-  // /*
-  //   axios.get(/related)
-  //     .then((list) => {
-  //       list.map((item) => {
-  //         axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${item}/)
-  //         axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${item}/styles)
-  //         axios.get(https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${item})
-  //       })
-  //     })
-  // */
-  // if (isLoading) {
-  //   return (
-  //     <div id="Home-error"> Homepage is loading.. </div>
-  //   )
-  // }
+    // --------------- sheri ---------------
+    const { data } = await axios.get(pro_related, config);
+    const dataArr = [];
+
+    for (const id of data) {
+      const product = await handleProductById(id);
+      const style = await handleStyleById(id);
+      const rating = await handleRatingById(id);
+      dataArr.push({ product, style, rating });
+    }
+    setRelatedItems(dataArr);
+
+    // const flattenData = dataArr.reduce((acc, newItem) => {
+    //   return [...acc, ...newItem.style.results.map(item => (
+    //     {...item, id: newItem.product_id}
+    //   ))]
+    // }, []);
+    // setRelatedStyles(flattenData);
+  }, [currentItem]);
+
+  if (isLoading) {
+    return (
+      <div id="Home-error"> Homepage is loading.. </div>
+    );
+  }
 
   return (
     <Context.Provider value={{
@@ -146,7 +177,8 @@ const App = () => {
       setRating,
       currentItem,
       setCurrent,
-
+      relatedItems,
+      handleCurrent,
       // Ran's personal provider data
       sizeAvg,
       widthAvg,
@@ -156,10 +188,11 @@ const App = () => {
       fitAvg,
       sortOption,
       handleSortOption,
-      sortByRel,
+      sortByRel2,
     }}
     >
-      <div className="app">
+
+      <div>
         <Overview />
         <RelatedItems />
         <ReviewBox />
