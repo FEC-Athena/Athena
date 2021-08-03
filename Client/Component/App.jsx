@@ -3,7 +3,7 @@
 /* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Context from './context.js';
+import Context from './context';
 import ReviewBox from './Reviews/ReviewBox.jsx';
 import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
@@ -22,7 +22,7 @@ const App = () => {
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [productStyles, setProductStyles] = useState(null);
   const [currentItem, setCurrent] = useState(17067);
-  const [currentRating, setRating] = useState(null);
+  const [currentRating, setRating] = useState(0);
 
   // ------------sheri---------------
   const [relatedItems, setRelatedItems] = useState([]);
@@ -73,7 +73,8 @@ const App = () => {
     setSortOption(sortOpt)
   );
 
-  const [sortByRel, setSortRel] = useState([]);
+  const [sortByRel2, setSortRel] = useState([]);
+
   const [sortByHelpful, setSortHelpful] = useState([]);
   const [sortByNewest, setSortNewest] = useState([]);
 
@@ -120,8 +121,11 @@ const App = () => {
           sum += key * ratings[key];
           count += parseInt(ratings[key]);
         });
+        console.log("hello")
         avgRating = Math.floor(sum / count / 0.25) * 0.25;
         setRating(avgRating);
+        console.log(avgRating);
+        console.log("star score:",currentRating);
 
         // Ran's personal setState method
         const char = resMeta.data.characteristics;
@@ -132,7 +136,7 @@ const App = () => {
         setQualityAvg(char.Quality ? char.Quality.value : 0);
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
         setSortRel(resSortByRel.data.results);
-        // console.log("setState:", resSortByRel.data.results);
+        console.log("app.js:", resSortByRel.data.results);
       }))
       .catch((errors) => {
         console.log(errors);

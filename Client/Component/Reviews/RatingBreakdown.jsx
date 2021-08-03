@@ -1,36 +1,42 @@
 import React, { useState, useContext } from 'react';
 import ProgressBar from './ProgressBar.jsx';
 import ReviewsContext from './reviews-context';
+import Context from '../context';
 
 function RatingBreakdown() {
   let fiveStar = 0, fourStar = 0, threeStar = 0, twoStar = 0, oneStar = 0;
   const { sortByRel, handleStarFilter } = useContext(ReviewsContext);
+  const { sortByRel2 } = useContext(Context);
+  //console.log("ratingbr: ", sortByRel2)
   const fiveStarList = []; const fourStarList = []; const threeStarList = []; const twoStarList = []; const oneStarList = [];
 
 
-  for (let i = 0; i < sortByRel.length; i++) {
-    if (sortByRel[i].rating === 5) {
+  for (let i = 0; i < sortByRel2.length; i++) {
+    if (sortByRel2[i].rating === 5) {
       fiveStar++;
-      fiveStarList.push(sortByRel[i]);
-    } else if (sortByRel[i].rating >= 4) {
+      fiveStarList.push(sortByRel2[i]);
+    } else if (sortByRel2[i].rating >= 4) {
       fourStar++;
-      fourStarList.push(sortByRel[i]);
-    } else if (sortByRel[i].rating >= 3) {
+      fourStarList.push(sortByRel2[i]);
+    } else if (sortByRel2[i].rating >= 3) {
       threeStar++;
-      threeStarList.push(sortByRel[i]);
-    } else if (sortByRel[i].rating >= 2) {
+      threeStarList.push(sortByRel2[i]);
+    } else if (sortByRel2[i].rating >= 2) {
       twoStar++;
-      twoStarList.push(sortByRel[i]);
+      twoStarList.push(sortByRel2[i]);
     } else {
       oneStar++;
-      oneStarList.push(sortByRel[i]);
+      oneStarList.push(sortByRel2[i]);
     }
   }
-  const fiveBar = fiveStar / sortByRel.length;
-  const fourBar = fourStar / sortByRel.length;
-  const threeBar = threeStar / sortByRel.length;
-  const twoBar = twoStar / sortByRel.length;
-  const oneBar = oneStar / sortByRel.length;
+
+  const length = sortByRel2.length;
+  const fiveBar = (length === 0 ? 0 : fiveStar / length);
+  const fourBar = (length === 0 ? 0 : fourStar / length);
+  const threeBar = (length === 0 ? 0 : threeStar / length);
+  const twoBar = (length === 0 ? 0 : twoStar / length);
+  const oneBar = (length === 0 ? 0 : oneStar / length);
+
 
   return (
     <div>

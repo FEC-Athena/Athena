@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 import ReviewSummary from './ReviewSummary.jsx';
 import sortData from './sampleData';
@@ -6,23 +6,47 @@ import ReviewsContext from './reviews-context';
 import Context from '../context';
 
 function ReviewBox() {
-  const { sortByRel, sortOption } = useContext(Context);
+  const { sortByRel2, sortOption } = useContext(Context);
 
-  console.log("reviewBox:sortByRel ", sortByRel);
-  let { sortByHelpful, sortByNewest } = sortData.sortData;
-  //console.log("reviewBox:sortByRel ", sortByRel);
-  //sortByRel = sortByRel.results;
+  //console.log("reviewBox:sortByRel2 ", sortByRel2);
+  let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
+
+  sortByRel = sortByRel.results;
   sortByHelpful = sortByHelpful.results;
   sortByNewest = sortByNewest.results;
 
   const [reviewShownCount, setReviewShownCount] = useState(2);
   const handleReviewShownCount = (count) => (setReviewShownCount(count));
 
-  const [reviewList, setReviewList] = useState(sortByRel);
+  const [reviewList, setReviewList] = useState(sortByRel2);
   const handleReviewList = (currList) => (setReviewList(currList));
+  //console.log("reviewBOX-reviewLIST: ", reviewList);
 
-  const [showButton, setButton] = useState(sortByRel.length > 2);
-  const [showReviews, setShowReviews] = useState(sortByRel.slice(0, 2));
+  useEffect(() => {
+
+     setReviewList(sortByRel2);
+
+    //console.log("useEFFECT! ", reviewList);
+    //console.log('useEffect! ', showReviews);
+  }, []);
+
+  useEffect(() => {
+    //console.log("useEffect: reviewList: ", reviewList);
+    setShowReviews(reviewList);
+  }, [reviewList]);
+
+  useEffect(()=>{
+    //console.log("useEffect: showReviews: ", showReviews);
+  }, [showReviews])
+
+  const [showButton, setButton] = useState(sortByRel2.length > 2);
+  let temp = sortByRel2.slice(0, 2);
+  //console.log("temp: ", temp);
+  const [showReviews, setShowReviews] = useState(reviewList);
+
+
+  //console.log("reviewbox, sortByRel2.slice: ", sortByRel2.slice(0, 2))
+  //console.log("reviewbosx: showreviews: ", showReviews)
   const handleButton = (boolean) => (
     setButton(boolean)
   );
@@ -72,7 +96,7 @@ function ReviewBox() {
 
   function renderList(sortOpt) {
     if (sortOpt === 'relevant') {
-      renderOption(sortByRel);
+      renderOption(sortByRel2);
     } else if (sortOpt === 'helpful') {
       renderOption(sortByHelpful);
     } else if (sortOpt === 'newest') {

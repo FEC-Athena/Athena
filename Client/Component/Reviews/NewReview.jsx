@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import ReviewsContext from './reviews-context';
+import Context from '../context';
+import access from '../config.js';
 
 const NewReview = (props) => {
   const { rating, handleCloseModal } = useContext(ReviewsContext);
+  const { currentItem } = useContext(Context);
+
   const handleSubmitRev = (event) => {
     event.preventDefault();
     let alertStr = '';
@@ -46,10 +50,50 @@ const NewReview = (props) => {
 
     if (alertStr.length > 0) {
       alert(alertStr);
-    } else {
-      handleCloseModal();
     }
 
+
+    // const radioRec = document.querySelector('input[name="genderS"]:checked').value;
+    //console.log("radioRec: ", radioRec);
+    // const radio = (name) => {
+    //   const radios = document.getElementsByName(name);
+
+    //   for (var i = 0; i < radios.length; i++) {
+    //     if (radios[i].checked) {
+    //       return radios[i].value
+    //     }
+    // }
+    // }
+
+    const newRev = {
+      'product_id': currentItem,
+      'rating': rating,
+      'summary': document.getElementById('headline').value,
+      'body': document.getElementById('review-body').value,
+      'recommend': true,
+      'name': 'name',
+      'email': 'email',
+      'photos': 'photos',
+      'characterstics': {
+        "57222": 4,
+        "57223": 5,
+        "57224": 3,
+        "57225": 5
+      }
+    }
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', newRev, {
+      headers: {'Authorization': `${access.TOKEN}`}
+    })
+      .then((success) => {
+        const res = [
+          {
+            
+          }
+        ]
+      })
+    .then(
+      handleCloseModal
+    )
 
   }
 
@@ -61,11 +105,11 @@ const NewReview = (props) => {
         <div className="overall-rating" style={{color: 'red', marginTop: 20}}>Your overall rating of this product</div>
 
         <div><StarRating /></div>
-        <div style={{marginTop:10}} className="recommend-choice" >Do you recommend this product?</div>
+        <div id="recommend" style={{marginTop:10}} className="recommend-choice" name="recommend">Do you recommend this product?</div>
         <form>
-          <input type="radio" name="choice" id="recYes"/>
+          <input type="radio" name="choice" id="recYes" value='true'/>
           <label>Yes</label>
-          <input type="radio" name="choice" id="recNo"/>
+          <input type="radio" name="choice" id="recNo" value='false'/>
           <label>No</label><br></br>
         </form>
 
@@ -230,7 +274,7 @@ const NewReview = (props) => {
 
         <div>
           <label className="review-sum" style={{fontWeight: 'bold'}}>Headline</label><br></br>
-          <textarea maxLength="60" placeholder="Example: Best purchase ever!" style={{height: 30, width: 715}}></textarea>
+          <textarea id="headline" maxLength="60" placeholder="Example: Best purchase ever!" style={{height: 30, width: 715}}></textarea>
         </div>
 
         <div>
