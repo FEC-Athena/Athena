@@ -7,7 +7,7 @@ import QnA from './QnA/QnA.jsx';
 import access from './config.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 
-const App = (props) => {
+const App = () => {
   const [detail, setDetail] = useState(null);
 
   const [isLoading, setLoading] = useState(true);
@@ -33,9 +33,9 @@ const App = (props) => {
     setSortOption(sortOpt)
   );
 
-  const [sortByRel2, setSortRel] = useState({'789': 67});
-  const [sortByHelpful, setSortHelpful] = useState({});
-  const [sortByNewest, setSortNewest] = useState({});
+  const [sortByRel, setSortRel] = useState([]);
+  const [sortByHelpful, setSortHelpful] = useState([]);
+  const [sortByNewest, setSortNewest] = useState([]);
 
 
   // const { currentRev, serRev } = useContext(Context);
@@ -156,7 +156,7 @@ const App = (props) => {
       fitAvg,
       sortOption,
       handleSortOption,
-      sortByRel2,
+      sortByRel,
     }}
     >
       <div className="app">

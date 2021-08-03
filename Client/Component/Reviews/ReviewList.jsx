@@ -10,7 +10,7 @@ import Context from '../context';
 function ReviewList() {
   const { handleSortOption } = useContext(Context);
   const {
-    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, renderList, newReviewBtn, handleNewReview, handleCloseModal
+    sortByRel2, sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, renderList, newReviewBtn, handleNewReview, handleCloseModal
   } = useContext(ReviewsContext);
 
   function changeSort(e) {

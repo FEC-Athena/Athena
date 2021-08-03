@@ -6,14 +6,12 @@ import ReviewsContext from './reviews-context';
 import Context from '../context';
 
 function ReviewBox() {
+  const { sortByRel, sortOption } = useContext(Context);
 
-  const {sortByRel2, sortOption} = useContext(Context);
-
-
-  //console.log("reviewBox:sortByRel2 ", sortByRel2);
-  let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
+  console.log("reviewBox:sortByRel ", sortByRel);
+  let { sortByHelpful, sortByNewest } = sortData.sortData;
   //console.log("reviewBox:sortByRel ", sortByRel);
-  sortByRel = sortByRel.results;
+  //sortByRel = sortByRel.results;
   sortByHelpful = sortByHelpful.results;
   sortByNewest = sortByNewest.results;
 
@@ -88,7 +86,6 @@ function ReviewBox() {
     toggleTemp[starCount] = !toggleTemp[starCount];
     setToggle(toggleTemp);
     if (toggleTemp[starCount]) {
-
       filterList[starCount] = starCountList;
       setFilterList(filterList);
       setReviewList(Object.values(filterList).flat());

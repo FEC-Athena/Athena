@@ -1,13 +1,12 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import ReviewsContext from './reviews-context';
 
 const NewReview = (props) => {
-
-  const {rating, handleCloseModal} = useContext(ReviewsContext);
+  const { rating, handleCloseModal } = useContext(ReviewsContext);
   const handleSubmitRev = (event) => {
     event.preventDefault();
-    var alertStr = '';
+    let alertStr = '';
 
     if (rating === 0) {
       alertStr += 'Rating star required!\n';
@@ -31,12 +30,12 @@ const NewReview = (props) => {
     if (!document.getElementById('fit1').checked && !document.getElementById('fit2').checked && !document.getElementById('fit3').checked && !document.getElementById('fit4').checked && !document.getElementById('fit5').checked) {
       alertStr += 'Fit field is required!\n';
     }
-    var reviewLen = document.getElementById("review-body").value.length;
+    const reviewLen = document.getElementById('review-body').value.length;
     if (reviewLen < 50) {
-      alertStr += `Characters left for review: ${50-reviewLen}` + '\n';
+      alertStr += `Characters left for review: ${50 - reviewLen}` + '\n';
     }
 
-    if (!document.getElementById("nickname").value.length === 0) {
+    if (!document.getElementById('nickname').value.length === 0) {
       alertStr += 'nickname field is required!\n';
     }
 
@@ -70,11 +69,11 @@ const NewReview = (props) => {
           <label>No</label><br></br>
         </form>
 
-        <div className="char-container" style={{marginTop: 20, marginBottom: 10, fontWeight: 400}}>Characteristics</div>
+        <div className="char-container" style={{ marginTop: 20, marginBottom: 10, fontWeight: 400 }}>Characteristics</div>
         <div className="character">
           <div className="pl-holder"></div>
             <form>
-              <div style={{fontWeight: 'bold'}}>
+              <div style={{ fontWeight: 'bold' }}>
                 <div className="radio-box"><label>Scores</label></div>
                 <div className="radio-box"><label>1</label></div>
                 <div className="radio-box"><label>2</label></div>
@@ -239,6 +238,9 @@ const NewReview = (props) => {
           <textarea  id="review-body" maxLength="1000" placeholder="Why did you like the product or not?" style={{height: 100, width: 715}}></textarea>
         </div>
 
+        <label><i className="fas fa-camera">{' '}Add your photos</i></label>
+        <input type="file" name="image-upload" id="select-photo" accept=".jpg, .jpeg, .png"
+        />
         <button style={{width: 200, height: 40, fontSize: 15}}>
         <i className="fas fa-camera">{' '}Add your photos</i>
         </button><br></br><br></br>
