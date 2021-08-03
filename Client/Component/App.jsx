@@ -1,6 +1,3 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Context from './context.js';
@@ -26,7 +23,6 @@ const App = () => {
 
   // ------------sheri---------------
   const [relatedItems, setRelatedItems] = useState([]);
-  // const [relatedStyles, setRelatedStyles] = useState([]);
 
   // Logan Func
   const handleStyle = (target) => setSelectedStyle(target);
@@ -132,7 +128,6 @@ const App = () => {
         setQualityAvg(char.Quality ? char.Quality.value : 0);
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
         setSortRel(resSortByRel.data.results);
-        //console.log("setState:", resSortByRel.data.results);
       }))
       .catch((errors) => {
         console.log(errors);
