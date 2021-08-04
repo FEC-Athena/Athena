@@ -14,7 +14,7 @@ function ReviewList() {
   } = useContext(ReviewsContext);
 
   function changeSort(e) {
-    console.log("changeSort: ", e.target.value);
+    //console.log("changeSort: ", e.target.value);
     handleSortOption(e.target.value);
     renderList(e.target.value);
   }

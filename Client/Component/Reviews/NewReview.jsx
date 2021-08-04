@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import ReviewsContext from './reviews-context';
 import Context from '../context';
-import access from '../config.js';
+import access from '../config';
 import axios from 'axios';
 
 const NewReview = (props) => {
-  const { rating, handleCloseModal } = useContext(ReviewsContext);
-  const { currentItem } = useContext(Context);
+  const { rating, handleCloseModal, renderList } = useContext(ReviewsContext);
+  const { currentItem, sortByRel2 } = useContext(Context);
 
   const handleSubmitRev = (event) => {
     event.preventDefault();
@@ -49,9 +49,11 @@ const NewReview = (props) => {
       alertStr += 'Invalid email format!';
     }
 
-    if (alertStr.length > 0) {
-      alert(alertStr);
-    }
+    // if (alertStr.length > 0) {
+    //   alert(alertStr);
+    // } else {
+    //   handleCloseModal;
+    // }
 
 
     // const radioRec = document.querySelector('input[name="genderS"]:checked').value;
@@ -66,37 +68,53 @@ const NewReview = (props) => {
     // }
     // }
 
-    const newRev = {
-      'product_id': currentItem,
-      'rating': rating,
-      'summary': document.getElementById('headline').value,
-      'body': document.getElementById('review-body').value,
-      'recommend': true,
-      'name': 'name',
-      'email': 'email',
-      'photos': 'photos',
-      'characterstics': {
-        "57222": 4,
-        "57223": 5,
-        "57224": 3,
-        "57225": 5
+    const postmanPost = {
+      "product_id": 17067,
+      "rating": 5,
+      "summary": "JUST LOVE IT",
+      "body": "hey what are you waiting for",
+      "recommend": true,
+      "name": "nickname",
+      "email": "sdjfelewf@gmail.com",
+      "photos": [],
+      "characteristics": {
+          "57222": 4,
+          "57223": 5,
+          "57224": 3,
+          "57225": 5
       }
     }
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', newRev, {
-      headers: { Authorization: `${access.TOKEN}` }
+
+
+    axios.post("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews", postmanPost, {
+      headers: { 'Authorization': `${access.TOKEN}` }
     })
-      .then((res) => {
-        console.log(res.data);
-        // const res = [
-        //   {
-        //     'review_id': 666666,
-        //     'rating':
-        //   }
-        // ]
+      .then((response) => {
+        //console.log("OMG");
+        //console.log("hello ",response);
+        const newRev =
+          {
+            'product_id': 17067,
+            'rating': rating,
+            'summary': 'LOVE IT',
+            'body': 'HAPPY',
+            'recommend': true,
+            'name': 'pineapple',
+            'email': 'pineapple@email',
+            'photos': 'photos',
+            'characterstics': {
+              "57222": 4,
+              "57223": 5,
+              "57224": 3,
+              "57225": 5
+            }
+          }
+        sortByRel2.unshift(newRev)
+        renderList('relevant');
       })
-    .then(
-      handleCloseModal
-    )
+      .catch((err) => {
+      console.log(err);
+    })
 
   }
 

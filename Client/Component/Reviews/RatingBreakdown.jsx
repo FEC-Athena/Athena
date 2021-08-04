@@ -30,7 +30,7 @@ function RatingBreakdown() {
     }
   }
 
-  console.log("RatingBreakdown: fourStarList:", fourStarList);
+  //console.log("RatingBreakdown: fourStarList:", fourStarList);
   const length = sortByRel2.length;
   const fiveBar = (length === 0 ? 0 : fiveStar / length);
   const fourBar = (length === 0 ? 0 : fourStar / length);

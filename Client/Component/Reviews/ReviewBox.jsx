@@ -71,7 +71,7 @@ function ReviewBox(props) {
   };
 
   function renderOption(sorted) {
-    console.log("here?")
+    //console.log("here?")
     if (sorted.length <= 2) {
       handleButton(false);
     } else {
@@ -106,7 +106,7 @@ function ReviewBox(props) {
       //      3: []
       //   }
       filterList[starCount] = starCountList;
-      console.log("ReviewSummary: startCount:", starCount, "startCountList:", starCountList, " filterList:", filterList);
+      //console.log("ReviewSummary: startCount:", starCount, "startCountList:", starCountList, " filterList:", filterList);
       setFilterList(filterList);
       setReviewList(Object.values(filterList).flat());
     } else {
