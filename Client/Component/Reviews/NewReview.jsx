@@ -3,6 +3,7 @@ import StarRating from './StarRating.jsx';
 import ReviewsContext from './reviews-context';
 import Context from '../context';
 import access from '../config.js';
+import axios from 'axios';
 
 const NewReview = (props) => {
   const { rating, handleCloseModal } = useContext(ReviewsContext);
@@ -82,14 +83,16 @@ const NewReview = (props) => {
       }
     }
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews', newRev, {
-      headers: {'Authorization': `${access.TOKEN}`}
+      headers: { Authorization: `${access.TOKEN}` }
     })
-      .then((success) => {
-        const res = [
-          {
-            
-          }
-        ]
+      .then((res) => {
+        console.log(res.data);
+        // const res = [
+        //   {
+        //     'review_id': 666666,
+        //     'rating':
+        //   }
+        // ]
       })
     .then(
       handleCloseModal

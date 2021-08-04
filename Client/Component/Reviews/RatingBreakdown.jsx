@@ -8,7 +8,7 @@ function RatingBreakdown() {
   const { sortByRel, handleStarFilter } = useContext(ReviewsContext);
   const { sortByRel2 } = useContext(Context);
   //console.log("ratingbr: ", sortByRel2)
-  const fiveStarList = []; const fourStarList = []; const threeStarList = []; const twoStarList = []; const oneStarList = [];
+  let fiveStarList = []; let fourStarList = []; let threeStarList = []; let twoStarList = []; let oneStarList = [];
 
 
   for (let i = 0; i < sortByRel2.length; i++) {
@@ -30,6 +30,7 @@ function RatingBreakdown() {
     }
   }
 
+  console.log("RatingBreakdown: fourStarList:", fourStarList);
   const length = sortByRel2.length;
   const fiveBar = (length === 0 ? 0 : fiveStar / length);
   const fourBar = (length === 0 ? 0 : fourStar / length);

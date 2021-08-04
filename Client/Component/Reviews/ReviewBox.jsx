@@ -8,12 +8,6 @@ import Context from '../context';
 function ReviewBox(props) {
   const { sortByRel2, sortByHelpful, sortByNewest, sortOption, handleSortOption } = useContext(Context);
 
-  // let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
-
-  // sortByRel = sortByRel.results;
-  // sortByHelpful = sortByHelpful.results;
-  // sortByNewest = sortByNewest.results;
-
   const [reviewShownCount, setReviewShownCount] = useState(2);
   const handleReviewShownCount = (count) => (setReviewShownCount(count));
 
@@ -21,9 +15,12 @@ function ReviewBox(props) {
 
   const handleReviewList = (currList) => (setReviewList(currList));
 
+  // default page: sort option is 'relevant'
   useEffect(() => {
-     //setReviewList(sortByRel2);
+    //setReviewList(sortByRel2);
+    clearFilterToggle();
     renderList('relevant');
+    handleSortOption('relevant');
   }, [sortByRel2]);
 
   useEffect(() => {
@@ -57,25 +54,21 @@ function ReviewBox(props) {
     }
   };
 
-  const [filterToggle, setToggle] = useState({
+  const toggleDefault = {
     1: false,
     2: false,
     3: false,
     4: false,
     5: false,
-  });
-
-  const handleFilterToggle = () => {
-    setToggle({
-      1: false,
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-    });
-  };
+  }
+  const [filterToggle, setToggle] = useState(toggleDefault);
 
   const [filterList, setFilterList] = useState({});
+
+  const clearFilterToggle = () => {
+    setToggle(toggleDefault);
+    setFilterList({});
+  };
 
   function renderOption(sorted) {
     console.log("here?")
@@ -113,6 +106,7 @@ function ReviewBox(props) {
       //      3: []
       //   }
       filterList[starCount] = starCountList;
+      console.log("ReviewSummary: startCount:", starCount, "startCountList:", starCountList, " filterList:", filterList);
       setFilterList(filterList);
       setReviewList(Object.values(filterList).flat());
     } else {
@@ -134,6 +128,7 @@ function ReviewBox(props) {
 
   const handleStarFilter = (starCountList, starCount) => {
     handleToggle(filterToggle, starCountList, starCount);
+    handleSortOption('relevant');
   };
 
   const [rating, setRating] = useState(0);
@@ -153,7 +148,7 @@ function ReviewBox(props) {
   return (
     <>
       <ReviewsContext.Provider value={{
-         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,filterToggle, handleFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
+         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,filterToggle, clearFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
       }}
       >
         <div className="reviews">

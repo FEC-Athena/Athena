@@ -137,9 +137,6 @@ const App = () => {
         setSortRel2(resSortByRel.data.results);
         setSortHelpful(resSortByNewest.data.results);
         setSortNewest(resSortByHelpful.data.results);
-        // console.log(resSortByNewest.data.results)
-        // console.log(resSortByHelpful.data.results)
-
       }))
       .catch((errors) => {
         console.log(errors);
