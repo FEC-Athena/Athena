@@ -11,10 +11,13 @@ const Style = props => {
   } else {
     return (
       <div className="all-style">
-        {productStyles.map((product) => {
+        {productStyles.map((product, index) => {
           const url = product.photos[0].thumbnail_url;
           return (
-            <img key={product.style_id} src={url} className={`styleSelector ${product.style_id === selectedStyle.style_id ? 'active' : ''}`} onClick={() => handleStyle(product)}></img>
+            <span key={index} className="iconholder">
+              <img key={product.style_id} src={url} className={`styleSelector ${product.style_id === selectedStyle.style_id ? 'active' : ''}`} onClick={() => handleStyle(product)}></img>
+              <i className={`far fa-check-circle ${product.style_id === selectedStyle.style_id ? '' : 'hidden'}`}></i>
+            </span>
           )
         })}
       </div >
