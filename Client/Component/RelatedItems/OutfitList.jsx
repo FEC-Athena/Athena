@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import OutfitCard from './OutfitCard.jsx';
 import Context from './related-context.js';
 import AppContext from '../context.js';
@@ -13,7 +13,7 @@ const OutfitList = (props) => {
     let temp = [];
     let tempId = [];
     let newObj = { product: detail, style: productStyles, rating: currentRating };
-    if (idArr.indexOf(currentItem) === -1) {
+    if (idArr.indexOf(currentItem) < 0) {
       temp.push(newObj);
       tempId.push(currentItem);
       setOutfitArr(outfitArr.concat(temp));
@@ -22,10 +22,16 @@ const OutfitList = (props) => {
   };
 
   // ------ removing item from outfit list ----------
-  const handleRemoveOutfit = () => {
-    setOutfitArr(outfitArr.slice(0, -1));
-    setIdArr(idArr.slice(0, -1));
-  }
+  const handleRemoveOutfit = (selectedId) => {
+    for (var i = 0; i < outfitArr.length; i++) {
+      if (outfitArr[i].product.id === selectedId ) {
+        setOutfitArr(outfitArr.slice(0, i).concat(outfitArr.slice(i + 1)));
+      }
+    }
+    var index = idArr.indexOf(selectedId);
+    setIdArr(idArr.slice(0, index).concat(idArr.slice(index + 1)));
+  };
+
 
   // ------- scrolling arrows function ---------
   const ourfitRef = useRef(null);
