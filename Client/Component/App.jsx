@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Context from './context.js';
+import Context from './context';
 import ReviewBox from './Reviews/ReviewBox.jsx';
 import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
 import access from './config.js';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const App = () => {
   const config = {
@@ -21,7 +21,7 @@ const App = () => {
   // all the styles of the current item
   const [productStyles, setProductStyles] = useState(null);
   const [currentItem, setCurrent] = useState(17067);
-  const [currentRating, setRating] = useState(null);
+  const [currentRating, setRating] = useState(0);
 
   // ------------sheri---------------
   const [relatedItems, setRelatedItems] = useState([]);
@@ -71,9 +71,9 @@ const App = () => {
     setSortOption(sortOpt)
   );
 
-  const [sortByRel2, setSortRel] = useState({'789': 67});
-  const [sortByHelpful, setSortHelpful] = useState({});
-  const [sortByNewest, setSortNewest] = useState({});
+  const [sortByRel2, setSortRel2] = useState([]);
+  const [sortByHelpful, setSortHelpful] = useState([]);
+  const [sortByNewest, setSortNewest] = useState([]);
 
   useEffect(async () => {
     const pro_gen = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}`;
@@ -81,8 +81,8 @@ const App = () => {
     const pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
     const pro_meta = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${currentItem}`;
     const sortRel = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-    const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-    const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
+    const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=helpful`;
+    const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=newest`;
 
     const reqGen = axios.get(pro_gen, config);
     const reqSty = axios.get(pro_sty, config);
@@ -114,8 +114,8 @@ const App = () => {
         const resRel = responses[2];
         const resMeta = responses[3];
         const resSortByRel = responses[4];
-        const reqSortByNewest = responses[5];
-        const reqSortByHelpful = responses[6];
+        const resSortByNewest = responses[5];
+        const resSortByHelpful = responses[6];
 
         setDetail(resGen.data);
         setLoading(false);
@@ -133,7 +133,10 @@ const App = () => {
         setLengthAvg(char.Length ? char.Length.value : 0);
         setQualityAvg(char.Quality ? char.Quality.value : 0);
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
-        setSortRel(resSortByRel.data.results);
+
+        setSortRel2(resSortByRel.data.results);
+        setSortHelpful(resSortByNewest.data.results);
+        setSortNewest(resSortByHelpful.data.results);
       }))
       .catch((errors) => {
         console.log(errors);
@@ -143,7 +146,7 @@ const App = () => {
     const { data } = await axios.get(pro_related, config);
     const dataArr = [];
 
-    for (let id of data) {
+    for (const id of data) {
       const product = await handleProductById(id);
       const style = await handleStyleById(id);
       const resRating = await handleRatingById(id);
@@ -153,14 +156,12 @@ const App = () => {
     }
     setRelatedItems(dataArr);
 
-
     // const flattenData = dataArr.reduce((acc, newItem) => {
     //   return [...acc, ...newItem.style.results.map(item => (
     //     {...item, id: newItem.product_id}
     //   ))]
     // }, []);
     // setRelatedStyles(flattenData);
-
   }, [currentItem]);
 
 
@@ -183,19 +184,23 @@ const App = () => {
       currentRating,
       setRating,
       currentItem,
+      setCurrent,
       relatedItems,
       handleCurrent,
-       // Ran's personal provider data
-       sizeAvg,
-       widthAvg,
-       comfortAvg,
-       qualityAvg,
-       lengthAvg,
-       fitAvg,
-       sortOption,
-       handleSortOption,
-       sortByRel2
-    }}>
+      // Ran's personal provider data
+      sizeAvg,
+      widthAvg,
+      comfortAvg,
+      qualityAvg,
+      lengthAvg,
+      fitAvg,
+      sortOption,
+      handleSortOption,
+      sortByRel2,
+      sortByNewest,
+      sortByHelpful
+    }}
+    >
 
       <div>
         <Overview />

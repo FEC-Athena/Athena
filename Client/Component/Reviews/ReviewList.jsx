@@ -8,12 +8,13 @@ import NewReview from './NewReview.jsx';
 import Context from '../context';
 
 function ReviewList() {
-  const { handleSortOption } = useContext(Context);
+  const { sortByRel2, handleSortOption } = useContext(Context);
   const {
     sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, renderList, newReviewBtn, handleNewReview, handleCloseModal
   } = useContext(ReviewsContext);
 
   function changeSort(e) {
+    //console.log("changeSort: ", e.target.value);
     handleSortOption(e.target.value);
     renderList(e.target.value);
   }
@@ -29,7 +30,7 @@ function ReviewList() {
 
   return (
     <div className="reviews-fixedH-container">
-      <div><Sort data={sortByRel} changeSort={changeSort} /></div>
+      <div><Sort data={sortByRel2} changeSort={changeSort} /></div>
 
       <div className="all-reviews">
         {showReviews.map((review) => (
