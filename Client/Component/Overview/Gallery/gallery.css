@@ -16,7 +16,31 @@
 
 .carousel1__track-container {
   height: 100%;
-  /* position: relative; */
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+.largesc {
+  width: 185%;
+  z-index: 100;
+}
+
+.full-btn {
+  position: absolute;
+  background: transparent;
+  z-index: 150;
+  right: 15px;
+  top: 15px;
+  font-size: 20px;
+}
+
+.full-btn:hover {
+  background: grey;
+}
+
+.large-btn {
+  right: -485px;
 }
 
 .carousel1__button {
@@ -25,6 +49,7 @@
   transform: translateY(-50%);
   border-style: hidden;
   background: transparent;
+  z-index: 150;
 }
 
 .carousel1__button i {
@@ -42,8 +67,14 @@
 .carousel1__button--right {
   right: 5px;
 }
+
+.largescArr {
+  right: -500px;
+}
+
 .left{
   position: absolute;
+  z-index: 20;
   left: 10px;
   top: 10px;
   display: flex;
