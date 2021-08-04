@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Context from '../../context.js';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
+import Star from '../../Reviews/Star.jsx';
 import './info.css';
 
 
@@ -9,7 +10,7 @@ const Info = props => {
   // console.log(this.props.info)
   // const { category } = props.info;
   // const { productStyles, className } = props;
-  const { detail, selectedStyle, productStyles } = useContext(Context);
+  const { detail, selectedStyle, productStyles, currentRating, sortByRel2 } = useContext(Context);
 
   const renderPrice = () => {
     if (selectedStyle.sale_price) {
@@ -32,6 +33,9 @@ const Info = props => {
         <h1>
           <span className="product-name"> {detail.name} </span>
         </h1>
+        <span>
+          <Star rating={currentRating} /> {sortByRel2.length} reviews
+        </span>
         <div className="product-category"> {detail.category} </div>
         <i className="fas fa-tshirt"></i> <span className="current-style">Style: {selectedStyle.name}</span>
         <h1>

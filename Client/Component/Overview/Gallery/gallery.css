@@ -81,7 +81,7 @@
   flex-direction: column;
   padding: 5px 0 5px;
   margin-bottom: 5px;
-  overflow: visible;
+
 }
 
 .left img {
@@ -91,9 +91,10 @@
 .thumbNail {
   width: 40px;
   height: 40px;
-  padding: 1px;
+  padding: 1px 1px 1px 1px;
   border-style: groove;
   border-radius: 5px;
+  margin: 1px;
 }
 
 

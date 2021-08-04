@@ -5,6 +5,7 @@ import ReviewsContext from './reviews-context';
 function Sort(props) {
   const { sortOption } = useContext(Context);
   const { reviewList } = useContext(ReviewsContext);
+
   return (
     <div className="sort">{reviewList.length} reviews, sorted by
       <select className="sort-options" onChange={(e)=>props.changeSort(e)} value={sortOption}>
