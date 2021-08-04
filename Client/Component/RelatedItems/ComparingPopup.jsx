@@ -7,9 +7,17 @@ const ComparingPopup = (props) => {
   const { handleClosePopup, closeRef } = useContext(Context);
   handleClosePopup(closeRef);
 
-  const relatedChar = props.currentProd.features;
+  // ----- get features for each product -----
   const currentChar = detail.features;
+  const relatedChar = props.currentProd.features;
+  let currentFeatures = currentChar.map((each) => {
+    return each.feature;
+  });
+  let relatedFeatures = relatedChar.map((each) => {
+    return each.feature;
+  });
 
+  // ------ get common features --------
   let featureArr = [];
   for (let char of currentChar) {
     featureArr.push(char.feature);
@@ -20,10 +28,9 @@ const ComparingPopup = (props) => {
     }
   }
 
-  // console.log(currentChar);
-
   return (props.trigger) ? (
     <div className="popup" ref={closeRef}>
+      {/* {console.log(featureArr)} */}
       <div style={{ fontSize: 12 }}>COMPARING</div>
       <p className="product-short-name">
         <span style={{ float: 'left', marginLeft: 10 }}>current product</span>
@@ -34,19 +41,13 @@ const ComparingPopup = (props) => {
         <tbody>
           {featureArr.map((current, index) => (
             <tr key={index}>
-             <td className="leftCheckmark">{<i className="fas fa-check"></i>}</td>
+             <td className="leftCheckmark">{currentFeatures.includes(current) ? <i className="fas fa-check"></i> : ''}</td>
               <td>{current}</td>
-              <td className="rightCheckmark">{<i className="fas fa-check"></i>}</td>
+              <td className="rightCheckmark">{relatedFeatures.includes(current) ? <i className="fas fa-check"></i> : ''}</td>
             </tr>
           ))}
-          {/* <tr>
-            <td>checkmark</td>
-            <td>value/features</td>
-            <td>checkmark</td>
-          </tr> */}
         </tbody>
       </table>
-
     </div>
   ) : '';
 };

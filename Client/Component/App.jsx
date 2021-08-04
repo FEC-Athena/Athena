@@ -1,6 +1,3 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Context from './context';
@@ -16,17 +13,18 @@ const App = () => {
   const config = {
     headers: { Authorization: `${access.TOKEN}` },
   };
-
+  // current item '/product/id'
   const [detail, setDetail] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  // the first style of the current item
   const [selectedStyle, setSelectedStyle] = useState(null);
+  // all the styles of the current item
   const [productStyles, setProductStyles] = useState(null);
   const [currentItem, setCurrent] = useState(17067);
   const [currentRating, setRating] = useState(0);
 
   // ------------sheri---------------
   const [relatedItems, setRelatedItems] = useState([]);
-  // const [relatedStyles, setRelatedStyles] = useState([]);
 
   // Logan Func
   const handleStyle = (target) => setSelectedStyle(target);
@@ -96,6 +94,19 @@ const App = () => {
     const reqSortByHelpful = axios.get(sortHelpful, config);
     const reqSortByNewest = axios.get(sortNewest, config);
 
+    // helper function that calculates avg ratings
+    const avgStarRating = (ratings) => {
+      let avgRating = 0;
+      let sum = 0;
+      let count = 0;
+
+      Object.keys(ratings).map((key) => {
+        sum += key * ratings[key];
+        count += parseInt(ratings[key]);
+      });
+      return avgRating = Math.floor(sum / count / 0.25) * 0.25;
+    }
+
     axios.all([reqGen, reqSty, reqRel, reqMeta, reqSortByRel, reqSortByNewest, reqSortByHelpful])
       .then(axios.spread((...responses) => {
         const resGen = responses[0];
@@ -111,20 +122,8 @@ const App = () => {
         setProductStyles(resSty.data.results);
         setSelectedStyle(resSty.data.results[0]);
 
-        // calculate avg rating
-        let avgRating = 0;
-        let sum = 0;
-        let count = 0;
         const { ratings } = resMeta.data;
-        Object.keys(ratings).map((key) => {
-          sum += key * ratings[key];
-          count += parseInt(ratings[key]);
-        });
-        //console.log("hello")
-        avgRating = Math.floor(sum / count / 0.25) * 0.25;
-        setRating(avgRating);
-        //console.log(avgRating);
-        //console.log("star score:",currentRating);
+        setRating(avgStarRating(ratings));
 
         // Ran's personal setState method
         const char = resMeta.data.characteristics;
@@ -138,8 +137,8 @@ const App = () => {
         setSortRel2(resSortByRel.data.results);
         setSortHelpful(resSortByNewest.data.results);
         setSortNewest(resSortByHelpful.data.results);
-        console.log(resSortByNewest.data.results)
-        console.log(resSortByHelpful.data.results)
+        // console.log(resSortByNewest.data.results)
+        // console.log(resSortByHelpful.data.results)
 
       }))
       .catch((errors) => {
@@ -153,7 +152,9 @@ const App = () => {
     for (const id of data) {
       const product = await handleProductById(id);
       const style = await handleStyleById(id);
-      const rating = await handleRatingById(id);
+      const resRating = await handleRatingById(id);
+      const rating = avgStarRating(resRating.ratings);
+      // console.log(rating);
       dataArr.push({ product, style, rating });
     }
     setRelatedItems(dataArr);
@@ -165,6 +166,8 @@ const App = () => {
     // }, []);
     // setRelatedStyles(flattenData);
   }, [currentItem]);
+
+
 
   if (isLoading) {
     return (
