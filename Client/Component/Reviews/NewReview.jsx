@@ -1,13 +1,17 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import ReviewsContext from './reviews-context';
+import Context from '../context';
+import access from '../config';
+import axios from 'axios';
 
 const NewReview = (props) => {
+  const { rating, handleCloseModal, renderList } = useContext(ReviewsContext);
+  const { currentItem, sortByRel2 } = useContext(Context);
 
-  const {rating, handleCloseModal} = useContext(ReviewsContext);
   const handleSubmitRev = (event) => {
     event.preventDefault();
-    var alertStr = '';
+    let alertStr = '';
 
     if (rating === 0) {
       alertStr += 'Rating star required!\n';
@@ -31,12 +35,12 @@ const NewReview = (props) => {
     if (!document.getElementById('fit1').checked && !document.getElementById('fit2').checked && !document.getElementById('fit3').checked && !document.getElementById('fit4').checked && !document.getElementById('fit5').checked) {
       alertStr += 'Fit field is required!\n';
     }
-    var reviewLen = document.getElementById("review-body").value.length;
+    const reviewLen = document.getElementById('review-body').value.length;
     if (reviewLen < 50) {
-      alertStr += `Characters left for review: ${50-reviewLen}` + '\n';
+      alertStr += `Characters left for review: ${50 - reviewLen}` + '\n';
     }
 
-    if (!document.getElementById("nickname").value.length === 0) {
+    if (!document.getElementById('nickname').value.length === 0) {
       alertStr += 'nickname field is required!\n';
     }
 
@@ -45,12 +49,72 @@ const NewReview = (props) => {
       alertStr += 'Invalid email format!';
     }
 
-    if (alertStr.length > 0) {
-      alert(alertStr);
-    } else {
-      handleCloseModal();
+    // if (alertStr.length > 0) {
+    //   alert(alertStr);
+    // } else {
+    //   handleCloseModal;
+    // }
+
+
+    // const radioRec = document.querySelector('input[name="genderS"]:checked').value;
+    //console.log("radioRec: ", radioRec);
+    // const radio = (name) => {
+    //   const radios = document.getElementsByName(name);
+
+    //   for (var i = 0; i < radios.length; i++) {
+    //     if (radios[i].checked) {
+    //       return radios[i].value
+    //     }
+    // }
+    // }
+
+    const postmanPost = {
+      "product_id": 17067,
+      "rating": 5,
+      "summary": "JUST LOVE IT",
+      "body": "hey what are you waiting for",
+      "recommend": true,
+      "name": "nickname",
+      "email": "sdjfelewf@gmail.com",
+      "photos": [],
+      "characteristics": {
+          "57222": 4,
+          "57223": 5,
+          "57224": 3,
+          "57225": 5
+      }
     }
 
+
+    axios.post("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews", postmanPost, {
+      headers: { 'Authorization': `${access.TOKEN}` }
+    })
+      .then((response) => {
+        //console.log("OMG");
+        //console.log("hello ",response);
+        const newRev =
+          {
+            'product_id': 17067,
+            'rating': rating,
+            'summary': 'LOVE IT',
+            'body': 'HAPPY',
+            'recommend': true,
+            'name': 'pineapple',
+            'email': 'pineapple@email',
+            'photos': 'photos',
+            'characterstics': {
+              "57222": 4,
+              "57223": 5,
+              "57224": 3,
+              "57225": 5
+            }
+          }
+        sortByRel2.unshift(newRev)
+        renderList('relevant');
+      })
+      .catch((err) => {
+      console.log(err);
+    })
 
   }
 
@@ -62,19 +126,19 @@ const NewReview = (props) => {
         <div className="overall-rating" style={{color: 'red', marginTop: 20}}>Your overall rating of this product</div>
 
         <div><StarRating /></div>
-        <div style={{marginTop:10}} className="recommend-choice" >Do you recommend this product?</div>
+        <div id="recommend" style={{marginTop:10}} className="recommend-choice" name="recommend">Do you recommend this product?</div>
         <form>
-          <input type="radio" name="choice" id="recYes"/>
+          <input type="radio" name="choice" id="recYes" value='true'/>
           <label>Yes</label>
-          <input type="radio" name="choice" id="recNo"/>
+          <input type="radio" name="choice" id="recNo" value='false'/>
           <label>No</label><br></br>
         </form>
 
-        <div className="char-container" style={{marginTop: 20, marginBottom: 10, fontWeight: 400}}>Characteristics</div>
+        <div className="char-container" style={{ marginTop: 20, marginBottom: 10, fontWeight: 400 }}>Characteristics</div>
         <div className="character">
           <div className="pl-holder"></div>
             <form>
-              <div style={{fontWeight: 'bold'}}>
+              <div style={{ fontWeight: 'bold' }}>
                 <div className="radio-box"><label>Scores</label></div>
                 <div className="radio-box"><label>1</label></div>
                 <div className="radio-box"><label>2</label></div>
@@ -231,7 +295,7 @@ const NewReview = (props) => {
 
         <div>
           <label className="review-sum" style={{fontWeight: 'bold'}}>Headline</label><br></br>
-          <textarea maxLength="60" placeholder="Example: Best purchase ever!" style={{height: 30, width: 715}}></textarea>
+          <textarea id="headline" maxLength="60" placeholder="Example: Best purchase ever!" style={{height: 30, width: 715}}></textarea>
         </div>
 
         <div>
@@ -239,6 +303,9 @@ const NewReview = (props) => {
           <textarea  id="review-body" maxLength="1000" placeholder="Why did you like the product or not?" style={{height: 100, width: 715}}></textarea>
         </div>
 
+        <label><i className="fas fa-camera">{' '}Add your photos</i></label>
+        <input type="file" name="image-upload" id="select-photo" accept=".jpg, .jpeg, .png"
+        />
         <button style={{width: 200, height: 40, fontSize: 15}}>
         <i className="fas fa-camera">{' '}Add your photos</i>
         </button><br></br><br></br>
