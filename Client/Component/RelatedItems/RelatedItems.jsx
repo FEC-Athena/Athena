@@ -1,10 +1,7 @@
-import React, {
-  useRef, useState, useEffect,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
-
 import Context from './related-context.js';
 // import AppContext from '../context.js';
 
@@ -12,6 +9,7 @@ const RelatedItems = () => {
   // -------- Scroll Arrows ----------
   const listRef = useRef(null);
   const [slideRight, setSlideRight] = useState(0);
+
 
   const scrollRight = () => {
     if (listRef.current) {
@@ -21,7 +19,7 @@ const RelatedItems = () => {
         behavior: 'smooth',
       });
     }
-    setSlideRight(1);
+    setSlideRight(slideRight + 700);
   };
 
   const scrollLeft = () => {
@@ -32,7 +30,7 @@ const RelatedItems = () => {
         behavior: 'smooth',
       });
     }
-    setSlideRight(0);
+    setSlideRight(slideRight - 700);
   };
 
   const handleScrollRight = (target) => scrollRight(target);

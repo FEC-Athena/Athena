@@ -1,9 +1,6 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable import/extensions */
 import React, { useContext } from 'react';
-// import sample from './sampledata.js';
 import ComparingPopup from './ComparingPopup.jsx';
+import Star from '../Reviews/Star.jsx';
 import Context from './related-context.js';
 import AppContext from '../context.js';
 
@@ -11,9 +8,9 @@ const RelatedCard = (props) => {
   const { handleCurrent } = useContext(AppContext);
   const { starPopup, handleStarPopup } = useContext(Context);
 
-
   // ------- Change price style if it's on sale --------
   let salePrice = props.item.style.results[0].sale_price;
+  const prodImg = props.item.style.results[0].photos[0].url;
 
   const discountedStyle = {
     textDecoration: 'line-through',
@@ -31,7 +28,6 @@ const RelatedCard = (props) => {
           </span>
         </div>
       );
-    // eslint-disable-next-line no-else-return
     } else {
       return (
         <div className="price" >
@@ -41,27 +37,18 @@ const RelatedCard = (props) => {
     }
   };
 
-  const prodImg = props.item.style.results[0].photos[0].url;
-
-  // console.log("this is from card", relatedStyles);
   // -------------------------------------------
-  if (props.item) {
-    // console.log("this is from card", relatedStyles);
-    return (
-      <div className="products">
-        {/* {console.log("this is related styles", relatedStyles)} */}
-        <i className="far fa-star fa-lg" onClick={() => handleStarPopup(true)}></i>
-        {prodImg ? <img className="carousel-image" src={prodImg} onClick={() => handleCurrent(props.item.product.id)}/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} onClick={() => handleCurrent(props.item.product.id)}/>}
-        <div className="category">{props.item.product.category}</div>
-        <b className="related-name">{props.item.product.name}</b>
-        {renderPrice()}
-        {/* <div>{star ratings here}</div> */}
-        <ComparingPopup trigger={starPopup} currentProd={props.item.product}/>
-      </div>
-    );
-  } else {
-    return <div></div>;
-  }
+  return ((props.item) ? (
+    <div className="products">
+      <i className="far fa-star fa-lg" onClick={() => handleStarPopup(true)}></i>
+      {prodImg ? <img className="carousel-image" src={prodImg} onClick={() => handleCurrent(props.item.product.id)}/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} onClick={() => handleCurrent(props.item.product.id)}/>}
+      <div className="category">{props.item.product.category}</div>
+      <b className="related-name">{props.item.product.name}</b>
+      {renderPrice()}
+      <Star rating={props.rating}/>
+      <ComparingPopup trigger={starPopup} currentProd={props.item.product}/>
+    </div>
+  ) : <div></div>);
 };
 
 export default RelatedCard;
