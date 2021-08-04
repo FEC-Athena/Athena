@@ -167,7 +167,7 @@
   cursor: pointer;
   text-align: center;
   height: 278px;
-  width: 270px;
+  min-width: 270px;
   border: 2px solid black;
   padding-top: 166px;
   margin: 10px;
