@@ -13,10 +13,12 @@ const App = () => {
   const config = {
     headers: { Authorization: `${access.TOKEN}` },
   };
-
+  // current item '/product/id'
   const [detail, setDetail] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  // the first style of the current item
   const [selectedStyle, setSelectedStyle] = useState(null);
+  // all the styles of the current item
   const [productStyles, setProductStyles] = useState(null);
   const [currentItem, setCurrent] = useState(17067);
   const [currentRating, setRating] = useState(null);
@@ -92,6 +94,19 @@ const App = () => {
     const reqSortByHelpful = axios.get(sortHelpful, config);
     const reqSortByNewest = axios.get(sortNewest, config);
 
+    // helper function that calculates avg ratings
+    const avgStarRating = (ratings) => {
+      let avgRating = 0;
+      let sum = 0;
+      let count = 0;
+
+      Object.keys(ratings).map((key) => {
+        sum += key * ratings[key];
+        count += parseInt(ratings[key]);
+      });
+      return avgRating = Math.floor(sum / count / 0.25) * 0.25;
+    }
+
     axios.all([reqGen, reqSty, reqRel, reqMeta, reqSortByRel, reqSortByNewest, reqSortByHelpful])
       .then(axios.spread((...responses) => {
         const resGen = responses[0];
@@ -107,17 +122,8 @@ const App = () => {
         setProductStyles(resSty.data.results);
         setSelectedStyle(resSty.data.results[0]);
 
-        // calculate avg rating
-        let avgRating = 0;
-        let sum = 0;
-        let count = 0;
         const { ratings } = resMeta.data;
-        Object.keys(ratings).map((key) => {
-          sum += key * ratings[key];
-          count += parseInt(ratings[key]);
-        });
-        avgRating = Math.floor(sum / count / 0.25) * 0.25;
-        setRating(avgRating);
+        setRating(avgStarRating(ratings));
 
         // Ran's personal setState method
         const char = resMeta.data.characteristics;
@@ -140,7 +146,9 @@ const App = () => {
     for (let id of data) {
       const product = await handleProductById(id);
       const style = await handleStyleById(id);
-      const rating = await handleRatingById(id);
+      const resRating = await handleRatingById(id);
+      const rating = avgStarRating(resRating.ratings);
+      // console.log(rating);
       dataArr.push({ product, style, rating });
     }
     setRelatedItems(dataArr);
@@ -154,6 +162,7 @@ const App = () => {
     // setRelatedStyles(flattenData);
 
   }, [currentItem]);
+
 
 
   if (isLoading) {

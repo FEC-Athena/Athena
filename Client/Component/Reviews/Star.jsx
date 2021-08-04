@@ -1,5 +1,6 @@
 import React from 'react';
 import starOutline from './Images/star.png';
+import Context from '../context.js';
 
 function Star(props) {
   const stars = [];

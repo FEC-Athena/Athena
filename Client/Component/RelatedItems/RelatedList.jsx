@@ -8,30 +8,27 @@ const RelatedList = () => {
   const { listRef, handleScrollRight, handleScrollLeft, slideRight } = useContext(Context);
   const slider = relatedItems.length * 300;
 
-  if (relatedItems) {
-    return (
-      <div className="related-container">
-        <div className="list-title">Related Products<br></br></div>
-        <div className="carousel">
-          {slideRight <= 0 ? <div /> : <button className="carousel-button-left" >
-            <i className="fas fa-angle-left fa-3x" onClick={() => handleScrollLeft()}></i>
-          </button>}
-          <div className="carousel-track-container">
-            <div className="carousel-slide" ref={listRef}>
-              {relatedItems.map((item, index) => {
-                return <RelatedCard key={index} item={item} />;
-              })}
-            </div>
+
+  return ((relatedItems) ? (
+    <div className="related-container">
+      <div className="list-title">Related Products<br></br></div>
+      <div className="carousel">
+        {slideRight <= 0 ? <div /> : <button className="carousel-button-left" >
+          <i className="fas fa-angle-left fa-3x" onClick={() => handleScrollLeft()}></i>
+        </button>}
+        <div className="carousel-track-container">
+          <div className="carousel-slide" ref={listRef}>
+            {relatedItems.map((item, index) => {
+              return <RelatedCard key={index} item={item} rating={item.rating}/>
+            })}
           </div>
-          {slideRight >= slider ? <div /> : <button className="carousel-button-right" >
-            <i className="fas fa-angle-right fa-3x" onClick={() => handleScrollRight()}></i>
-          </button>}
         </div>
+        {slideRight >= slider ? <div /> : <button className="carousel-button-right" >
+          <i className="fas fa-angle-right fa-3x" onClick={() => handleScrollRight()}></i>
+        </button>}
       </div>
-    );
-  } else {
-    return <div></div>;
-  }
+    </div>
+  ) : <div></div> );
 };
 
 export default RelatedList;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ComparingPopup from './ComparingPopup.jsx';
+import Star from '../Reviews/Star.jsx';
 import Context from './related-context.js';
 import AppContext from '../context.js';
 
@@ -44,7 +45,7 @@ const RelatedCard = (props) => {
       <div className="category">{props.item.product.category}</div>
       <b className="related-name">{props.item.product.name}</b>
       {renderPrice()}
-      {/* <div>{star ratings here}</div> */}
+      <Star rating={props.rating}/>
       <ComparingPopup trigger={starPopup} currentProd={props.item.product}/>
     </div>
   ) : <div></div>);
