@@ -31,7 +31,7 @@ const OutfitCard = (props) => {
 
   return (
     <div className="products">
-      {/* <i className="far fa-star fa-lg"></i> */}
+      <i className="far fa-times-circle fa-lg" onClick={() => props.handleRemoveOutfit(props.prod.product.id)}></i>
       <img className="carousel-image" src={props.prod.style[0].photos[0].url} />
       <div className="category">{props.prod.product.category}</div>
       <b className="related-name">{props.prod.product.name}</b>

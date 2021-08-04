@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import OutfitCard from './OutfitCard.jsx';
 import Context from './related-context.js';
 import AppContext from '../context.js';
@@ -9,18 +9,29 @@ const OutfitList = (props) => {
   const [outfitArr, setOutfitArr] = useState([]);
   const [idArr, setIdArr] = useState([]);
 
-  let temp = [];
-  let tempId = [];
-  let handleOutfitList = () => {
-  let newObj = { product: detail, style: productStyles, rating: currentRating };
-    if (idArr.indexOf(currentItem) === -1) {
+  const handleOutfitList = () => {
+    let temp = [];
+    let tempId = [];
+    let newObj = { product: detail, style: productStyles, rating: currentRating };
+    if (idArr.indexOf(currentItem) < 0) {
       temp.push(newObj);
       tempId.push(currentItem);
       setOutfitArr(outfitArr.concat(temp));
       setIdArr(idArr.concat(tempId));
     }
-  }
-  // console.log('this is outfit arr', outfitArr, idArr);
+  };
+
+  // ------ removing item from outfit list ----------
+  const handleRemoveOutfit = (selectedId) => {
+    for (var i = 0; i < outfitArr.length; i++) {
+      if (outfitArr[i].product.id === selectedId ) {
+        setOutfitArr(outfitArr.slice(0, i).concat(outfitArr.slice(i + 1)));
+      }
+    }
+    var index = idArr.indexOf(selectedId);
+    setIdArr(idArr.slice(0, index).concat(idArr.slice(index + 1)));
+  };
+
 
   // ------- scrolling arrows function ---------
   const ourfitRef = useRef(null);
@@ -60,15 +71,15 @@ const OutfitList = (props) => {
         </button>}
         <div className="carousel-track-container" ref={ourfitRef}>
           <div className="carousel-slide">
-            {/* <div className="products"> */}
+
               <div className="blankCard">
                 <i className="far fa-plus-square fa-4x" onClick={() => handleOutfitList()}></i>
                 <div>Add to Outfit</div>
               </div>
               {outfitArr.map((prod, index) => {
-                return <OutfitCard key={index} prod={prod}/>
+                return <OutfitCard key={index} prod={prod} handleRemoveOutfit={handleRemoveOutfit}/>
               })}
-            {/* </div> */}
+
           </div>
         </div>
         {hideArrow >= slider ? <div/> : <button className="carousel-button-right" >
