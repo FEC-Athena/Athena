@@ -121,3 +121,15 @@
 .social-share {
   margin-bottom: 20px;
 }
+
+.fa-check-circle {
+  position: absolute;
+  color: green;
+  margin-left: -23px;
+  margin-top: 6px;
+  font-size: 22px;
+}
+
+.hidden {
+  visibility: hidden;
+}

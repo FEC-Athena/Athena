@@ -17,7 +17,7 @@ const Desc = props => {
           <div className="product-desc"> {detail.description} </div>
         </div>
         <div className="desc-divider"></div>
-        <div className="product-features">
+        <div className="product-features desc-right">
           <dl>
             {detail.features.map((feature) => {
               return (
