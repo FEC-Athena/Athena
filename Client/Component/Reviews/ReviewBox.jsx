@@ -6,14 +6,13 @@ import ReviewsContext from './reviews-context';
 import Context from '../context';
 
 function ReviewBox(props) {
-  const { sortByRel2, sortOption } = useContext(Context);
+  const { sortByRel2, sortByHelpful, sortByNewest, sortOption, handleSortOption } = useContext(Context);
 
-  //console.log("reviewBox:sortByRel2 ", sortByRel2);
-  let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
+  // let { sortByRel, sortByHelpful, sortByNewest } = sortData.sortData;
 
-  sortByRel = sortByRel.results;
-  sortByHelpful = sortByHelpful.results;
-  sortByNewest = sortByNewest.results;
+  // sortByRel = sortByRel.results;
+  // sortByHelpful = sortByHelpful.results;
+  // sortByNewest = sortByNewest.results;
 
   const [reviewShownCount, setReviewShownCount] = useState(2);
   const handleReviewShownCount = (count) => (setReviewShownCount(count));
@@ -23,13 +22,16 @@ function ReviewBox(props) {
   const handleReviewList = (currList) => (setReviewList(currList));
 
   useEffect(() => {
-     setReviewList(sortByRel2);
+     //setReviewList(sortByRel2);
+    renderList('relevant');
   }, [sortByRel2]);
 
   useEffect(() => {
     setReviewShownCount(2);
     setButton(reviewList.length > 2);
     setShowReviews(reviewList.slice(0, 2));
+    // handleSortOption('relevant');
+    // renderList('relevant');
   }, [reviewList]);
 
   // useEffect(() => {
@@ -98,11 +100,18 @@ function ReviewBox(props) {
   }
 
   const handleToggle = (toggle, starCountList, starCount) => {
-    //console.log("toggle:", toggle, "starCountList:", starCountList, "COUNT: ", starCount);
+
+    // set toggle to be on and off upon click
     const toggleTemp = toggle;
     toggleTemp[starCount] = !toggleTemp[starCount];
     setToggle(toggleTemp);
+    // if toggle is on
     if (toggleTemp[starCount]) {
+      // filterList is an object
+      //  { 5: [],
+      //      4: [],
+      //      3: []
+      //   }
       filterList[starCount] = starCountList;
       setFilterList(filterList);
       setReviewList(Object.values(filterList).flat());
@@ -144,7 +153,7 @@ function ReviewBox(props) {
   return (
     <>
       <ReviewsContext.Provider value={{
-        sortByRel, sortByNewest, sortByHelpful, showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,filterToggle, handleFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
+         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,filterToggle, handleFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
       }}
       >
         <div className="reviews">

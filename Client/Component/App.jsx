@@ -74,9 +74,6 @@ const App = () => {
   );
 
   const [sortByRel2, setSortRel2] = useState([]);
-  //this.state.rel2 = 2
-
-
   const [sortByHelpful, setSortHelpful] = useState([]);
   const [sortByNewest, setSortNewest] = useState([]);
 
@@ -86,8 +83,8 @@ const App = () => {
     const pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
     const pro_meta = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${currentItem}`;
     const sortRel = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-    const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-    const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
+    const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=helpful`;
+    const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=newest`;
 
     const reqGen = axios.get(pro_gen, config);
     const reqSty = axios.get(pro_sty, config);
@@ -106,8 +103,8 @@ const App = () => {
         const resRel = responses[2];
         const resMeta = responses[3];
         const resSortByRel = responses[4];
-        const reqSortByNewest = responses[5];
-        const reqSortByHelpful = responses[6];
+        const resSortByNewest = responses[5];
+        const resSortByHelpful = responses[6];
 
         setDetail(resGen.data);
         setLoading(false);
@@ -139,7 +136,10 @@ const App = () => {
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
 
         setSortRel2(resSortByRel.data.results);
-        //console.log("app.js:", resSortByRel.data.results);
+        setSortHelpful(resSortByNewest.data.results);
+        setSortNewest(resSortByHelpful.data.results);
+        console.log(resSortByNewest.data.results)
+        console.log(resSortByHelpful.data.results)
 
       }))
       .catch((errors) => {
@@ -197,7 +197,8 @@ const App = () => {
       sortOption,
       handleSortOption,
       sortByRel2,
-
+      sortByNewest,
+      sortByHelpful
     }}
     >
 

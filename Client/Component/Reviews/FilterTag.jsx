@@ -12,7 +12,6 @@ function FilterTag() {
 
   function handleRemoveFilters() {
     handleFilterToggle();
-
     renderList('relevant');
   }
 
