@@ -22,6 +22,7 @@ const App = () => {
   const [productStyles, setProductStyles] = useState(null);
   const [currentItem, setCurrent] = useState(17067);
   const [currentRating, setRating] = useState(0);
+  const [revNum, setRevnum] = useState(0);
 
   // ------------sheri---------------
   const [relatedItems, setRelatedItems] = useState([]);
@@ -198,7 +199,7 @@ const App = () => {
       handleSortOption,
       sortByRel2,
       sortByNewest,
-      sortByHelpful
+      sortByHelpful,
     }}
     >
 
