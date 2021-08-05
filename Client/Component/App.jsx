@@ -204,6 +204,7 @@ const App = () => {
     >
 
       <div>
+        <h1 className="title">Athena</h1>
         <Overview />
         <RelatedItems />
         <ReviewBox />

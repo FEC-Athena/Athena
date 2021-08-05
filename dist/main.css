@@ -107,8 +107,9 @@
   height: 61px;
   font-size: 31px;
   font-family: monospace;
-  background-color:lightcoral;
-  color: white
+  background-color: lightcoral;
+  border-color: lightcoral;
+  color: white;
 }
 
 .errorMsg {
@@ -119,7 +120,7 @@
 .icon {
   padding-right: 10px;
   font-size: 30px;
-  color:lightcoral;
+  color: lightcoral;
 }
 
 .social-share {
@@ -128,7 +129,7 @@
 
 .fa-check-circle {
   position: absolute;
-  color: green;
+  color: rgb(65, 65, 65);
   margin-left: -23px;
   margin-top: 6px;
   font-size: 22px;
@@ -138,6 +139,9 @@
   visibility: hidden;
 }
 
+.fa-tshirt {
+  color: lightcoral;
+}
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/Gallery/gallery.css ***!
   \*******************************************************************************************************************************************/
@@ -198,6 +202,8 @@
 
 .carousel1__button i {
   width: 20px;
+  color: rgb(65, 65, 65);
+  text-shadow: 1px 1px 1px grey;
 }
 
 .carousel1__button i:hover {
