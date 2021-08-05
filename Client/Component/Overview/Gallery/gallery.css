@@ -54,6 +54,8 @@
 
 .carousel1__button i {
   width: 20px;
+  color: rgb(65, 65, 65);
+  text-shadow: 1px 1px 1px grey;
 }
 
 .carousel1__button i:hover {
