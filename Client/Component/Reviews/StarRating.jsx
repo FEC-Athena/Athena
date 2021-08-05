@@ -5,7 +5,8 @@ import ReviewsContext from './reviews-context';
 function StarRating() {
   const { rating, handleRating } = useContext(ReviewsContext);
 
-  const [selection, setSelection] = useState(0);
+  const [selection, setSelection] = useState(
+    typeof rating === "number" ? rating : 0);
   const hoverOver = (event) => {
     let val = 0;
     if (event && event.target && event.target.getAttribute("star-id")) {

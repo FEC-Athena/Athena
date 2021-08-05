@@ -10,7 +10,7 @@ import Context from '../context';
 function ReviewList() {
   const { sortByRel2, handleSortOption } = useContext(Context);
   const {
-    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, renderList, newReviewBtn, handleNewReview, handleCloseModal
+    sortByRel, showReviews, handleShowReviews, showButton, handleButton, reviewShownCount, handleReviewShownCount, reviewList, renderList, newReviewBtn, handleNewReview, handleCloseModal, recSelect
   } = useContext(ReviewsContext);
 
   function changeSort(e) {
@@ -45,6 +45,9 @@ function ReviewList() {
               <br />
               <div style={{ color: 'grey' }}>{review.body}</div>
               <br />
+              <div>{recSelect ?
+                <div><i class="fas fa-check-circle"></i>I recommended this product</div> : ''
+              }</div>
               <div style={{ color: 'grey' }}><VoteHelpfulness review={review} /></div>
             </div>
           </div>
