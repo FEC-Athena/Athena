@@ -103,8 +103,9 @@
   height: 61px;
   font-size: 31px;
   font-family: monospace;
-  background-color:lightcoral;
-  color: white
+  background-color: lightcoral;
+  border-color: lightcoral;
+  color: white;
 }
 
 .errorMsg {
@@ -115,9 +116,25 @@
 .icon {
   padding-right: 10px;
   font-size: 30px;
-  color:lightcoral;
+  color: lightcoral;
 }
 
 .social-share {
   margin-bottom: 20px;
+}
+
+.fa-check-circle {
+  position: absolute;
+  color: rgb(65, 65, 65);
+  margin-left: -23px;
+  margin-top: 6px;
+  font-size: 22px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.fa-tshirt {
+  color: lightcoral;
 }

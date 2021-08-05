@@ -5,6 +5,7 @@
 .top {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .overview {
@@ -18,8 +19,10 @@
   padding-right: 10px;
   max-width: 750px;
   margin-bottom: 150px;
+  margin-left: 450px;
   display: grid;
   grid-template-columns: 650px 50px 650px;
+  position: relative
 }
 
 .desc-divider {

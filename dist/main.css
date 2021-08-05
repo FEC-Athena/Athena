@@ -107,8 +107,9 @@
   height: 61px;
   font-size: 31px;
   font-family: monospace;
-  background-color:lightcoral;
-  color: white
+  background-color: lightcoral;
+  border-color: lightcoral;
+  color: white;
 }
 
 .errorMsg {
@@ -119,28 +120,118 @@
 .icon {
   padding-right: 10px;
   font-size: 30px;
-  color:lightcoral;
+  color: lightcoral;
 }
 
 .social-share {
   margin-bottom: 20px;
 }
+
+.fa-check-circle {
+  position: absolute;
+  color: rgb(65, 65, 65);
+  margin-left: -23px;
+  margin-top: 6px;
+  font-size: 22px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.fa-tshirt {
+  color: lightcoral;
+}
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/Gallery/gallery.css ***!
   \*******************************************************************************************************************************************/
 
-.root{
+.carousel1 {
   position: relative;
+  /* margin-top: 15px; */
+  height: 800px;
+  width: 600px;
+  margin: 15px 140px;
+}
+
+.bigImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.carousel1__track-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+.largesc {
+  width: 185%;
+  z-index: 100;
+}
+
+.full-btn {
+  position: absolute;
+  background: transparent;
+  z-index: 150;
+  right: 15px;
+  top: 15px;
+  font-size: 20px;
+}
+
+.full-btn:hover {
+  background: grey;
+}
+
+.large-btn {
+  right: -485px;
+}
+
+.carousel1__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: hidden;
+  background: transparent;
+  z-index: 150;
+}
+
+.carousel1__button i {
+  width: 20px;
+  color: rgb(65, 65, 65);
+  text-shadow: 1px 1px 1px grey;
+}
+
+.carousel1__button i:hover {
+  color: white;
+}
+
+.carousel1__button--left {
+  left: 5px;
+}
+
+.carousel1__button--right {
+  right: 5px;
+}
+
+.largescArr {
+  right: -500px;
 }
 
 .left{
   position: absolute;
+  z-index: 20;
   left: 10px;
   top: 10px;
   display: flex;
   flex-direction: column;
   padding: 5px 0 5px;
   margin-bottom: 5px;
+
 }
 
 .left img {
@@ -151,16 +242,12 @@
 .thumbNail {
   width: 40px;
   height: 40px;
-  padding: 1px;
+  padding: 1px 1px 1px 1px;
   border-style: groove;
   border-radius: 5px;
+  margin: 1px;
 }
 
-.right {
-  /* padding-left: 10px; */
-  padding-right: 50px;
-  padding-top: 10px;
-}
 
 .right img{
   border-radius: 10px;
@@ -168,7 +255,6 @@
   height: 700px;
   -o-object-fit: cover;
      object-fit: cover;
-  /* background-size: contain; */
 }
 
 /*!************************************************************************************************************************************!*\
@@ -181,6 +267,7 @@
 .top {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .overview {
@@ -194,8 +281,10 @@
   padding-right: 10px;
   max-width: 750px;
   margin-bottom: 150px;
+  margin-left: 450px;
   display: grid;
   grid-template-columns: 650px 50px 650px;
+  position: relative
 }
 
 .desc-divider {
