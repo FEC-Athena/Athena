@@ -1,3 +1,8 @@
+.reviews {
+  margin-left: 200px;
+  width: 100%
+}
+
 .reviews-header {
   margin-top: 200px;
   margin-left: 100px;
@@ -17,6 +22,7 @@
 .all-reviews {
   height : 600px;
   overflow: auto;
+  width: 65%;
 }
 
 .reviews-summary {
@@ -91,6 +97,7 @@
 
 .close-button {
   float: right;
+  margin: 10px;
 }
 
 .reviews-list {
@@ -199,9 +206,21 @@ progress::-webkit-progress-bar {
   top: 30px;
   left: 300px;
   width: 800px;
-  height: 600px;
   background-color: rgba(240, 240, 240);
   overflow: scroll;
+}
+
+.fixedHeader {
+  position: fixed;
+  background-color: rgba(240, 240, 240);
+  width: 722px;
+  margin-top: -50px;
+  padding-top: 10px;
+}
+
+.scroll-bar {
+  height: 700px;
+  padding-top: 40px;
 }
 
 .overall-rating:after {

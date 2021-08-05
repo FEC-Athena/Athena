@@ -15,10 +15,6 @@ function ReviewBox(props) {
 
   const handleReviewList = (currList) => (setReviewList(currList));
 
-  const [recSelect, setRecSelect] = useState(false);
-  const handleRecSelect = () => (
-    setRecSelect(true)
-  )
   // default page: sort option is 'relevant'
   useEffect(() => {
     //setReviewList(sortByRel2);
@@ -75,7 +71,7 @@ function ReviewBox(props) {
   };
 
   function renderOption(sorted) {
-    console.log("renderOption call")
+    //console.log("renderOption call")
     if (sorted.length <= 2) {
       handleButton(false);
     } else {
@@ -153,7 +149,7 @@ function ReviewBox(props) {
   return (
     <>
       <ReviewsContext.Provider value={{
-         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,renderOption, filterToggle, clearFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn, handleRecSelect
+         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,renderOption, filterToggle, clearFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
       }}
       >
         <div className="reviews">

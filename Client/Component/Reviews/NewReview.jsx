@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import StarRating from './StarRating.jsx';
 import ReviewsContext from './reviews-context';
 import Context from '../context';
@@ -6,7 +6,7 @@ import access from '../config';
 import axios from 'axios';
 
 const NewReview = (props) => {
-  const { rating, handleCloseModal, renderOption, reviewList, handleRecSelect } = useContext(ReviewsContext);
+  const { rating, handleCloseModal, renderOption, reviewList } = useContext(ReviewsContext);
   const { currentItem, sortByRel2, prodName, handleSortOption, prodChar } = useContext(Context);
 
   const handleSubmitRev = (event) => {
@@ -51,11 +51,9 @@ const NewReview = (props) => {
     if (!re.test(String(document.getElementById('email').value).toLowerCase())) {
       alertStr += 'Invalid email format!';
     }
-    console.log("email alert  ", document.getElementById('email').value);
 
     const recmdRadio = () => {
       if(document.getElementById('recYes').checked) {
-        handleRecSelect();
         return true;
       } else {
         return false;
@@ -66,9 +64,6 @@ const NewReview = (props) => {
     for (const key in prodChar) {
       const checked = document.querySelector('input[name=Fit]:checked')
       charRating[prodChar[key].id] = parseInt(checked.value);
-      console.log("key: ", prodChar[key].id);
-      console.log("value: ", charRating[prodChar[key].id]);
-      console.log(charRating);
     }
 
     const request = {
@@ -93,7 +88,7 @@ const NewReview = (props) => {
       };
       axios.post("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews", request, config)
         .then((response) => {
-          console.log("submitted");
+          alert("submitted");
           })
           .catch((err) => {
           console.log(err);
@@ -101,11 +96,28 @@ const NewReview = (props) => {
     }
   }
 
+  const [prev, setPrev] = useState("");
+  // const [file, setFile] = useState([null]);
+
+  // let filesArray = [];
+  // let FilesCollection = [];
+  // function handlePreview(event) {
+  //   filesArray.push(event.target.files);
+  //   for (let i = 0; i < filesArray[0].length; i++) {
+  //     FilesCollection.push(URL.createObjectURL(filesArray[0][i]))
+  //     //setPrev(URL.createObjectURL(event.target.files[0]))
+  //     }
+  //     setPrev({ file: this.FilesCollection })
+  // }
+
   return (props.add) ? (
       <div className="modal">
-        <button className="close-button" onClick={handleCloseModal}>Close</button>
-        <h3 className="new-review-header">Write Your Review</h3>
-        <div>{prodName}</div>
+        <div className="fixedHeader">
+          <button className="close-button" onClick={handleCloseModal}>Close</button>
+          <h3 className="new-review-header">Write Your Review</h3>
+          <div>{prodName}</div>
+        </div>
+        <div className="scroll-bar">
         <div className="overall-rating" style={{color: 'red', marginTop: 20}}>Your overall rating of this product</div>
 
         <div><StarRating /></div>
@@ -310,16 +322,15 @@ const NewReview = (props) => {
           <label  className="review-body" style={{fontWeight: 'bold'}}>Review</label><br></br>
           <textarea  id="review-body" maxLength="1000" placeholder="Why did you like the product or not?" style={{height: 100, width: 715}}></textarea>
         </div>
+        <div style={{marginBottom: 20, marginTop: 10}}>
+          <i style={{marginRight: 5, marginLeft:5}} className="fas fa-camera">{' '}</i>
+          <input type="file" onChange={() => setPrev(URL.createObjectURL(event.target.files[0]))} />
+          <img src={prev} height="200" ></img>
 
-        <label><i className="fas fa-camera">{' '}Add your photos</i></label>
-        <input type="file" name="image-upload" id="select-photo" accept=".jpg, .jpeg, .png"
-        />
-        <button style={{width: 200, height: 40, fontSize: 15}}>
-        <i className="fas fa-camera">{' '}Add your photos</i>
-        </button><br></br><br></br>
+        </div>
 
         <div>
-          <label  className="nickname" style={{fontWeight: 'bold'}}>Nickname</label><br></br>
+          <label  className="nickname" style={{fontWeight: 'bold', marginTop: 10}}>Nickname</label><br></br>
           <textarea id="nickname" maxLength="60" placeholder="Example: jackson11" style={{height: 30, width: 715}}></textarea>
         </div>
 
@@ -329,7 +340,8 @@ const NewReview = (props) => {
           <label></label>
         </div>
 
-        <div onClick={handleSubmitRev} style={{marginLeft: 570, marginTop: 50}}><button style={{height: 40, width: 150, fontSize: 15}}>Submit Review</button></div>
+        <div onClick={handleSubmitRev} style={{marginLeft: 570, marginTop: 50}}><button style={{height: 40, width: 150, fontSize: 15, marginBottom: 20}}>Submit Review</button></div>
+      </div>
       </div>
     ) : '';
 }
