@@ -616,6 +616,8 @@ Logan's
   grid-area: rating-br;
   margin-top: 40px;
   margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .rating-summary {
@@ -760,6 +762,7 @@ progress::-webkit-progress-bar {
   width: 800px;
   background-color: rgba(240, 240, 240);
   overflow: scroll;
+  height: 500px;
 }
 
 .fixedHeader {

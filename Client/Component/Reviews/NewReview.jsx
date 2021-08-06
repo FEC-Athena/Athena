@@ -43,7 +43,7 @@ const NewReview = (props) => {
       alertStr += `Characters left for review: ${50 - reviewLen}` + '\n';
     }
 
-    if (!document.getElementById('nickname').value.length === 0) {
+    if (document.getElementById('nickname').value.length === 0) {
       alertStr += 'nickname field is required!\n';
     }
 
@@ -61,9 +61,17 @@ const NewReview = (props) => {
     }
 
     let charRating = {};
+    //let charRatingSum = {};
     for (const key in prodChar) {
-      const checked = document.querySelector('input[name=Fit]:checked')
+      //const checked = document.querySelector('input[name='+key+']:checked')
+      console.log(key);
+      const checked = document.querySelector('input[name=Quality]:checked')
+      console.log(checked);
       charRating[prodChar[key].id] = parseInt(checked.value);
+      // let charRating = {};
+      // const checked = document.querySelector('input[name='+key+']:checked')
+      // charRating[prodChar[key].id] = parseInt(checked.value);
+      // charRatingSum[key] = charRating;
     }
 
     const request = {
@@ -74,7 +82,7 @@ const NewReview = (props) => {
       "recommend": recmdRadio(),
       "name": JSON.stringify(document.getElementById('nickname').value),
       "email": JSON.stringify(document.getElementById('email').value),
-      "photos": [],
+      "photos": [], //s3 bucket
       "characteristics": charRating
     }
 

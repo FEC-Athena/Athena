@@ -44,14 +44,14 @@ function ReviewList() {
               </div>
               <div style={{ marginTop: 30, fontWeight: 'bold', color: '#3e3f3f' }}>{review.summary}</div>
               <br />
-              <div style={{ color: 'grey', width: 700, overflowWrap: 'break-word' }}>{review.body}</div>
+              <div style={{ color: 'grey', width: 455, overflowWrap: 'break-word' }}>{review.body}</div>
               <br />
               <div>{review.recommend ?
-                <div><i class="fas fa-check recommended" style={{marginRight: 5}}></i>I recommended this product</div> : ''
+                <div><i className="fas fa-check recommended" style={{marginRight: 5}}></i>I recommended this product</div> : ''
               }</div><br></br>
-              <div>{review.photos ? (review.photos.map((photo) => (
+              <div>{review.photos ? (review.photos.map((photo, idx) => (
                 <img
-                src={photo.url} alt="new" style={{height: 100, width: 100, padding: 5}}
+                key={idx} src={photo.url} alt="new" style={{height: 100, width: 100, padding: 5, objectFit: 'cover'}}
                 />
               ))) : ''}</div>
               <div style={{ color: 'grey' }}><VoteHelpfulness review={review} /></div>
