@@ -43,7 +43,7 @@ const NewReview = (props) => {
       alertStr += `Characters left for review: ${50 - reviewLen}` + '\n';
     }
 
-    if (!document.getElementById('nickname').value.length === 0) {
+    if (document.getElementById('nickname').value.length === 0) {
       alertStr += 'nickname field is required!\n';
     }
 
