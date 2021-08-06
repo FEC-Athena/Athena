@@ -4,8 +4,12 @@
   font-size: 66px;
   margin-bottom: 10px;
   padding-left: 125px;
-  color: lightcoral;
+  color: rgba(255, 146, 146, 0.945);
   text-shadow: 1px 1px 1px lightcoral;
+}
+
+.title:hover {
+  color: lightcoral;
 }
 
 .related-container {
