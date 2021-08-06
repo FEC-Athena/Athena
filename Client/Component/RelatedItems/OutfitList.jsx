@@ -45,7 +45,7 @@ const OutfitList = (props) => {
         behavior: 'smooth'
       });
     }
-    setHideArrow(hideArrow + 700);
+    setHideArrow(hideArrow + 600);
   };
 
   const scrollToLeft = () => {
@@ -56,7 +56,7 @@ const OutfitList = (props) => {
         behavior: 'smooth'
       });
     }
-    setHideArrow(hideArrow - 700);
+    setHideArrow(hideArrow - 600);
   };
 
   // --------------------------------
