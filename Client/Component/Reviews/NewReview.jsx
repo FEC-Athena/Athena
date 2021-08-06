@@ -331,8 +331,7 @@ const NewReview = (props) => {
           <input type="file" onChange={(event) => handlePrevs(event)} />
           <div>{prevs.map((prev, index) => {
             return (
-              
-              <img key={index} src={prev} height="100" padding="10"></img>
+              <img key={index} src={prev} style={{height: 100, padding: 5}}></img>
             )
           })}
           </div>
