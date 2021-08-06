@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+// needed support
 import axios from 'axios';
 import Context from './context';
-import ReviewBox from './Reviews/ReviewBox.jsx';
-import Overview from './Overview/Overview.jsx';
-import QnA from './QnA/QnA.jsx';
 import access from './config.js';
-import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+
+// Components
+import Overview from './Overview/Overview.jsx';
+// const RelatedItems = React.lazy(() => import('./RelatedItems/RelatedItems.jsx'));
+import RelatedItems from './RelatedItems/RelatedItems.jsx';
+import ReviewBox from './Reviews/ReviewBox.jsx';
+import QnA from './QnA/QnA.jsx';
 
 const App = () => {
   const config = {
