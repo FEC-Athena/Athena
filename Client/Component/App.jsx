@@ -30,6 +30,7 @@ const App = () => {
 
   // ------------sheri---------------
   const [relatedItems, setRelatedItems] = useState([]);
+  const [isDarkModeActive, setIsDarkModeActive] = useState(false);
 
   // Logan Func
   const handleStyle = (target) => setSelectedStyle(target);
@@ -62,6 +63,15 @@ const App = () => {
       console.log(err);
     }
   };
+  // ----- switch mode func -----
+  const switchModes = (mode) => {
+    if (mode === 'light') {
+      setIsDarkModeActive(false);
+    } else if (mode === 'dark') {
+      setIsDarkModeActive(true);
+    }
+  }
+
   //----------------------------------
   // Ran's provider data
   const [sizeAvg, setSizeAvg] = useState(0);
@@ -198,6 +208,7 @@ const App = () => {
       setCurrent,
       relatedItems,
       handleCurrent,
+      isDarkModeActive,
       // Ran's personal provider data
       sizeAvg,
       widthAvg,
@@ -216,8 +227,12 @@ const App = () => {
     }}
     >
 
-      <div>
-        <h1 className="title">Athena</h1>
+      <div className={isDarkModeActive ? "components dark-home-page" : "components"}>
+        <div className={isDarkModeActive ? "title dark-title" : "title"}>Athena</div>
+        <div className={isDarkModeActive ? "toggle-dark" : "toggle-light"}>
+          <h4 className="light-mode" onClick={() => switchModes('light')}/>
+          <h4 className="dark-mode" onClick={() => switchModes('dark')}/>
+        </div>
         <Overview />
         <RelatedItems />
         <ReviewBox />

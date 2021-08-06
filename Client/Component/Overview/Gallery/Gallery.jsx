@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../../../../dist/style.css';
 import Context from '../../context.js';
 
 const Gallery = props => {
   // console.log(props.photos)
   const [currentInd, setCurrentInd] = useState(0);
-  const { selectedStyle } = useContext(Context);
+  const { selectedStyle, isDarkModeActive } = useContext(Context);
   // console.log(selectedStyle)
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [large, setLarge] = useState(false);
@@ -50,16 +49,16 @@ const Gallery = props => {
         {/* <div className="right">
           <img src={selectedPhoto.url} />
         </div> */}
-        <button className="carousel1__button carousel1__button--left" onClick={leftArrow} aria-label="left arrow button">
+        <button className={`carousel1__button carousel1__button--left`} onClick={leftArrow} aria-label="left arrow button">
           <i className="fas fa-chevron-left fa-3x"></i>
         </button>
         <div className={`carousel1__track-container ${large === true ? 'largesc' : ''}`}>
           <img className="bigImg" src={selectedPhoto.url} />
         </div>
         <button className={`carousel1__button carousel1__button--right ${large === true ? 'largescArr' : ''}`} onClick={rightArrow} aria-label="right arrow button">
-          <i className="fas fa-chevron-right fa-3x"></i>
+          <i className={`fas fa-chevron-right fa-3x`}></i>
         </button>
-        <button className={`full-btn ${large === true ? 'large-btn' : ''}`} onClick={makeFull} aria-label="fullscreen button">
+        <button className={`full-btn ${large === true ? 'large-btn' : ''} ${isDarkModeActive ? "dark-button" : ""}`} onClick={makeFull} aria-label="fullscreen button">
           <i className="fas fa-expand"></i>
         </button>
       </div>
