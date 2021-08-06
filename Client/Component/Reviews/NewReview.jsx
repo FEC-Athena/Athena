@@ -96,7 +96,11 @@ const NewReview = (props) => {
     }
   }
 
-  const [prev, setPrev] = useState("");
+  const [prevs, setPrevs] = useState([]);
+  function handlePrevs(event) {
+    setPrevs(prevs => [...prevs, URL.createObjectURL(event.target.files[0])]);
+  };
+
   // const [file, setFile] = useState([null]);
 
   // let filesArray = [];
@@ -324,8 +328,14 @@ const NewReview = (props) => {
         </div>
         <div style={{marginBottom: 20, marginTop: 10}}>
           <i style={{marginRight: 5, marginLeft:5}} className="fas fa-camera">{' '}</i>
-          <input type="file" onChange={() => setPrev(URL.createObjectURL(event.target.files[0]))} />
-          <img src={prev} height="200" ></img>
+          <input type="file" onChange={(event) => handlePrevs(event)} />
+          <div>{prevs.map((prev, index) => {
+            return (
+              
+              <img key={index} src={prev} height="100" padding="10"></img>
+            )
+          })}
+          </div>
 
         </div>
 

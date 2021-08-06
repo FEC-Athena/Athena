@@ -47,8 +47,12 @@ function ReviewList() {
               <div style={{ color: 'grey', width: 700, overflowWrap: 'break-word' }}>{review.body}</div>
               <br />
               <div>{review.recommend ?
-                <div><i class="fas fa-check recommended"></i>{'  '}I recommended this product</div> : ''
+                <div><i class="fas fa-check recommended" style={{marginRight: 5}}></i>I recommended this product</div> : ''
               }</div><br></br>
+              <div>{review.photos ? (review.photos.map((photo) => (
+                <div>{photo.url}
+                </div>
+              ))) : ''}</div>
               <div style={{ color: 'grey' }}><VoteHelpfulness review={review} /></div>
             </div>
           </div>
