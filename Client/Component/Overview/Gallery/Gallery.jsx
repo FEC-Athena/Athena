@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './gallery.css';
+import '../../../../dist/style.css';
 import Context from '../../context.js';
 
 const Gallery = props => {
@@ -50,16 +50,16 @@ const Gallery = props => {
         {/* <div className="right">
           <img src={selectedPhoto.url} />
         </div> */}
-        <button className="carousel1__button carousel1__button--left" onClick={leftArrow}>
+        <button className="carousel1__button carousel1__button--left" onClick={leftArrow} aria-label="left arrow button">
           <i className="fas fa-chevron-left fa-3x"></i>
         </button>
         <div className={`carousel1__track-container ${large === true ? 'largesc' : ''}`}>
           <img className="bigImg" src={selectedPhoto.url} />
         </div>
-        <button className={`carousel1__button carousel1__button--right ${large === true ? 'largescArr' : ''}`} onClick={rightArrow}>
+        <button className={`carousel1__button carousel1__button--right ${large === true ? 'largescArr' : ''}`} onClick={rightArrow} aria-label="right arrow button">
           <i className="fas fa-chevron-right fa-3x"></i>
         </button>
-        <button className={`full-btn ${large === true ? 'large-btn' : ''}`} onClick={makeFull}>
+        <button className={`full-btn ${large === true ? 'large-btn' : ''}`} onClick={makeFull} aria-label="fullscreen button">
           <i className="fas fa-expand"></i>
         </button>
       </div>

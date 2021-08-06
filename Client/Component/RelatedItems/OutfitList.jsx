@@ -79,7 +79,7 @@ const OutfitList = (props) => {
             })}
           </div>
         </div>
-        {hideArrow >= slider ? <div/> : <button className="carousel-button-right" >
+        {hideArrow >= slider ? <div/> : <button className="carousel-button-right" aria-label="related-list right button">
           <i className="fas fa-angle-right fa-3x" onClick={() => scrollToRight()}></i>
         </button>}
       </div>
