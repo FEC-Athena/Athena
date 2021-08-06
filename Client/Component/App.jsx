@@ -66,6 +66,9 @@ const App = () => {
   const [qualityAvg, setQualityAvg] = useState(0);
   const [lengthAvg, setLengthAvg] = useState(0);
   const [fitAvg, setFitAvg] = useState(0);
+  const [prodName, setProdName] = useState('');
+  const [prodChar, setProdChar] = useState({});
+  const [prodRec, setProdRec] = useState({});
 
   const [sortOption, setSortOption] = useState('relevant');
   const handleSortOption = (sortOpt) => (
@@ -81,9 +84,9 @@ const App = () => {
     const pro_sty = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/styles`;
     const pro_related = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${currentItem}/related`;
     const pro_meta = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta/?product_id=${currentItem}`;
-    const sortRel = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant`;
-    const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=helpful`;
-    const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=newest`;
+    const sortRel = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=relevant&count=200`;
+    const sortHelpful = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=helpful&count=200`;
+    const sortNewest = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${currentItem}&sort=newest&count=200`;
 
     const reqGen = axios.get(pro_gen, config);
     const reqSty = axios.get(pro_sty, config);
@@ -127,17 +130,20 @@ const App = () => {
         setRating(avgStarRating(ratings));
 
         // Ran's personal setState method
-        const char = resMeta.data.characteristics;
+        const char = resMeta.data.characteristics
+        setProdChar(char);
         setSizeAvg(char.Size ? char.Size.value : 0);
         setFitAvg(char.Fit ? char.Fit.value : 0);
         setWidthAvg(char.Width ? char.Width.value : 0);
         setLengthAvg(char.Length ? char.Length.value : 0);
         setQualityAvg(char.Quality ? char.Quality.value : 0);
         setComfortAvg(char.Comfort ? char.Comfort.value : 0);
+        setProdRec(resMeta.data.recommended);
 
         setSortRel2(resSortByRel.data.results);
-        setSortHelpful(resSortByNewest.data.results);
-        setSortNewest(resSortByHelpful.data.results);
+        setSortHelpful(resSortByHelpful.data.results);
+        setSortNewest(resSortByNewest.data.results);
+        setProdName(resGen.data.name);
       }))
       .catch((errors) => {
         console.log(errors);
@@ -200,10 +206,14 @@ const App = () => {
       sortByRel2,
       sortByNewest,
       sortByHelpful,
+      prodName,
+      prodChar,
+      prodRec,
     }}
     >
 
       <div>
+        <h1 className="title">Athena</h1>
         <Overview />
         <RelatedItems />
         <ReviewBox />

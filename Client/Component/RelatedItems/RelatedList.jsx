@@ -8,7 +8,6 @@ const RelatedList = () => {
   const { listRef, handleScrollRight, handleScrollLeft, slideRight } = useContext(Context);
   const slider = relatedItems.length * 300;
 
-
   return ((relatedItems) ? (
     <div className="related-container">
       <div className="list-title">Related Products<br></br></div>
