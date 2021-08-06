@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../overview.css';
+import '../../../../dist/style.css';
 import Context from '../../context.js';
 
 const Gallery = props => {
