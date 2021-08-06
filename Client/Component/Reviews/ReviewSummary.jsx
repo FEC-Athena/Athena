@@ -6,7 +6,8 @@ import FilterTag from './FilterTag.jsx';
 import CharBreakdown from './CharBreakdown.jsx';
 
 function ReviewSummary() {
-  const { currentRating } = useContext(Context);
+  const { currentRating, prodRec } = useContext(Context);
+  const percentRec = Math.ceil(prodRec.true / (prodRec.true + prodRec.false) * 100);
 
   return (
     <div className="reviews-summary">
@@ -14,7 +15,7 @@ function ReviewSummary() {
         <h1>{currentRating}</h1>
         <div className="star-summary"><Star rating={currentRating} /></div>
       </div>
-      <div className="recommendations">100% of reviews recommend this product</div>
+      <div className="recommendations">{percentRec}% of reviews recommend this product</div>
       <h5 className="rating-br">Rating Breakdown</h5>
       <div className="filter-tag"><FilterTag /></div>
       <div className="rating-breakdown"><RatingBreakdown /></div>

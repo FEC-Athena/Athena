@@ -71,7 +71,7 @@ function ReviewBox(props) {
   };
 
   function renderOption(sorted) {
-    //console.log("here?")
+    //console.log("renderOption call")
     if (sorted.length <= 2) {
       handleButton(false);
     } else {
@@ -141,14 +141,15 @@ function ReviewBox(props) {
     setNewReviewBtn(true)
   );
 
-  const handleCloseModal = () => (
+  const handleCloseModal = () => {
+    console.log("handleclose")
     setNewReviewBtn(false)
-  );
+  };
 
   return (
     <>
       <ReviewsContext.Provider value={{
-         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,filterToggle, clearFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
+         showReviews, handleShowReviews, showButton, handleButton, handleStarFilter, reviewShownCount, handleReviewShownCount, reviewList, handleReviewList, renderList,renderOption, filterToggle, clearFilterToggle, rating, handleRating, handleNewReview, handleCloseModal, newReviewBtn
       }}
       >
         <div className="reviews">

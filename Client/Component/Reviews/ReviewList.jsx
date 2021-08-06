@@ -27,6 +27,7 @@ function ReviewList() {
     }
     handleShowReviews(reviewList.slice(0, showCount));
   };
+  //console.log("recSelec2")
 
   return (
     <div className="reviews-fixedH-container">
@@ -43,8 +44,11 @@ function ReviewList() {
               </div>
               <div style={{ marginTop: 30, fontWeight: 'bold', color: '#3e3f3f' }}>{review.summary}</div>
               <br />
-              <div style={{ color: 'grey' }}>{review.body}</div>
+              <div style={{ color: 'grey', width: 700, overflowWrap: 'break-word' }}>{review.body}</div>
               <br />
+              <div>{review.recommend ?
+                <div><i className="fas fa-check-circle"></i>{'  '}I recommended this product</div> : ''
+              }</div><br></br>
               <div style={{ color: 'grey' }}><VoteHelpfulness review={review} /></div>
             </div>
           </div>
