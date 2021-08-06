@@ -25,6 +25,11 @@
   width: 65%;
 }
 
+.recommended {
+  margin-right: 1px;
+  position: relative;
+}
+
 .reviews-summary {
   margin-bottom: 500px;
   margin-left: 100px;
