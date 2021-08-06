@@ -21,10 +21,11 @@ const Desc = props => {
           <dl>
             {detail.features.map((feature) => {
               return (
-              <dt key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </dt>
+                <dt key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </dt>
               )
             })}
           </dl>
+          <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html" id="catIframe"></iframe>
         </div>
       </div>
     )

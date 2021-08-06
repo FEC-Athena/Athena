@@ -217,7 +217,7 @@ const App = () => {
         <Overview />
         <RelatedItems />
         <ReviewBox />
-        <QnA />
+        {/* <QnA /> */}
       </div>
     </Context.Provider>
   );
