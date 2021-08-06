@@ -16,14 +16,14 @@ const Desc = props => {
         </div>
         <div className="desc-divider"></div>
         <div className="product-features desc-right">
-          <dl>
+          <div className="feature-list">
             {detail.features.map((feature) => {
               return (
-                <dt key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </dt>
+                <div key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </div>
               )
             })}
-          </dl>
-          <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html" id="catIframe"></iframe>
+          </div>
+          <iframe title="cute-cat" id="catIframe" src="https://zhanyuzhang.github.io/lovely-cat/cat.html"></iframe>
         </div>
       </div>
     )

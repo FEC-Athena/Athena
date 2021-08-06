@@ -16,7 +16,7 @@ function ReviewSummary() {
         <div className="star-summary"><Star rating={currentRating} /></div>
       </div>
       <div className="recommendations">{percentRec}% of reviews recommend this product</div>
-      <h5 className="rating-br">Rating Breakdown</h5>
+      <div className="rating-br">Rating Breakdown</div>
       <div className="filter-tag"><FilterTag /></div>
       <div className="rating-breakdown"><RatingBreakdown /></div>
       <div className="char-breakdown"><CharBreakdown /></div>

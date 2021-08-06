@@ -254,6 +254,8 @@
 }
 
 #catIframe {
+  height: 200px !important;
+  width: 400px !important;
   border: none;
 }
 
@@ -290,6 +292,7 @@
   position: relative;
   align-content: stretch;
   justify-content: center;
+  margin-left: 200px;
 }
 
 .desc-left {
@@ -549,8 +552,8 @@ Logan's
  */
 
  .reviews {
-  margin-left: 200px;
-  width: 100%
+  margin-left: 715px;
+  max-width: 100%;
 }
 
 .reviews-header {

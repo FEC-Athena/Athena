@@ -24,6 +24,7 @@
   "homepage": "https://github.com/FEC-Athena/Front-End-Capstone#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "compression": "^1.7.4",
     "core-js": "^3.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "install": "^0.13.0",
