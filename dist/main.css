@@ -138,6 +138,9 @@
   visibility: hidden;
 }
 
+#catIframe {
+  border: none;
+}
 /*!*******************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/Gallery/gallery.css ***!
   \*******************************************************************************************************************************************/
@@ -254,6 +257,15 @@
 /*!************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./Client/Component/Overview/overview.css ***!
   \************************************************************************************************************************************/
+/* #app {
+  background-color: grey;
+  color: white;
+} */
+
+#app {
+  cursor: url("https://files.cnblogs.com/files/yjlblog/cursor.ico"),auto;
+}
+
 .info {
   padding-left: 20px;
 }
@@ -271,14 +283,16 @@
 .desc {
   text-align: left;
   padding-top: 60px;
-  padding-left: 300px;
-  padding-right: 10px;
-  max-width: 750px;
   margin-bottom: 150px;
-  margin-left: 450px;
-  display: grid;
-  grid-template-columns: 650px 50px 650px;
-  position: relative
+  display: flex;
+  /* grid-template-columns: 650px 50px 650px; */
+  position: relative;
+  align-content: stretch;
+  justify-content: center;
+}
+
+.desc-left {
+  max-width: 730px;
 }
 
 .desc-divider {
