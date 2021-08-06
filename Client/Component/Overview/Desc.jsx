@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Context from '../context.js';
 
 const Desc = props => {
-  // const { slogan, description } = props.desc;
   const { detail } = useContext(Context);
   if (detail === null) {
     return (
@@ -10,7 +9,6 @@ const Desc = props => {
     )
   } else {
     return (
-      // <div>{props.description}</div>
       <div className="desc">
         <div className="desc-left">
           <h1 className="product-slogan"> {detail.slogan} </h1>

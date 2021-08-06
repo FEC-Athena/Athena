@@ -325,7 +325,7 @@ const NewReview = (props) => {
         <div style={{marginBottom: 20, marginTop: 10}}>
           <i style={{marginRight: 5, marginLeft:5}} className="fas fa-camera">{' '}</i>
           <input type="file" onChange={() => setPrev(URL.createObjectURL(event.target.files[0]))} />
-          <img src={prev} height="200" ></img>
+          <img src={prev} height="200" alt="upload preview"></img>
 
         </div>
 
