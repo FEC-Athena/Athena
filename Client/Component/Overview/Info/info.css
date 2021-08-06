@@ -135,6 +135,10 @@
   visibility: hidden;
 }
 
+#catIframe {
+  border: none;
+}
+
 .fa-tshirt {
   color: lightcoral;
 }
