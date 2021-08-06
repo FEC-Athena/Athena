@@ -15,7 +15,7 @@ const Style = props => {
           const url = product.photos[0].thumbnail_url;
           return (
             <span key={index} className="iconholder">
-              <img key={product.style_id} src={url} className={`styleSelector ${product.style_id === selectedStyle.style_id ? 'active' : ''}`} onClick={() => handleStyle(product)}></img>
+              <img key={product.style_id} src={url} className={`styleSelector ${product.style_id === selectedStyle.style_id ? 'active' : ''}`} onClick={() => handleStyle(product)} alt="style selector"></img>
               <i className={`far fa-check-circle ${product.style_id === selectedStyle.style_id ? '' : 'hidden'}`}></i>
             </span>
           )

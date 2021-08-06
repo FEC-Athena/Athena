@@ -4,7 +4,7 @@ import Info from './Info/Info.jsx';
 import Desc from './Desc.jsx';
 import Gallery from './Gallery/Gallery.jsx';
 import axios from 'axios';
-import '../../../dist/style.css';
+// import '../../../dist/style.css';
 // import App from '../App.jsx';
 // =============== Using Hooks ==================
 

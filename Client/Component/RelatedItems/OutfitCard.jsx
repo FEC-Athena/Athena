@@ -33,7 +33,7 @@ const OutfitCard = (props) => {
   return (
     <div className="products">
       <i className="far fa-times-circle fa-lg" onClick={() => props.handleRemoveOutfit(props.prod.product.id)}></i>
-      {prodImg ? <img className="carousel-image" src={prodImg}/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} />}
+      {prodImg ? <img className="carousel-image" src={prodImg} alt="product image"/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} alt="image not available"/>}
       <div className="category">{props.prod.product.category}</div>
       <b className="related-name">{props.prod.product.name}</b>
       {renderPrice()}

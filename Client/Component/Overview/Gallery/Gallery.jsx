@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../../../../dist/style.css';
+// import '../../../../dist/style.css';
 import Context from '../../context.js';
 
 const Gallery = props => {
@@ -43,7 +43,7 @@ const Gallery = props => {
         <div className="left">
           {selectedStyle.photos.map((photo, index) => {
             return (
-              <img key={index} src={photo.thumbnail_url} className="thumbNail" onMouseOver={() => handleOver(index)} />
+              <img key={index} src={photo.thumbnail_url} className="thumbNail" onMouseOver={() => handleOver(index)} alt="thumbnail"/>
             )
           })}
         </div>
@@ -54,7 +54,7 @@ const Gallery = props => {
           <i className="fas fa-chevron-left fa-3x"></i>
         </button>
         <div className={`carousel1__track-container ${large === true ? 'largesc' : ''}`}>
-          <img className="bigImg" src={selectedPhoto.url} />
+          <img className="bigImg" src={selectedPhoto.url} alt="main image"/>
         </div>
         <button className={`carousel1__button carousel1__button--right ${large === true ? 'largescArr' : ''}`} onClick={rightArrow} aria-label="right arrow button">
           <i className="fas fa-chevron-right fa-3x"></i>

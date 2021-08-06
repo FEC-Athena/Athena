@@ -3,7 +3,7 @@ import Context from '../../context.js';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
 import Star from '../../Reviews/Star.jsx';
-import '../../../../dist/style.css'
+// import '../../../../dist/style.css'
 
 
 const Info = props => {
