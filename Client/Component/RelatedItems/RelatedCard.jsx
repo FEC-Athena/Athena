@@ -41,7 +41,7 @@ const RelatedCard = (props) => {
   return ((props.item) ? (
     <div className="products">
       <i className="far fa-star fa-lg" onClick={() => handleStarPopup(true)}></i>
-      {prodImg ? <img className="carousel-image" src={prodImg} onClick={() => handleCurrent(props.item.product.id)}/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} onClick={() => handleCurrent(props.item.product.id)}/>}
+      {prodImg ? <img className="carousel-image" src={prodImg} onClick={() => handleCurrent(props.item.product.id)} alt="product image"/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} onClick={() => handleCurrent(props.item.product.id)} alt="image not available"/>}
       <div className="category">{props.item.product.category}</div>
       <b className="related-name">{props.item.product.name}</b>
       {renderPrice()}

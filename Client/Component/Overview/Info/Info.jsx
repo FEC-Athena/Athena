@@ -3,13 +3,10 @@ import Context from '../../context.js';
 import Style from './Style.jsx';
 import Cart from './Cart.jsx';
 import Star from '../../Reviews/Star.jsx';
-import './info.css';
 
 
 const Info = props => {
-  // console.log(this.props.info)
-  // const { category } = props.info;
-  // const { productStyles, className } = props;
+
   const { detail, selectedStyle, productStyles, currentRating, sortByRel2 } = useContext(Context);
 
   const renderPrice = () => {
@@ -27,7 +24,6 @@ const Info = props => {
     }
   }
   if (detail && selectedStyle && productStyles) {
-    // console.log(detail);
     return (
       <div className={`wrapinfo`}>
         <h1>
@@ -47,7 +43,6 @@ const Info = props => {
           <i className="fab fa-pinterest-square icon"></i>
         </div>
         <Style className="product-style" />
-        {/* <Cart skus={skus} /> */}
         <Cart />
       </div>
     );

@@ -22,7 +22,7 @@ const RelatedList = () => {
             })}
           </div>
         </div>
-        {slideRight >= slider ? <div /> : <button className="carousel-button-right" >
+        {slideRight >= slider ? <div /> : <button className="carousel-button-right" aria-label="related-list right button">
           <i className="fas fa-angle-right fa-3x" onClick={() => handleScrollRight()}></i>
         </button>}
       </div>

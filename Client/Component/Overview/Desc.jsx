@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Context from '../context.js';
 
 const Desc = props => {
-  // const { slogan, description } = props.desc;
   const { detail } = useContext(Context);
   if (detail === null) {
     return (
@@ -10,7 +9,6 @@ const Desc = props => {
     )
   } else {
     return (
-      // <div>{props.description}</div>
       <div className="desc">
         <div className="desc-left">
           <h1 className="product-slogan"> {detail.slogan} </h1>
@@ -21,10 +19,11 @@ const Desc = props => {
           <dl>
             {detail.features.map((feature) => {
               return (
-              <dt key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </dt>
+                <dt key={feature.feature}><i className="fas fa-check"></i> {feature.feature}: {feature.value} </dt>
               )
             })}
           </dl>
+          <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html" id="catIframe"></iframe>
         </div>
       </div>
     )
