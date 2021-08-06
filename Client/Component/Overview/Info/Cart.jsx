@@ -22,7 +22,6 @@ const Cart = props => {
       <select onChange={handleChange} name="size-selector" id="size-selector">
         <option value="disabled" hidden>Select Size</option>
         {sku.map((inv) => {
-          // console.log(inv.quantity)
           return (
             <option key={inv.id} value={inv.size} count={inv.quantity}>{inv.size}</option>
           )
@@ -32,7 +31,6 @@ const Cart = props => {
         <option defaultValue="disabled" hidden>-</option>
         {
           [...Array(itemInv).keys()].map((item) => {
-            // console.log(item);
             return (
               <option key={item + 1} value={item + 1}>{item + 1}</option>
             )

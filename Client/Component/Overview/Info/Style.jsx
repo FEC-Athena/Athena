@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import Info from './Info.jsx';
 import Context from '../../context.js';
 
 const Style = props => {
