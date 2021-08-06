@@ -655,6 +655,7 @@ Logan's
   border-bottom: 1px solid rgba(18, 18, 18, 0.6);
   margin-bottom: 10px;
   padding-bottom: 15px;
+  width: 455px;
 }
 
 .single-star-outline {
@@ -761,7 +762,7 @@ progress::-webkit-progress-bar {
 }
 
 .scroll-bar {
-  height: 700px;
+  height: 500px;
   padding-top: 40px;
 }
 
@@ -824,6 +825,11 @@ div.radio-box {
   height: 7px;
   width: 290px;
   background: rgba(177, 177, 177, 0.25);
+}
+
+.recommended {
+  margin-right: 1px;
+  position: relative;
 }
 
 
