@@ -1,24 +1,27 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 Welcome to Catwalk - A shopping website application!
 
-# Front-End-Capstone
-
-Agile engineering team of four in which each member is responsible for partial of the project.
+# Front End Project
 
 It's a full-stack web application. Let's put it this way for now.
 
-init.
+Don't forget to run npm install :)
 
+This project has been created using **webpack-cli**, you can run npm run build to bundle the application on cloud ex. AWS.
 
-This project has been created using **webpack-cli**, you can now run
+On local machine, run both npm run watch && npm start to start the application.
 
-```
-npm run build
-```
+The application has 3 main component:
 
-or
+1. Overview
+   - Gallery
+   - Product Information
+   - Product Description
 
-```
-yarn build
-```
+2. Related Items
+   - Related List
+   - Outfit List
 
-to bundle your application
+3. Ratings & Reviews
+   - Rating Summary
+   - Review List
+
