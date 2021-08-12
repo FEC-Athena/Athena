@@ -37,7 +37,6 @@ const RelatedItems = () => {
   // ------- Popup window Click ----------
 
   const [starPopup, setStarPopup] = useState(false);
-  const handleStarPopup = (target) => setStarPopup(target);
 
   // -------- Remove popup window --------
   const closeRef = useRef(null);
@@ -46,6 +45,7 @@ const RelatedItems = () => {
     useEffect(() => {
       const handleClickOutside = (event) => {
         if (popRef.current && !popRef.current.contains(event.target)) {
+          console.log(starPopup);
           setStarPopup(false);
         }
       };
@@ -61,7 +61,7 @@ const RelatedItems = () => {
 
   return (
     <Context.Provider value={{
-      listRef, handleScrollRight, handleScrollLeft, slideRight, starPopup, handleStarPopup, closeRef, handleClosePopup,
+      listRef, handleScrollRight, handleScrollLeft, slideRight, starPopup, closeRef, handleClosePopup, setStarPopup
     }}
     >
       <RelatedList />

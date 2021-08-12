@@ -6,7 +6,7 @@ import AppContext from '../context.js';
 
 const RelatedCard = (props) => {
   const { handleCurrent } = useContext(AppContext);
-  const { starPopup, handleStarPopup } = useContext(Context);
+  const { starPopup, handleStarPopup, setStarPopup } = useContext(Context);
 
   // ------- Change price style if it's on sale --------
   let salePrice = props.item.style.results[0].sale_price;
@@ -40,7 +40,10 @@ const RelatedCard = (props) => {
   // -------------------------------------------
   return ((props.item) ? (
     <div className="products">
-      <i className="far fa-star fa-lg" onClick={() => handleStarPopup(true)}></i>
+      <i className="far fa-star fa-lg" onClick={() => {
+        setStarPopup(true);
+        // props.handleSelect(props.item);
+      }}></i>
       {prodImg ? <img className="carousel-image" src={prodImg} onClick={() => handleCurrent(props.item.product.id)}/> : <img className="carousel-image" src={`https://www.carlscards.com/wp-content/uploads/2020/05/No-Image.jpg`} onClick={() => handleCurrent(props.item.product.id)}/>}
       <div className="category">{props.item.product.category}</div>
       <b className="related-name">{props.item.product.name}</b>

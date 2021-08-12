@@ -176,13 +176,6 @@ const App = () => {
       dataArr.push({ product, style, rating });
     }
     setRelatedItems(dataArr);
-
-    // const flattenData = dataArr.reduce((acc, newItem) => {
-    //   return [...acc, ...newItem.style.results.map(item => (
-    //     {...item, id: newItem.product_id}
-    //   ))]
-    // }, []);
-    // setRelatedStyles(flattenData);
   }, [currentItem]);
 
 

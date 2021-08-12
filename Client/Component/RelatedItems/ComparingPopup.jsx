@@ -37,7 +37,7 @@ const ComparingPopup = (props) => {
       }
     }
 
-    // console.log(temp1, temp2, featureArr);
+    // console.log(currentChar, relatedChar);
   // },[props.currentProd.id])
 
   return (props.trigger) ? (

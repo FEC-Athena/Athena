@@ -1,12 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import RelatedCard from './RelatedCard.jsx';
+import ComparingPopup from './ComparingPopup.jsx';
 import Context from './related-context.js';
 import AppContext from '../context.js';
 
 const RelatedList = () => {
+  const [selectedRel, setSelectedRel] = useState(null);
   const { relatedItems } = useContext(AppContext);
-  const { listRef, handleScrollRight, handleScrollLeft, slideRight } = useContext(Context);
+  const { listRef, handleScrollRight, handleScrollLeft, slideRight, starPopup } = useContext(Context);
   const slider = relatedItems.length * 300;
+
+  const trackingSelected = (selectedProd) => {
+    setSelectedRel(selectedProd);
+  };
 
   return ((relatedItems) ? (
     <div className="related-container">
@@ -18,8 +24,10 @@ const RelatedList = () => {
         <div className="carousel-track-container">
           <div className="carousel-slide" ref={listRef}>
             {relatedItems.map((item, index) => {
-              return <RelatedCard key={index} item={item} rating={item.rating}/>
+              return <RelatedCard key={index} item={item} rating={item.rating} handleSelect={trackingSelected}/>
             })}
+            {/* { selectedRel ? */}
+            {/*  <ComparingPopup trigger={starPopup} currentProd={selectedRel}/> : <div/>} */}
           </div>
         </div>
         {slideRight >= slider ? <div /> : <button className="carousel-button-right" aria-label="related-list right button">
