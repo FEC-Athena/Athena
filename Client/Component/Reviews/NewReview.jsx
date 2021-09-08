@@ -61,9 +61,17 @@ const NewReview = (props) => {
     }
 
     let charRating = {};
+    //let charRatingSum = {};
     for (const key in prodChar) {
-      const checked = document.querySelector('input[name=Fit]:checked')
+      //const checked = document.querySelector('input[name='+key+']:checked')
+      console.log(key);
+      const checked = document.querySelector('input[name=Quality]:checked')
+      console.log(checked);
       charRating[prodChar[key].id] = parseInt(checked.value);
+      // let charRating = {};
+      // const checked = document.querySelector('input[name='+key+']:checked')
+      // charRating[prodChar[key].id] = parseInt(checked.value);
+      // charRatingSum[key] = charRating;
     }
 
     const request = {
@@ -74,7 +82,7 @@ const NewReview = (props) => {
       "recommend": recmdRadio(),
       "name": JSON.stringify(document.getElementById('nickname').value),
       "email": JSON.stringify(document.getElementById('email').value),
-      "photos": [],
+      "photos": [], //s3 bucket
       "characteristics": charRating
     }
 
@@ -96,7 +104,11 @@ const NewReview = (props) => {
     }
   }
 
-  const [prev, setPrev] = useState("");
+  const [prevs, setPrevs] = useState([]);
+  function handlePrevs(event) {
+    setPrevs(prevs => [...prevs, URL.createObjectURL(event.target.files[0])]);
+  };
+
   // const [file, setFile] = useState([null]);
 
   // let filesArray = [];
@@ -319,18 +331,22 @@ const NewReview = (props) => {
         </div>
 
         <div>
-          <label  className="review-body" style={{fontWeight: 'bold'}}>Review</label><br></br>
-          <textarea  id="review-body" maxLength="1000" placeholder="Why did you like the product or not?" style={{height: 100, width: 715}}></textarea>
+          <label className="review-body" style={{fontWeight: 'bold'}}>Review</label><br></br>
+          <textarea id="review-body" maxLength="1000" placeholder="Why did you like the product or not?" style={{height: 100, width: 715}}></textarea>
         </div>
         <div style={{marginBottom: 20, marginTop: 10}}>
           <i style={{marginRight: 5, marginLeft:5}} className="fas fa-camera">{' '}</i>
-          <input type="file" onChange={() => setPrev(URL.createObjectURL(event.target.files[0]))} />
-          <img src={prev} height="200" alt="upload preview"></img>
-
+          <input type="file" onChange={(event) => handlePrevs(event)} />
+          <div>{prevs.map((prev, index) => {
+            return (
+              <img key={index} src={prev} style={{height: 100, padding: 5}} alt="upload preview"></img>
+            )
+          })}
+          </div>
         </div>
 
         <div>
-          <label  className="nickname" style={{fontWeight: 'bold', marginTop: 10}}>Nickname</label><br></br>
+          <label className="nickname" style={{fontWeight: 'bold', marginTop: 10}}>Nickname</label><br></br>
           <textarea id="nickname" maxLength="60" placeholder="Example: jackson11" style={{height: 30, width: 715}}></textarea>
         </div>
 
