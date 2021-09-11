@@ -2,7 +2,7 @@
 
 # Front End Project
 
-## Tech Stack and Challenges
+## Tech Stack
 
 <code><img width="15%" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg"></code>
 
