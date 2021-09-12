@@ -1,4 +1,4 @@
-# 🚀 Welcome to Catwalk - A shopping website application!
+# 🚀 Welcome to Athena - A shopping website application!
 
 # Front End Project
 
