@@ -45,6 +45,7 @@
 - Webpack was our solution to elegantly handle our numerous static assets, implement JSX, and harness ES6 in this project.
 
 ---
+## Demo
 <p align="center">
   <img alt="app demo" src="lib/Athena.gif">
 </p>
