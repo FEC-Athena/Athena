@@ -2,6 +2,13 @@
 
 # Front End Project
 
+---
+## Demo
+<p align="center">
+  <img alt="app demo" src="lib/Athena.gif">
+</p>
+
+---
 ## Tech Stack
 
 ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -45,10 +52,6 @@
 - Webpack was our solution to elegantly handle our numerous static assets, implement JSX, and harness ES6 in this project.
 
 ---
-## Demo
-<p align="center">
-  <img alt="app demo" src="lib/Athena.gif">
-</p>
 
 ## Set up Instructions
 
